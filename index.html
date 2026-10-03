@@ -1,562 +1,838 @@
 <!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>iGEM Bioreactor Landscape 2015–2026</title>
-<meta name="description" content="Seventeen iGEM bioreactor projects, 2015–2026, compared on one spec sheet with photographs, an interactive map, and a five-tier ranking.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚗️</text></svg>">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>iGEM Bioreactor Landscape, 2015–2026 · GEMS-Taiwan</title>
+<meta name="description" content="A competitive audit of thirty iGEM bioreactor and fermentation-hardware projects, 2015 to 2026, compared on one spec sheet with device photographs, a positioning map and a five-tier ranking. Bilingual English / 繁體中文." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23fff'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%231d1d1f' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3.4' fill='%230071e3'/%3E%3C/svg%3E" />
 <style>
+*,*::before,*::after{box-sizing:border-box}
 :root{
-  --paper:#fafaf8; --paper2:#f4f5f1; --paper3:#eceee7;
-  --rule:#e2e5dd; --rule2:#c3c8bb;
-  --neutral:#7d837a; --muted:#5c6259; --ink:#22261f;
-  --brand:#66c902; --brand-deep:#4eaf02; --brand-wash:#eef8dd;
-  --accent:#2f6b26; --accent2:#e7f2e2;
-  --dark:#152b2b; --on-dark:#f1f4ee; --on-dark-m:#b4beb0;
-  --sky:#2f6f9e; --sky-wash:#e6f0f7;
-  --warn:#9a5b12; --warn-wash:#fbf0df;
-  --bad:#96302a; --bad-wash:#fbe9e7;
-  --font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
-  --font-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --measure:70ch; --radius:8px;
+  --ink:#1d1d1f; --muted:#6e6e73; --neutral:#86868b;
+  --line:#d2d2d7; --soft:#e8e8ed; --fill:#f5f5f7;
+  --blue:#0071e3; --blue-d:#0056b3;
+  --t1:#1d7a3e; --t2:#0071e3; --t3:#9a5b00; --t4:#6e6e73; --t5:#aeaeb2;
+  --us:#1d7a3e;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,"Segoe UI","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  --nav:48px;
 }
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.62}
-.wrap{max-width:1220px;margin:0 auto;padding:0 24px}
-h1,h2,h3,h4{line-height:1.22;margin:0;font-weight:650;letter-spacing:-.012em}
-p{margin:0 0 1em}
-a{color:var(--accent);text-underline-offset:2px}
-code,.mono{font-family:var(--font-mono);font-size:.88em}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + 18px)}
+body{margin:0;background:#fff;color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.5;letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{max-width:100%;display:block}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:3px solid rgba(0,113,227,.45);outline-offset:3px;border-radius:6px}
 [data-lang="en"] .zh,[data-lang="zh"] .en{display:none}
-html[data-lang="zh"] body{line-height:1.78}
 
-header.top{background:var(--dark);color:var(--on-dark);padding:44px 0 40px;position:relative}
-header.top h1{font-size:clamp(1.85rem,1.2rem+2.4vw,3rem);color:var(--on-dark);max-width:22ch}
-header.top .kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
-header.top .sub{color:var(--on-dark-m);max-width:66ch;margin-top:14px;font-size:1.02rem}
-.langbar{position:absolute;top:18px;right:24px;display:flex;border:1px solid #3b514f;border-radius:999px;overflow:hidden}
-.langbar button{background:transparent;border:0;color:var(--on-dark-m);font:inherit;font-size:.8rem;padding:6px 15px;cursor:pointer}
-.langbar button[aria-pressed="true"]{background:var(--brand);color:#12250a;font-weight:600}
-.statline{display:flex;flex-wrap:wrap;gap:0 34px;margin-top:26px;padding-top:20px;border-top:1px solid #2b3f3e}
-.statline div{font-size:.86rem;color:var(--on-dark-m)}
-.statline b{display:block;font-size:1.5rem;color:var(--on-dark);font-weight:650;letter-spacing:-.02em}
-nav.toc{background:var(--paper3);border-bottom:1px solid var(--rule2);position:sticky;top:0;z-index:40}
-nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
-nav.toc a{font-size:.78rem;font-family:var(--font-mono);color:var(--muted);text-decoration:none;padding:5px 11px;border-radius:999px;white-space:nowrap}
-nav.toc a:hover{background:#fff;color:var(--ink)}
+/* ---------- chrome ---------- */
+.nav{position:sticky;top:0;z-index:70;height:var(--nav);
+  background:rgba(255,255,255,.78);backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--soft)}
+.nav .in{max-width:1180px;margin:0 auto;height:100%;padding:0 22px;
+  display:flex;align-items:center;gap:18px}
+.brand{font-size:15px;font-weight:600;letter-spacing:-.015em;color:var(--ink);white-space:nowrap}
+.brand span{color:var(--neutral);font-weight:400}
+#toc{display:flex;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none;-ms-overflow-style:none}
+#toc::-webkit-scrollbar{display:none}
+#toc a{font-size:12.5px;color:var(--muted);padding:6px 9px;border-radius:7px;white-space:nowrap;letter-spacing:0}
+#toc a:hover{color:var(--ink);background:var(--fill);text-decoration:none}
 
-section{padding:56px 0;border-bottom:1px solid var(--rule)}
-section > .wrap > h2{font-size:clamp(1.35rem,1.1rem+1vw,1.85rem);margin-bottom:6px}
-.sechint{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--neutral);margin-bottom:10px}
-.lede{max-width:var(--measure);color:var(--muted);font-size:1.03rem}
+/* segmented control */
+.seg{display:inline-flex;background:var(--fill);border-radius:9px;padding:2px;gap:2px;flex:none}
+.seg button{font:inherit;font-size:12.5px;font-weight:500;letter-spacing:0;
+  border:0;background:transparent;color:var(--muted);padding:5px 12px;border-radius:7px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--ink);
+  box-shadow:0 1px 3px rgba(0,0,0,.09),0 0 0 .5px rgba(0,0,0,.04)}
 
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:20px;margin-top:26px}
-.card{background:var(--paper2);border:1px solid var(--rule);border-radius:var(--radius);padding:22px}
-.card h3{font-size:1.02rem;margin-bottom:10px}
-.card p:last-child{margin-bottom:0}
-.card.quote{background:#fff;border-left:3px solid var(--brand)}
-.card ol,.card ul{margin:0;padding-left:1.15em}
-.card li{margin-bottom:.5em}
-.src{font-size:.78rem;color:var(--neutral);font-family:var(--font-mono);margin-top:12px}
-.note{background:var(--sky-wash);border:1px solid #cfe0ec;border-radius:var(--radius);padding:16px 20px;margin-top:24px;font-size:.9rem;color:#264c66}
-.note b{color:#173648}
-.note.warn{background:var(--warn-wash);border-color:#eddcc0;color:#6b430f}
-.note.warn b{color:#4a2d06}
+/* ---------- layout ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+section{padding:92px 0;border-top:1px solid var(--soft)}
+section:first-of-type{border-top:0}
+.shead{max-width:780px;margin:0 0 44px}
+.snum{font:500 12px/1 var(--mono);letter-spacing:.14em;color:var(--neutral);display:block;margin-bottom:14px}
+h1,h2,h3,h4{letter-spacing:-.022em;margin:0;font-weight:600}
+h2{font-size:clamp(28px,4vw,42px);line-height:1.08}
+.shead p{margin:16px 0 0;font-size:19px;line-height:1.5;color:var(--muted)}
 
-/* ---- map ---- */
-.mapwrap{margin-top:26px;background:#fff;border:1px solid var(--rule2);border-radius:var(--radius);padding:20px}
-#mapsvg{width:100%;height:auto;display:block;touch-action:pan-y}
-#mapsvg .dot{cursor:pointer;transition:r .15s}
-#mapsvg .dot:hover{stroke:#111;stroke-width:2}
-#mapsvg text{font-family:var(--font-mono);font-size:10.5px;fill:var(--muted)}
-#mapsvg .axlbl{font-size:11px;fill:var(--ink);font-weight:600;font-family:var(--font-body)}
-#mapsvg .qlbl{font-size:10px;fill:var(--neutral);font-family:var(--font-body);font-style:italic}
-.mapinfo{margin-top:16px;padding:16px 18px;background:var(--paper2);border-radius:var(--radius);
-  border:1px solid var(--rule);min-height:96px;display:flex;gap:16px;align-items:flex-start}
-.mapinfo img{width:130px;height:100px;object-fit:cover;border-radius:6px;flex:none;background:var(--paper3)}
-.mapinfo h4{font-size:1rem;margin-bottom:3px}
-.mapinfo p{font-size:.87rem;color:var(--muted);margin:0}
-.mapinfo .sc{font-family:var(--font-mono);font-size:.76rem;color:var(--neutral);margin-top:7px;display:block}
+/* ---------- hero ---------- */
+.hero{padding:96px 0 84px;border-top:0}
+.hero .eyebrow{font:500 13px/1 var(--mono);letter-spacing:.16em;color:var(--neutral);margin-bottom:22px}
+.hero h1{font-size:clamp(40px,7vw,76px);line-height:1.04;letter-spacing:-.03em;max-width:17em}
+.hero h1 em{font-style:normal;color:var(--neutral)}
+.hero .lede{margin:28px 0 0;max-width:40em;font-size:21px;line-height:1.48;color:var(--muted)}
+.hero .lede b{color:var(--ink);font-weight:600}
+.hcount{display:flex;flex-wrap:wrap;gap:0;margin:52px 0 0;border-top:1px solid var(--soft)}
+.hcount div{padding:20px 28px 0 0;margin-right:28px}
+.hcount b{display:block;font-size:34px;font-weight:600;letter-spacing:-.03em;line-height:1}
+.hcount span{display:block;font-size:13px;color:var(--neutral);margin-top:7px}
+.stamp{margin:46px 0 0;font-size:13px;color:var(--neutral)}
 
-/* ---- metrics ---- */
-.mgroup{margin-top:30px}
-.mgroup > h3{font-size:.82rem;font-family:var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding-bottom:8px;border-bottom:2px solid var(--brand)}
-.mrow{display:grid;grid-template-columns:34px 1fr 1.25fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule)}
-.mrow .n{font-family:var(--font-mono);font-size:.82rem;color:var(--neutral)}
-.mrow .t{font-weight:600;font-size:.95rem}
-.mrow .t span.u{display:block;font-weight:400;font-size:.82rem;color:var(--neutral);font-family:var(--font-mono);margin-top:3px}
-.mrow .d{font-size:.92rem;color:var(--muted)}
-@media(max-width:720px){.mrow{grid-template-columns:26px 1fr}.mrow .d{grid-column:2}}
+/* ---------- generic cards ---------- */
+.chip{display:inline-block;font:600 10.5px/1 var(--sans);letter-spacing:.07em;
+  padding:5px 8px;border-radius:6px;color:#fff;vertical-align:middle;white-space:nowrap}
+.chip.t1,.chip.t1x{background:var(--t1)} .chip.t2{background:var(--t2)}
+.chip.t3{background:var(--t3)} .chip.t4{background:var(--t4)} .chip.t5{background:var(--t5)}
+.note{border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:10px;
+  padding:18px 20px;margin:26px 0 0;background:#fff}
+.note h4{font-size:15px;margin:0 0 7px}
+.note p{margin:0;font-size:15px;color:var(--muted)}
+.note.warn{border-left-color:#b25000}
+.note.good{border-left-color:var(--t1)}
 
-/* ---- gallery ---- */
-.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px;margin-top:26px}
-.gcard{border:1px solid var(--rule);border-radius:var(--radius);background:#fff;overflow:hidden;display:flex;flex-direction:column}
-.gcard.us{border-color:var(--brand-deep);border-width:2px}
-.gcard .shots{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);aspect-ratio:2/1}
-.gcard .shots figure{margin:0;position:relative;background:var(--paper3);overflow:hidden}
-.gcard .shots img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.gcard .shots figure:hover img{transform:scale(1.06)}
-.gcard .shots figcaption{position:absolute;left:0;bottom:0;right:0;font-size:.63rem;font-family:var(--font-mono);
-  background:rgba(10,20,15,.72);color:#fff;padding:3px 6px;letter-spacing:.02em}
-.gcard .shots .none{display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--neutral);
-  font-family:var(--font-mono);text-align:center;padding:10px;background:repeating-linear-gradient(45deg,#f2f3ef,#f2f3ef 8px,#e9ebe4 8px,#e9ebe4 16px)}
-.gcard .body{padding:16px 18px;flex:1;display:flex;flex-direction:column}
-.gcard h3{font-size:1rem}
-.gcard .meta{font-family:var(--font-mono);font-size:.73rem;color:var(--neutral);margin:3px 0 9px}
-.gcard p.g{font-size:.87rem;color:var(--muted);margin:0 0 12px;flex:1}
-.gcard .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.74rem;font-family:var(--font-mono)}
-.gcard .foot a{color:var(--neutral);text-decoration:none}
-.gcard .foot a:hover{color:var(--accent);text-decoration:underline}
+/* ---------- 01 rulebooks ---------- */
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.rule{border:1px solid var(--line);border-radius:18px;padding:28px}
+.rule h3{font-size:19px;margin-bottom:14px}
+.rule p{margin:0 0 12px;font-size:15.5px;line-height:1.55;color:var(--muted)}
+.rule ol{margin:0;padding-left:20px;font-size:15.5px;color:var(--muted)}
+.rule li{margin-bottom:9px}
+.rule li b{color:var(--ink);font-weight:600}
+.quote{font-size:15.5px;line-height:1.55;color:var(--ink);border-left:2px solid var(--line);padding-left:16px;margin:0 0 14px}
 
-/* ---- head to head ---- */
-.h2h{margin-top:26px}
-.h2hbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
-.h2hbar select{font:inherit;font-size:.88rem;padding:8px 12px;border:1px solid var(--rule2);border-radius:6px;background:#fff;color:var(--ink);max-width:100%}
-.h2hbar span{font-family:var(--font-mono);font-size:.78rem;color:var(--neutral)}
-.h2hgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:760px){.h2hgrid{grid-template-columns:1fr}}
-.h2hcol{border:1px solid var(--rule);border-radius:var(--radius);background:#fff;overflow:hidden}
-.h2hcol > img{width:100%;height:190px;object-fit:cover;background:var(--paper3)}
-.h2hcol .hd{padding:14px 18px;border-bottom:1px solid var(--rule)}
-.h2hcol .hd h4{font-size:1.05rem}
-.h2hcol .hd .m{font-family:var(--font-mono);font-size:.74rem;color:var(--neutral);margin-top:3px}
-.bars{padding:14px 18px}
-.bar{margin-bottom:12px}
-.bar .lb{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);margin-bottom:4px}
-.bar .lb b{font-family:var(--font-mono);color:var(--ink)}
-.bar .tr{height:8px;background:var(--paper3);border-radius:99px;overflow:hidden}
-.bar .fl{height:100%;border-radius:99px;transition:width .35s var(--ease,cubic-bezier(.16,1,.3,1))}
-.h2hspec{padding:0 18px 16px}
-.h2hspec dl{margin:0;font-size:.83rem}
-.h2hspec dt{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--neutral);margin-top:11px}
-.h2hspec dd{margin:2px 0 0;color:var(--ink)}
+/* ---------- 02 map ---------- */
+.mapgrid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
+.mapbox{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+#mapsvg{width:100%;height:auto;display:block;font-family:var(--sans);font-size:11px;fill:var(--muted)}
+#mapsvg .dot{cursor:pointer;transition:r .12s}
+#mapsvg .dot:hover{r:12}
+#mapsvg .qlbl{font-size:11.5px;fill:var(--neutral);letter-spacing:.02em}
+#mapsvg .axlbl{font-size:12px;fill:var(--ink);font-weight:500}
+#mapinfo{border:1px solid var(--line);border-radius:18px;overflow:hidden;position:sticky;top:calc(var(--nav) + 18px)}
+#mapinfo img{width:100%;height:188px;object-fit:cover;background:var(--fill)}
+#mapinfo>div{padding:20px}
+#mapinfo h4{font-size:17px;margin:0 0 9px}
+#mapinfo p{margin:0 0 13px;font-size:14.5px;line-height:1.5;color:var(--muted)}
+#mapinfo .sc{font:500 11.5px/1.7 var(--mono);color:var(--neutral);display:block}
 
-/* ---- table ---- */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-.filters button{font:inherit;font-size:.76rem;font-family:var(--font-mono);padding:5px 12px;border-radius:999px;
-  border:1px solid var(--rule2);background:#fff;color:var(--muted);cursor:pointer}
-.filters button[aria-pressed="true"]{background:var(--dark);color:var(--on-dark);border-color:var(--dark)}
-.tablewrap{margin-top:16px;border:1px solid var(--rule2);border-radius:var(--radius);overflow:auto;max-height:78vh;background:#fff}
-table{border-collapse:separate;border-spacing:0;font-size:.815rem;min-width:2900px;table-layout:fixed}
-tbody td{min-width:200px;width:200px}
-thead th{width:200px}
-th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule)}
-thead th{position:sticky;top:0;z-index:3;background:var(--paper3);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:650;color:var(--muted);box-shadow:inset 0 -2px 0 var(--rule2)}
-tbody th{position:sticky;left:0;z-index:2;background:#fff;min-width:210px;max-width:210px;width:210px;border-right:2px solid var(--rule2);font-weight:600;font-size:.85rem}
-thead th:first-child{left:0;z-index:4;background:var(--paper3);border-right:2px solid var(--rule2);width:210px}
-tbody tr:hover td{background:var(--paper2)}
-tbody tr.us th{background:var(--brand-wash);border-left:3px solid var(--brand)}
-tbody tr.us td{background:#f6fbee}
-tbody th .meta{display:block;font-weight:400;font-size:.74rem;color:var(--neutral);font-family:var(--font-mono);margin-top:3px}
-td.num{font-family:var(--font-mono);font-size:.76rem;line-height:1.5}
-td em{font-style:normal;color:var(--neutral)}
-.chip{display:inline-block;padding:1px 7px;border-radius:999px;font-size:.7rem;font-weight:600;font-family:var(--font-mono);letter-spacing:.03em;white-space:nowrap}
-.t1{background:#dff3cf;color:#2c5c14} .t2{background:#dceaf5;color:#22557a}
-.t3{background:#fbf0df;color:#7d4a0d} .t4{background:#eeeae2;color:#6a6053} .t5{background:#f0eeee;color:#6d6666}
-.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:.78rem;color:var(--neutral)}
+/* ---------- 03 metrics ---------- */
+.mgroup{margin-bottom:40px}
+.mgroup h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral);
+  font-weight:600;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.mrow{display:grid;grid-template-columns:44px minmax(190px,1fr) minmax(0,1.6fr);gap:20px;
+  padding:20px 0;border-bottom:1px solid var(--soft)}
+.mrow .n{font:500 12px/1.5 var(--mono);color:var(--neutral)}
+.mrow .t{font-size:16px;font-weight:600;letter-spacing:-.015em}
+.mrow .t .u{display:block;font:400 13px/1.5 var(--mono);color:var(--neutral);margin-top:5px;letter-spacing:0}
+.mrow .d{font-size:15px;line-height:1.55;color:var(--muted)}
 
-/* ---- ladder / verdict / roster ---- */
-.ladder{margin-top:28px}
-.tier{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--rule)}
-.tier:last-child{border-bottom:1px solid var(--rule)}
-.tier .lbl{font-family:var(--font-mono);font-size:.78rem;font-weight:700}
-.tier .lbl small{display:block;font-weight:400;color:var(--neutral);margin-top:4px;font-size:.72rem}
-.tier h3{font-size:1rem;margin-bottom:6px}
-.tier p{font-size:.93rem;color:var(--muted);margin-bottom:8px;max-width:var(--measure)}
-.tier .who{font-size:.83rem;font-family:var(--font-mono)}
-@media(max-width:720px){.tier{grid-template-columns:1fr;gap:8px}}
-.verdict{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}
-@media(max-width:820px){.verdict{grid-template-columns:1fr}}
-.vcol{border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:#fff}
-.vcol > h3{padding:14px 20px;font-size:.82rem;font-family:var(--font-mono);letter-spacing:.1em;text-transform:uppercase;margin:0}
-.vcol.good > h3{background:var(--accent2);color:var(--accent)}
-.vcol.bad > h3{background:var(--bad-wash);color:var(--bad)}
-.vitem{padding:16px 20px;border-top:1px solid var(--rule)}
-.vitem h4{font-size:.94rem;margin-bottom:5px}
-.vitem p{font-size:.88rem;color:var(--muted);margin:0}
-.vitem .ev{display:block;font-size:.76rem;font-family:var(--font-mono);color:var(--neutral);margin-top:7px}
-.opgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:22px}
-.op{border:1px solid var(--rule);border-radius:var(--radius);padding:13px 15px;background:#fff}
-.op .k{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--neutral)}
-.op .v{font-size:1.28rem;font-weight:650;letter-spacing:-.02em;margin:4px 0 2px}
-.op .r{font-size:.74rem;font-family:var(--font-mono);color:var(--muted)}
-.op.ok{border-left:3px solid var(--brand-deep)} .op.mid{border-left:3px solid #d8a13a} .op.no{border-left:3px solid var(--bad)}
-.roster{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.rcol{background:var(--paper2);border:1px solid var(--rule);border-radius:var(--radius);padding:18px}
-.rcol h4{font-size:.78rem;font-family:var(--font-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
-.rcol .cnt{font-size:1.6rem;font-weight:650;margin-bottom:10px}
-.rcol ul{margin:0;padding:0;list-style:none}
-.rcol li{padding:2px 0;color:var(--muted);font-family:var(--font-mono);font-size:.76rem}
+/* ---------- 04 gallery ---------- */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
+.gcard{border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:#fff}
+.gcard.us{border-color:var(--us);box-shadow:0 0 0 1px var(--us)}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--soft)}
+.shots figure{margin:0;background:#fff;position:relative}
+.shots figure>img{width:100%;height:146px;object-fit:cover;cursor:zoom-in;background:var(--fill)}
+.shots figcaption{font-size:11px;line-height:1.4;color:var(--neutral);padding:9px 11px 11px}
+.shots figure.none{height:146px;display:flex;align-items:center;justify-content:center;
+  text-align:center;font-size:11.5px;color:var(--neutral);padding:14px;
+  background:repeating-linear-gradient(45deg,#fafafc,#fafafc 7px,#f2f2f5 7px,#f2f2f5 14px)}
+.gcard .body{padding:20px;flex:1;display:flex;flex-direction:column}
+.gcard h3{font-size:18px}
+.gcard .meta{font:500 12px/1 var(--mono);color:var(--neutral);margin:8px 0 12px}
+.gcard p.g{margin:0 0 16px;font-size:14.5px;line-height:1.55;color:var(--muted);flex:1}
+.gcard .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding-top:14px;border-top:1px solid var(--soft);font-size:14px}
+
+/* ---------- 05 head to head ---------- */
+.pick{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+select{font:inherit;font-size:15px;padding:10px 14px;border:1px solid var(--line);
+  border-radius:11px;background:#fff;color:var(--ink);min-width:260px;cursor:pointer;
+  appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%236e6e73' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+.h2h{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.h2hcol{border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.h2hcol>img{width:100%;height:190px;object-fit:cover;background:var(--fill)}
+.h2hcol .hd{padding:20px 20px 0}
+.h2hcol h4{font-size:18px;margin:0 0 8px}
+.h2hcol .m{font:500 12px/1 var(--mono);color:var(--neutral)}
+.bars{padding:20px}
+.bar{margin-bottom:14px}
+.bar .lb{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+.bar .lb b{color:var(--ink);font-variant-numeric:tabular-nums}
+.bar .tr{height:6px;background:var(--fill);border-radius:3px;overflow:hidden}
+.bar .fl{height:100%;border-radius:3px}
+.h2hspec{border-top:1px solid var(--soft);padding:20px}
+.h2hspec dl{margin:0;display:grid;grid-template-columns:1fr;gap:0}
+.h2hspec dt{font:600 11px/1 var(--sans);letter-spacing:.07em;text-transform:uppercase;
+  color:var(--neutral);margin:14px 0 6px}
+.h2hspec dt:first-child{margin-top:0}
+.h2hspec dd{margin:0;font-size:14.5px;line-height:1.5;color:var(--ink)}
+
+/* ---------- 06 table ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.filters button{font:inherit;font-size:13.5px;padding:8px 15px;border:1px solid var(--line);
+  background:#fff;color:var(--muted);border-radius:999px;cursor:pointer}
+.filters button:hover{color:var(--ink);border-color:var(--neutral)}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:18px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:1800px;font-size:13.5px}
+thead th{position:sticky;top:0;z-index:2;background:var(--fill);text-align:left;
+  font:600 11px/1.3 var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);
+  padding:14px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+tbody th{position:sticky;left:0;z-index:1;background:#fff;text-align:left;font-size:14px;
+  font-weight:600;padding:15px 16px;min-width:210px;border-right:1px solid var(--soft);
+  vertical-align:top;letter-spacing:-.015em}
+tbody th .meta{display:block;font:400 11.5px/1.4 var(--mono);color:var(--neutral);margin-top:5px}
+td{padding:15px 14px;border-bottom:1px solid var(--soft);vertical-align:top;
+  color:var(--muted);line-height:1.5;max-width:300px}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tbody tr.us th,tbody tr.us td{background:#f2faf4}
+tbody tr.us th{box-shadow:inset 3px 0 0 var(--us)}
+td em{color:var(--t5);font-style:normal}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ---------- 07 tiers ---------- */
+.tier{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;
+  padding:30px 0;border-bottom:1px solid var(--soft)}
+.tier:last-child{border-bottom:0}
+.tier .lbl small{display:block;font-size:13px;color:var(--neutral);margin-top:9px}
+.tier h3{font-size:18px;margin-bottom:10px;line-height:1.35}
+.tier p{margin:0 0 14px;font-size:15px;line-height:1.55;color:var(--muted)}
+.tier .who{font-size:13.5px;color:var(--neutral);line-height:1.8}
+.tier .who b{color:var(--us)}
+
+/* ---------- 08 verdict ---------- */
+.opgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:1px;
+  background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.op{background:#fff;padding:18px 18px 16px;box-shadow:0 0 0 .5px var(--soft)}
+.op .k{font:500 11.5px/1.4 var(--mono);color:var(--neutral);margin-bottom:9px}
+.op .v{font-size:23px;font-weight:600;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.op .r{font-size:12.5px;line-height:1.45;color:var(--muted);margin-top:7px}
+.op.ok .v{color:var(--t1)} .op.mid .v{color:var(--t3)} .op.no .v{color:#a1001a}
+.op.na .v{color:var(--neutral);font-size:19px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+.pan{border:1px solid var(--line);border-radius:18px;padding:26px}
+.pan h3{font-size:17px;margin-bottom:16px}
+.pan ol{margin:0;padding-left:21px}
+.pan li{font-size:15px;line-height:1.55;color:var(--muted);margin-bottom:14px}
+.pan li b{color:var(--ink);font-weight:600}
+.pan li:last-child{margin-bottom:0}
+
+/* ---------- system positioning ---------- */
+.chain{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--soft);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0 0 30px}
+.chain div{background:#fff;padding:16px 13px}
+.chain .st{font:500 10.5px/1 var(--mono);color:var(--neutral);display:block;margin-bottom:8px}
+.chain b{font-size:14px;font-weight:600;letter-spacing:-.015em;display:block;line-height:1.3}
+.chain small{font-size:12px;color:var(--muted);display:block;margin-top:6px;line-height:1.4}
+.chain div.hot{background:#f2faf4}
+.syscmp{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.syscmp article{border:1px solid var(--line);border-radius:16px;padding:22px}
+.syscmp h4{font-size:15.5px;margin-bottom:9px}
+.syscmp p{margin:0;font-size:14.5px;line-height:1.55;color:var(--muted)}
+.syscmp .tag{font:500 11px/1 var(--mono);color:var(--neutral);display:block;margin-bottom:10px}
+
+/* ---------- 09 lineage ---------- */
+.era{display:grid;grid-template-columns:168px minmax(0,1fr);gap:28px;
+  padding:38px 0;border-bottom:1px solid var(--soft)}
+.era:last-child{border-bottom:0}
+.era .yr{font:500 14px/1.3 var(--mono);color:var(--ink)}
+.era .yr small{display:block;font-family:var(--sans);font-size:12.5px;color:var(--neutral);margin-top:8px}
+.era h3{font-size:22px;margin-bottom:14px;line-height:1.25}
+.era p{margin:0 0 14px;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.ex{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:20px}
+.ex figure{margin:0}
+.ex img{width:100%;height:124px;object-fit:cover;border-radius:11px;border:1px solid var(--soft);cursor:zoom-in}
+.ex figcaption{font-size:11.5px;line-height:1.4;color:var(--neutral);margin-top:8px}
+.fr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:24px;
+  padding:19px 0;border-bottom:1px solid var(--soft)}
+.fr:last-child{border-bottom:0}
+.fr>div:first-child{font-size:15.5px;font-weight:600;letter-spacing:-.015em}
+.fr>div:last-child{font-size:14.5px;line-height:1.55;color:var(--muted)}
+
+/* ---------- 10 village ---------- */
+.roster{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.rcol{border:1px solid var(--line);border-radius:16px;padding:22px}
+.rcol h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--neutral);font-weight:600}
+.rcol .cnt{font-size:34px;font-weight:600;letter-spacing:-.03em;margin:10px 0 14px}
+.rcol ul{list-style:none;margin:0;padding:0;font-size:13px;line-height:1.85;color:var(--muted)}
 .rcol li.hit{color:var(--ink);font-weight:600}
-.rcol li.hit::after{content:" ◀";color:var(--brand-deep)}
 
-/* ---- era timeline ---- */
-.eras{margin-top:28px;display:grid;gap:0}
-.era{display:grid;grid-template-columns:150px 1fr;gap:26px;padding:26px 0;border-top:1px solid var(--rule)}
-.era:last-of-type{border-bottom:1px solid var(--rule)}
-.era .yr{font-family:var(--font-mono);font-size:.8rem;font-weight:700;color:var(--accent)}
-.era .yr small{display:block;color:var(--neutral);font-weight:400;margin-top:4px}
-.era h3{font-size:1.06rem;margin-bottom:7px}
-.era p{font-size:.94rem;color:var(--muted);max-width:var(--measure);margin-bottom:10px}
-.era .ex{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.era .ex figure{margin:0;width:150px}
-.era .ex img{width:150px;height:105px;object-fit:cover;border-radius:5px;border:1px solid var(--rule)}
-.era .ex figcaption{font-size:.68rem;font-family:var(--font-mono);color:var(--neutral);margin-top:4px;line-height:1.35}
-@media(max-width:720px){.era{grid-template-columns:1fr;gap:10px}}
-.firsts{margin-top:26px;border:1px solid var(--rule2);border-radius:var(--radius);overflow:hidden}
-.firsts .fr{display:grid;grid-template-columns:1fr 1.4fr;gap:0;border-top:1px solid var(--rule);font-size:.9rem}
-.firsts .fr:first-child{border-top:0}
-.firsts .fr > div{padding:13px 18px}
-.firsts .fr > div:first-child{background:var(--paper2);font-weight:600}
-.firsts .fr > div:last-child{color:var(--muted)}
-@media(max-width:660px){.firsts .fr{grid-template-columns:1fr}.firsts .fr > div:last-child{padding-top:0}}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--soft);padding:56px 0 76px;font-size:13px;color:var(--neutral)}
+footer h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+footer .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-bottom:34px}
+footer p{margin:0 0 10px;line-height:1.65;max-width:62ch}
+footer a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line)}
+footer a:hover{color:var(--blue)}
 
-footer{padding:44px 0 70px;font-size:.84rem;color:var(--neutral)}
-footer h2{font-size:1rem;margin-bottom:14px;color:var(--ink)}
-footer ol{padding-left:1.3em;margin:0;column-count:2;column-gap:40px}
-@media(max-width:760px){footer ol{column-count:1}}
-footer li{margin-bottom:7px;break-inside:avoid}
-footer a{word-break:break-all}
+/* ---------- lightbox ---------- */
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  display:none;align-items:center;justify-content:center;padding:52px 28px}
+.lightbox[open]{display:flex}
+.lightbox img{max-width:min(1280px,100%);max-height:84vh;object-fit:contain;border-radius:12px}
+.lightbox figcaption{position:absolute;left:0;right:0;bottom:26px;text-align:center;
+  font-size:13.5px;color:var(--muted);padding:0 28px}
+.lightbox button{position:absolute;top:18px;right:20px;width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--line);background:#fff;color:var(--ink);font-size:19px;cursor:pointer;line-height:1}
+
+@media (max-width:1000px){
+  .rules,.two,.h2h{grid-template-columns:1fr}
+  .mapgrid{grid-template-columns:1fr}
+  #mapinfo{position:static}
+  .roster{grid-template-columns:1fr 1fr}
+  .rcol[style]{grid-column:span 2!important}
+  .chain{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:680px){
+  body{font-size:16px}
+  section{padding:64px 0}
+  .wrap{padding:0 16px}
+  .nav .in{padding:0 16px;gap:12px}
+  .brand{display:none}
+  .hero{padding:58px 0 56px}
+  .gal{grid-template-columns:1fr}
+  .mrow,.tier,.era,.fr{grid-template-columns:1fr;gap:10px}
+  .mrow{padding:16px 0}
+  .roster{grid-template-columns:1fr}
+  .rcol[style]{grid-column:span 1!important}
+  .chain{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr}
+  .hcount div{padding-right:18px;margin-right:18px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
-
-<header class="top">
-  <div class="wrap">
-    <div class="langbar">
-      <button id="btn-en" aria-pressed="true" onclick="setLang('en')">EN</button>
+<header class="nav">
+  <div class="in">
+    <div class="brand">iGEM Bioreactor Landscape <span>· GEMS-Taiwan</span></div>
+    <nav id="toc" aria-label="Contents"></nav>
+    <div class="seg" role="group" aria-label="Language">
+      <button id="btn-en" aria-pressed="true" onclick="setLang('en')">English</button>
       <button id="btn-zh" aria-pressed="false" onclick="setLang('zh')">中文</button>
-    </div>
-    <div class="kicker">GEMS-Taiwan 2026 · ReLeaf · Competitive Audit</div>
-    <h1><span class="en">Every iGEM bioreactor worth measuring against</span><span class="zh">值得對標的每一台 iGEM 生物反應器</span></h1>
-    <p class="sub">
-      <span class="en">Seventeen bioreactor and fermentation-hardware projects from 2015 to 2026, across high school, undergraduate and overgraduate, photographed and scored on the same fourteen specifications. Every number was read off a team wiki, the iGEM team API, or the 2026 Judge Handbook. Blanks mean the team did not publish it.</span>
-      <span class="zh">2015 至 2026 年間十七個生物反應器與發酵硬體專案，涵蓋高中、大學部與研究所組，附實體照片，並以同一套十四項規格評比。每個數字皆取自隊伍 wiki、iGEM 官方 API 或 2026 年評審手冊。空白代表該隊未公開。</span>
-    </p>
-    <div class="statline">
-      <div><b>17</b><span class="en">projects compared</span><span class="zh">比較專案數</span></div>
-      <div><b>38</b><span class="en">device photos and diagrams</span><span class="zh">裝置照片與設計圖</span></div>
-      <div><b>58</b><span class="en">Biomanufacturing teams, 2026</span><span class="zh">2026 生物製造村隊伍</span></div>
-      <div><b>1 / 17</b><span class="en">projects with a scale-up transform</span><span class="zh">提出放大轉換的專案</span></div>
-      <div><b>Tier 2</b><span class="en">ReLeaf, re-scored with the price list and invariants</span><span class="zh">ReLeaf，計入物料表與不變量後重評</span></div>
     </div>
   </div>
 </header>
 
-<nav class="toc"><div class="wrap" id="toc"></div></nav>
+<main>
+<div class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">GEMS-TAIWAN · RELEAF · IGEM 2026</div>
+  <h1>
+    <span class="en">Every iGEM bioreactor we could verify, read against the rubric that judges it.</span>
+    <span class="zh">所有我們能查證的 iGEM 生物反應器，對照評判它們的評分表逐項檢視。</span>
+  </h1>
+  <p class="lede">
+    <span class="en">Thirty projects from 2015 to 2026, each read off its own team wiki and compared on fourteen
+    specifications, four Hardware aspects and one ranking ladder. Where a team published no number, the cell is
+    blank rather than estimated. <b>Our own entry is in the table on the same terms as everyone else's.</b></span>
+    <span class="zh">自 2015 至 2026 年的三十個專案，逐一讀自各隊自己的 wiki，並以十四項規格、四個硬體面向與同一套級距
+    排序進行比較。隊伍未公布數字者，欄位留空而不作估計。<b>我方專案以與他隊完全相同的標準列入表中。</b></span>
+  </p>
+  <div class="hcount">
+    <div><b id="c-total">30</b><span class="en">projects audited</span><span class="zh">已審專案</span></div>
+    <div><b id="c-built">22</b><span class="en">devices that physically ran</span><span class="zh">確實運轉過的實體</span></div>
+    <div><b id="c-paper">8</b><span class="en">never left the drawing</span><span class="zh">從未離開圖紙</span></div>
+    <div><b id="c-cost">8</b><span class="en">published a price</span><span class="zh">公布價格者</span></div>
+    <div><b id="c-a3">3</b><span class="en">answer aspect 3 in full</span><span class="zh">完整回答第 3 面向</span></div>
+  </div>
+  <p class="stamp">
+    <span class="en">Last updated 3 October 2026. Sources, image credits and corrections policy at the foot of the page.</span>
+    <span class="zh">最後更新：2026 年 10 月 3 日。資料來源、圖片出處與更正政策見頁尾。</span>
+  </p>
+</section>
 
 <section id="rules">
-  <div class="wrap">
-    <div class="sechint">01 / <span class="en">The two rulebooks</span><span class="zh">兩份規則</span></div>
-    <h2><span class="en">What we are actually being judged against</span><span class="zh">我們實際被評判的標準</span></h2>
-    <p class="lede"><span class="en">ReLeaf sits in the Biomanufacturing village and nominates Hardware as one of three special awards. Those two documents decide the reading. Everything below is an attempt to score the field against them.</span><span class="zh">ReLeaf 屬生物製造村，並將硬體列為三項特別獎提名之一。這兩份文件決定了評判方式；以下所有分析，都是依此對整個場域進行評分。</span></p>
-    <div class="grid2">
-      <div class="card quote">
-        <h3><span class="en">Biomanufacturing village</span><span class="zh">生物製造村</span></h3>
-        <p><span class="en">"What can biology be programmed to manufacture? Biological systems can be used to make products under conditions that were previously impossible. Many enzymes can achieve reaction conditions in a tube that would otherwise require high temperatures, pressures or expensive substrates to reproduce using chemical engineering methods. Could we use synthetic biology to manufacture useful products, perform micro-scale production of high-value molecules like therapeutics, or produce engineered tissues such as new skin or organs?"</span><span class="zh">「生物可以被編程來製造什麼？生物系統能在過去不可能的條件下製造產品。許多酶能在試管中達成的反應條件，若以化學工程方法重現，將需要高溫、高壓或昂貴基質。我們能否用合成生物學製造有用的產品、進行治療分子等高價值分子的微尺度生產，或製造如新皮膚或器官這類工程組織？」</span></p>
-        <p class="src"><span class="en">iGEM village description, verbatim</span><span class="zh">iGEM 村落說明，原文引述</span></p>
-      </div>
-      <div class="card quote">
-        <h3><span class="en">Hardware special award: the four aspects</span><span class="zh">硬體特別獎：四項評分面向</span></h3>
-        <ol>
-          <li><span class="en">Does the hardware address a need or problem in synthetic biology?</span><span class="zh">該硬體是否解決合成生物學中的實際需求或問題？</span></li>
-          <li><span class="en">Did the team conduct user testing and learn from user feedback?</span><span class="zh">團隊是否進行使用者測試，並從回饋中學習？</span></li>
-          <li><span class="en">Did the team demonstrate utility and functionality in their hardware proof of concept?</span><span class="zh">團隊是否在概念驗證中展示了硬體的實用性與功能性？</span></li>
-          <li><span class="en">Is the documentation sufficient to enable reproduction by other teams?</span><span class="zh">文件是否足以讓其他團隊重現？</span></li>
-        </ol>
-        <p class="src"><span class="en">Judge Handbook: strong competitors show "utility, user testing, and easy reproducibility by those in the community."</span><span class="zh">評審手冊：有力競爭者須展現「實用性、使用者測試，以及社群易於重現」。</span></p>
-      </div>
+  <div class="shead">
+    <span class="snum">01</span>
+    <h2><span class="en">Rulebooks</span><span class="zh">規則</span></h2>
+    <p><span class="en">Two documents decide how this work is read: the Biomanufacturing village description and
+    the four aspects of the Hardware special award. Both are quoted rather than paraphrased, because the whole
+    audit below is scored against them.</span>
+    <span class="zh">有兩份文件決定這些工作如何被閱讀：生物製造村的說明，以及硬體特別獎的四項面向。此處照引原文而非改寫，
+    因為下方整份審查都依此評分。</span></p>
+  </div>
+  <div class="rules">
+    <div class="rule">
+      <h3><span class="en">Biomanufacturing village</span><span class="zh">生物製造村</span></h3>
+      <p class="quote"><span class="en">Teams in this village use engineered biological systems to produce
+      materials, chemicals, fuels, foods and other products, and address the processes, scale and economics that
+      production at useful volume requires.</span>
+      <span class="zh">本村隊伍運用工程化生物系統生產材料、化學品、燃料、食品及其他產品，並處理在實用規模下生產所需的
+      製程、放大與經濟性問題。</span></p>
+      <p><span class="en">The operative words are process, scale and economics. A vessel that holds a culture
+      answers none of the three on its own.</span>
+      <span class="zh">關鍵詞是製程、放大與經濟性。單憑一個能裝培養液的容器，三者皆未回答。</span></p>
     </div>
-    <div class="note">
-      <b><span class="en">The structural fact that shapes everything below.</span><span class="zh">決定以下一切的結構性事實。</span></b>
-      <span class="en"> The four aspects are four checkable claims: a stated need, a named outside user whose feedback changed something, a measured performance number, and a release package. Every score on this page comes from those four questions, which is why a team can be brilliant on physics and still land low.</span>
-      <span class="zh"> 這四項面向是四項可查證的主張：明確的需求陳述、具名且確實改變了設計的外部使用者、實測的效能數字，以及可釋出的完整資料包。本頁所有評分均源自這四個問題——這也是為何一支在物理分析上出色的隊伍，仍可能落在低分區。</span>
+    <div class="rule">
+      <h3><span class="en">Hardware special award</span><span class="zh">硬體特別獎</span></h3>
+      <ol>
+        <li><b><span class="en">Need addressed.</span><span class="zh">需求解決。</span></b>
+          <span class="en">What synthetic-biology problem does this solve that an off-the-shelf instrument does not?</span>
+          <span class="zh">本裝置解決了現成儀器無法解決的什麼合成生物學問題？</span></li>
+        <li><b><span class="en">User testing.</span><span class="zh">使用者測試。</span></b>
+          <span class="en">Someone outside the team used or reviewed it, and a design decision moved as a result.</span>
+          <span class="zh">團隊以外的人實際使用或審視過，並因此改變了某項設計決定。</span></li>
+        <li><b><span class="en">Utility proved by measurement.</span><span class="zh">以量測證明實用性。</span></b>
+          <span class="en">A measured number, and the requirement it has to beat.</span>
+          <span class="zh">一個實測數字，以及它必須勝過的需求值。</span></li>
+        <li><b><span class="en">Reproduction.</span><span class="zh">可重現性。</span></b>
+          <span class="en">Itemized bill of materials, dimensions or CAD, firmware, assembly manual, licence.</span>
+          <span class="zh">逐項物料表、尺寸或 CAD、韌體、組裝手冊、授權條款。</span></li>
+      </ol>
+      <div class="note"><p><span class="en">Aspect 3 is where this field falls down. Of the thirty projects
+      here, twenty-two built something that ran, and three answer aspect 3 in full with a measured
+      number against a stated requirement.</span>
+      <span class="zh">第 3 面向是這個領域最常失守之處。本表三十個專案中，二十二個做出確實運轉的實體，而只有三個以對照明確需求的實測數字
+      完整回答了第 3 面向。</span></p></div>
     </div>
   </div>
 </section>
 
 <section id="map">
-  <div class="wrap">
-    <div class="sechint">02 / <span class="en">The map</span><span class="zh">全景圖</span></div>
-    <h2><span class="en">Engineering depth against published evidence</span><span class="zh">工程深度 對比 已發表證據</span></h2>
-    <p class="lede"><span class="en">One chart carries the whole argument. Vertical axis: how deep the engineering analysis goes, from a sketch to a cited scale-up transform. Horizontal axis: how much of it the team actually proved and released, scored straight off Hardware aspects 3 and 4. Click any dot. ReLeaf is the green one, and its position is the finding.</span><span class="zh">一張圖承載全部論點。縱軸為工程分析深度，從草圖到附引用的放大轉換；橫軸為團隊實際證明並釋出的程度，直接取自硬體第 3、4 面向評分。點選任一圓點查看。ReLeaf 為綠色圓點，其位置本身就是結論。</span></p>
-    <div class="mapwrap">
-      <svg id="mapsvg" viewBox="0 0 940 560" role="img" aria-label="Scatter of iGEM bioreactor projects"></svg>
-      <div class="mapinfo" id="mapinfo"></div>
-    </div>
-    <div class="note warn">
-      <b><span class="en">How to read the quadrants.</span><span class="zh">象限怎麼讀。</span></b>
-      <span class="en"> Top-right is where awards live: deep analysis that was also proved and shipped. Bottom-right is the crowded rung, well-documented devices with shallow analysis, and it contains both Best Hardware winners. Top-left is where ReLeaf sits alone: the deepest analysis in the dataset, attached to the thinnest release package among built devices. Nothing about that position is permanent. It is a publishing problem, not an engineering one.</span>
-      <span class="zh"> 右上是獎項所在：分析深、且已證明並釋出。右下最擁擠：文件完善但分析淺，兩座最佳硬體獎得主都在此區。左上只有 ReLeaf：全資料集中最深的分析，卻搭配已建成裝置中最薄的釋出資料。這個位置並非固定——它是發布問題，不是工程問題。</span>
-    </div>
+  <div class="shead">
+    <span class="snum">02</span>
+    <h2><span class="en">The map</span><span class="zh">全景圖</span></h2>
+    <p><span class="en">Engineering depth on the vertical, published evidence on the horizontal. Depth runs from
+    a labelled sketch to a cited scale-up convention; evidence is Hardware aspects 3 and 4 added together. The
+    top-right quadrant is the one the rubric rewards, and it is nearly empty.</span>
+    <span class="zh">縱軸為工程深度，橫軸為已發表證據。深度自標註草圖至附引用的放大慣例；證據為硬體第 3 與第 4 面向之和。
+    右上象限正是評分表所獎勵的區域，而它幾乎是空的。</span></p>
+  </div>
+  <div class="mapgrid">
+    <div class="mapbox"><svg id="mapsvg" viewBox="0 0 940 560" role="img"
+      aria-label="Scatter plot of thirty iGEM bioreactor projects, engineering depth against published evidence"></svg></div>
+    <div id="mapinfo"></div>
   </div>
 </section>
 
 <section id="metrics">
-  <div class="wrap">
-    <div class="sechint">03 / <span class="en">Definition</span><span class="zh">定義</span></div>
-    <h2><span class="en">The fourteen metrics that define a bioreactor project</span><span class="zh">定義一個生物反應器專案的十四項指標</span></h2>
-    <p class="lede"><span class="en">A bioreactor project is not defined by the vessel. It is defined by which of these fourteen numbers the team can state. Group A is physics, group B is evidence, group C is what the Hardware rubric reads. Teams lose the award in B and C, almost never in A.</span><span class="zh">生物反應器專案並非由容器定義，而是由團隊能說出哪幾項數字定義。A 組是物理、B 組是證據、C 組是硬體評分表實際會看的內容。隊伍幾乎從不輸在 A 組，而是輸在 B 組與 C 組。</span></p>
-    <div id="metrics-out"></div>
+  <div class="shead">
+    <span class="snum">03</span>
+    <h2><span class="en">Metrics</span><span class="zh">指標</span></h2>
+    <p><span class="en">Fourteen specifications, in three groups: what the device physically is, what evidence
+    exists for it, and what the Hardware rubric actually reads. The spec sheet in section 06 is these fourteen
+    applied to every project.</span>
+    <span class="zh">十四項規格，分為三組：裝置的物理本質、其存在的證據，以及硬體評分表實際會看的內容。
+    第 06 節的規格表即為這十四項逐一套用於每個專案的結果。</span></p>
   </div>
+  <div id="metrics-out"></div>
 </section>
 
 <section id="gallery">
-  <div class="wrap">
-    <div class="sechint">04 / <span class="en">The devices</span><span class="zh">裝置一覽</span></div>
-    <h2><span class="en">What seventeen iGEM bioreactors actually look like</span><span class="zh">十七台 iGEM 生物反應器的實際樣貌</span></h2>
-    <p class="lede"><span class="en">Left image is the built device where one exists, right image is the design drawing, schematic or simulation. Where a panel is hatched, the team published nothing of that kind, which is a scoring fact rather than an oversight on this page. Every image links back to the team wiki it came from and is used under the CC BY 4.0 licence those wikis carry.</span><span class="zh">左圖為實體裝置（若存在），右圖為設計圖、示意圖或模擬結果。斜紋填滿處代表該隊未發表該類圖像——這是評分事實，而非本頁疏漏。所有圖片皆連回原隊伍 wiki，並依其 CC BY 4.0 授權使用。</span></p>
-    <div class="gal" id="gal-out"></div>
+  <div class="shead">
+    <span class="snum">04</span>
+    <h2><span class="en">Devices</span><span class="zh">裝置</span></h2>
+    <p><span class="en">A photograph and a drawing for each project, taken from the team's own wiki. Two projects
+    published no image of a device at all, and the gap is shown rather than filled.</span>
+    <span class="zh">每個專案一張照片與一張設計圖，皆取自該隊自己的 wiki。其中兩個專案完全未發表任何裝置圖像，
+    此處據實留空而不填補。</span></p>
   </div>
+  <div class="gal" id="gal-out"></div>
 </section>
 
 <section id="compare">
-  <div class="wrap">
-    <div class="sechint">05 / <span class="en">Head to head</span><span class="zh">兩兩對照</span></div>
-    <h2><span class="en">Put any two side by side</span><span class="zh">任選兩個並排比較</span></h2>
-    <p class="lede"><span class="en">Built for instructors and judges who want the comparison in ten seconds. Pick two projects; the bars are the four Hardware aspects scored 0 to 3 on a fixed rule, printed under the chart so you can disagree with the scoring rather than guess at it. It opens on ReLeaf against Cornell 2025, the device the 2026 Judge Handbook holds up as the standard.</span><span class="zh">為希望十秒內看懂比較的指導老師與評審而設計。選擇兩個專案；長條為四項硬體面向，依固定規則以 0 至 3 評分，規則列於圖表下方，讓你能對評分提出異議而非猜測。預設為 ReLeaf 對比 Cornell 2025，即 2026 評審手冊所樹立的標竿裝置。</span></p>
-    <div class="h2h">
-      <div class="h2hbar">
-        <span class="en">Compare</span><span class="zh">比較</span>
-        <select id="selA" onchange="renderH2H()"></select>
-        <span class="en">against</span><span class="zh">與</span>
-        <select id="selB" onchange="renderH2H()"></select>
-      </div>
-      <div class="h2hgrid" id="h2h-out"></div>
-    </div>
-    <div class="note"><b><span class="en">Scoring rule, so you can audit it.</span><span class="zh">評分規則，供你檢核。</span></b>
-      <span class="en"> Aspect 1 need: 0 none, 1 generic, 2 specific to the project, 3 specific and argues why an off-the-shelf reactor fails. Aspect 2 user testing: 0 none, 1 advisor mentioned, 2 named expert consulted, 3 named expert plus a documented design change. Aspect 3 utility: 0 nothing built, 1 built and ran once, 2 multi-day or repeated run with data, 3 measured performance against a stated numeric requirement. Aspect 4 reproduction: 0 nothing, 1 drawings only, 2 BOM or manual, 3 BOM plus manual plus files, or independently rebuilt by another team.</span>
-      <span class="zh"> 第 1 面向需求：0 無、1 泛泛、2 專案專屬、3 專案專屬且論證現成反應器為何不可行。第 2 面向使用者測試：0 無、1 提及顧問、2 諮詢具名專家、3 具名專家且有記錄在案的設計變更。第 3 面向實用性：0 未建成、1 建成並運轉一次、2 多日或重複運轉並有數據、3 對照明確數值需求的實測效能。第 4 面向可重現性：0 無、1 僅圖面、2 有物料表或手冊、3 物料表加手冊加檔案，或曾被他隊獨立重建。</span>
-    </div>
+  <div class="shead">
+    <span class="snum">05</span>
+    <h2><span class="en">Head to head</span><span class="zh">兩兩對照</span></h2>
+    <p><span class="en">Any two projects on the four aspects, with the five rows that decide a Hardware
+    nomination underneath.</span>
+    <span class="zh">任選兩個專案比較四項面向，下方列出決定硬體提名的五個欄位。</span></p>
   </div>
+  <div class="pick">
+    <select id="selA" onchange="renderH2H()" aria-label="First project"></select>
+    <select id="selB" onchange="renderH2H()" aria-label="Second project"></select>
+  </div>
+  <div class="h2h" id="h2h-out"></div>
 </section>
 
 <section id="table">
-  <div class="wrap">
-    <div class="sechint">06 / <span class="en">Horizontal comparison</span><span class="zh">橫向規格比較</span></div>
-    <h2><span class="en">Seventeen projects, one spec sheet</span><span class="zh">十七個專案，同一張規格表</span></h2>
-    <p class="lede"><span class="en">Scroll sideways. The team column is pinned. A dash means the team published no figure, which is itself a finding, because an unpublished number scores as an absent number.</span><span class="zh">可橫向捲動，隊伍欄已固定。破折號代表該隊未公開該數字——這本身就是一項發現，因為未公開的數字等同不存在的數字。</span></p>
-    <div class="filters" id="filters"></div>
-    <div class="legend">
-      <span><span class="chip t1">TIER 1</span> <span class="en">award-grade</span><span class="zh">獲獎等級</span></span>
-      <span><span class="chip t2">TIER 2</span> <span class="en">characterized</span><span class="zh">已表徵</span></span>
-      <span><span class="chip t3">TIER 3</span> <span class="en">built once</span><span class="zh">建成並運轉過</span></span>
-      <span><span class="chip t4">TIER 4</span> <span class="en">modelled</span><span class="zh">僅建模</span></span>
-      <span><span class="chip t5">TIER 5</span> <span class="en">specified</span><span class="zh">僅規格</span></span>
-    </div>
-    <div class="tablewrap"><table id="spec"><thead></thead><tbody></tbody></table></div>
+  <div class="shead">
+    <span class="snum">06</span>
+    <h2><span class="en">Spec sheet</span><span class="zh">規格表</span></h2>
+    <p><span class="en">Thirty projects, fourteen columns, one row each. A dash means the team published nothing
+    under that heading.</span>
+    <span class="zh">三十個專案、十四個欄位，各佔一列。破折號表示該隊在此欄位未發表任何內容。</span></p>
   </div>
+  <div class="filters" id="filters"></div>
+  <div class="tscroll"><table id="spec"><thead></thead><tbody></tbody></table></div>
 </section>
 
 <section id="tiers">
-  <div class="wrap">
-    <div class="sechint">07 / <span class="en">The ladder</span><span class="zh">階梯</span></div>
-    <h2><span class="en">Five tiers, and which rung each project stands on</span><span class="zh">五個級距，以及各專案所處位置</span></h2>
-    <p class="lede"><span class="en">Each tier adds exactly one requirement to the one below it, so a project's tier is a statement about what it can prove, not about how clever it is.</span><span class="zh">每一級僅比下一級多要求一件事，因此級距說明的是「能證明什麼」，而非「構想多聰明」。</span></p>
-    <div class="ladder" id="ladder-out"></div>
+  <div class="shead">
+    <span class="snum">07</span>
+    <h2><span class="en">Tiers</span><span class="zh">級距</span></h2>
+    <p><span class="en">Five rungs, each defined by what it adds to the one below. The ladder is cumulative: a
+    project sits on the highest rung whose conditions it meets in full.</span>
+    <span class="zh">五個級距，各以其相對下一級所增加的條件來定義。此梯為累進制：專案落在其完全滿足條件的最高一級。</span></p>
+  </div>
+  <div id="ladder-out"></div>
+</section>
+<section id="system">
+  <div class="shead">
+    <span class="snum">08</span>
+    <h2><span class="en">The system</span><span class="zh">整體系統</span></h2>
+    <p><span class="en">The ReLeaf bioreactor is not an entry in the vessel category. It is one stage of a chain
+    that starts at a weather record and ends on a leaf, and the reason it is built the way it is lies in two
+    stages that are usually separate: the component that contains the organism is the component that releases
+    the product.</span>
+    <span class="zh">ReLeaf 生物反應器並非「容器」類別下的一個項目。它是一條自氣象記錄起、至葉片止的鏈條中的一段；
+    而它之所以如此設計，關鍵在於兩個通常彼此分離的環節在此合而為一：圍阻生物體的元件，就是釋出產物的元件。</span></p>
+  </div>
+
+  <div class="chain">
+    <div><span class="st">01</span><b><span class="en">Field sensing</span><span class="zh">田間感測</span></b>
+      <small><span class="en">Weather records, field sensors and a satellite land layer fold into a stress index. Computation only; it has never driven a light.</span>
+      <span class="zh">氣象記錄、田間感測器與衛星土地圖層彙整為逆境指數。純屬計算，從未驅動過光源。</span></small></div>
+    <div><span class="st">02</span><b><span class="en">Decision</span><span class="zh">決策</span></b>
+      <small><span class="en">The index is projected forward and decides whether the green channel should be driven.</span>
+      <span class="zh">指數向前推估，並決定是否應驅動綠光通道。</span></small></div>
+    <div><span class="st">03</span><b><span class="en">Light</span><span class="zh">光訊號</span></b>
+      <small><span class="en">520 nm green to switch on, 660 nm red to switch off, through CcaS/CcaR. No induction curve exists yet.</span>
+      <span class="zh">520 nm 綠光開啟、660 nm 紅光關閉，經由 CcaS/CcaR。目前尚無誘導曲線。</span></small></div>
+    <div><span class="st">04</span><b><span class="en">Expression</span><span class="zh">表現</span></b>
+      <small><span class="en">A Csn signal peptide carries ACC deaminase out of the cell. Every number on record is constitutive pVeg in strain 168.</span>
+      <span class="zh">Csn 訊號肽將 ACC 去胺酶送出細胞。現有所有數據皆為 168 菌株中組成型 pVeg 的結果。</span></small></div>
+    <div class="hot"><span class="st">05</span><b><span class="en">Lumen</span><span class="zh">管腔</span></b>
+      <small><span class="en">The culture circulates and is read in line, without opening the loop.</span>
+      <span class="zh">培養液循環並於管線中即時量測，無需開啟迴路。</span></small></div>
+    <div class="hot"><span class="st">06</span><b><span class="en">Membrane</span><span class="zh">膜</span></b>
+      <small><span class="en">0.2 µm mPES hollow fibre. Retains 1–2 µm cells, passes a 37.6 kDa enzyme. Barrier and release path at once.</span>
+      <span class="zh">0.2 µm mPES 中空纖維。截留 1–2 µm 細胞，通過 37.6 kDa 酵素。同時是屏障與釋出路徑。</span></small></div>
+    <div><span class="st">07</span><b><span class="en">Delivery</span><span class="zh">輸送</span></b>
+      <small><span class="en">Shell-side stream to soil or the hydroponic line. Not yet run end to end.</span>
+      <span class="zh">殼側流體送往土壤或水耕管線。尚未完成全鏈運轉。</span></small></div>
+  </div>
+
+  <div class="note warn">
+    <h4><span class="en">What the chain does not yet do</span><span class="zh">此鏈尚未做到的事</span></h4>
+    <p><span class="en">No forecast has driven a light, and no light driven by a forecast has reached a culture.
+    Stages 01 to 04 are joined on paper and separately true on the bench; the join itself is untested. Every
+    growth and secretion number below is therefore a constitutive number, and the control loop is open.</span>
+    <span class="zh">尚無任何預報驅動過光源，也沒有任何由預報驅動的光抵達培養液。第 01 至 04 階段在紙上相連、
+    在實驗台上各自成立，但接點本身未經測試。因此下方所有生長與分泌數據皆為組成型條件下的數據，控制迴路仍為開迴路。</span></p>
+  </div>
+
+  <h3 style="font-size:20px;margin:48px 0 8px">
+    <span class="en">Who else here is a system rather than a vessel</span>
+    <span class="zh">本表中還有誰是系統，而非容器</span></h3>
+  <p style="font-size:15.5px;color:var(--muted);margin:0 0 24px;max-width:70ch">
+    <span class="en">Six of the thirty projects integrate more than one unit operation. Against them, the ReLeaf
+    claim narrows to something smaller and checkable.</span>
+    <span class="zh">三十個專案中有六個整合了一個以上的單元操作。與它們相比，ReLeaf 的主張收斂為一個更小、且可查證的說法。</span></p>
+  <div class="syscmp">
+    <article><span class="tag">EVRY 2016</span>
+      <h4><span class="en">Three reactors, then a product</span><span class="zh">三座反應器，然後是成品</span></h4>
+      <p><span class="en">50 mL growth, 50 mL expression, 1 L fed-batch polymer extension, then a steel extruder
+      and a roller. The only project here that carries its product to a finished solid.</span>
+      <span class="zh">50 mL 生長、50 mL 表現、1 L 饋料批次聚合物延長，接著是不鏽鋼擠出機與收捲輪。
+      本表中唯一將產物做到固態成品的專案。</span></p></article>
+    <article><span class="tag">NUS SINGAPORE-A 2018</span>
+      <h4><span class="en">A loop that actually closes</span><span class="zh">真正閉合的迴路</span></h4>
+      <p><span class="en">500 mL chamber, pump and an OD-plus-fluorescence sensor in one recirculating loop.
+      Blue light switches off when OD₆₀₀ passes 0.6 and back on when the reporter hits 900. This is the
+      precedent ReLeaf does not yet match.</span>
+      <span class="zh">500 mL 培養槽、幫浦與 OD 加螢光感測器構成一個循環迴路。OD₆₀₀ 超過 0.6 時藍光關閉，
+      報告基因讀值達 900 時再度開啟。這正是 ReLeaf 目前尚未達到的先例。</span></p></article>
+    <article><span class="tag">CALGARY 2020</span>
+      <h4><span class="en">A reactor whose output is a design</span><span class="zh">產出為設計本身的反應器</span></h4>
+      <p><span class="en">A lab airlift reactor built only to parameterise a field reactor that the end user
+      assembles from local materials. The deliverable is the specification, not the vessel.</span>
+      <span class="zh">實驗室氣升反應器的唯一用途，是為終端使用者以當地材料自行組裝的田間反應器提供參數。
+      交付物是規格，而非容器。</span></p></article>
+    <article><span class="tag">RUM-UPRM 2022</span>
+      <h4><span class="en">Four stages, influent to tested water</span><span class="zh">四段式，自進水至已檢測水</span></h4>
+      <p><span class="en">RDX degradation, then two formaldehyde and nitrite stages, then a water-testing
+      station. A train, specified in full and built in part.</span>
+      <span class="zh">RDX 降解，接著兩段甲醛與亞硝酸鹽處理，最後為水質檢測站。一條完整規格、部分建成的處理列車。</span></p></article>
+    <article><span class="tag">TORONTO 2023</span>
+      <h4><span class="en">Separation upstream of the culture</span><span class="zh">培養之前的分離段</span></h4>
+      <p><span class="en">Hollow-fibre membrane, then oxidation, then the bioreactor, with the separation modelled
+      to 95.37 % methane in the retentate. The membrane sits before the reactor, not inside it.</span>
+      <span class="zh">中空纖維膜、氧化段、再進入生物反應器；分離段經建模可使截留側達 95.37% 甲烷。
+      該膜位於反應器之前，而非其中。</span></p></article>
+    <article><span class="tag">CORNELL 2025</span>
+      <h4><span class="en">Two organisms in one vessel</span><span class="zh">單一容器中的兩種生物</span></h4>
+      <p><span class="en">One reactor body in a liquid-culture and a photobioreactor variant, built so a
+      heterotroph and a photoautotroph can be cultured together.</span>
+      <span class="zh">同一反應器本體提供液態培養與光生物反應器兩種型式，使異營菌與光自營菌可共同培養。</span></p></article>
+  </div>
+
+  <div class="note good">
+    <h4><span class="en">The claim, narrowed to what survives the comparison</span><span class="zh">經比較後仍站得住的主張</span></h4>
+    <p><span class="en">ReLeaf is not the only system here, and it is not the first to put light inside the
+    vessel. Two things in it are still unmatched across thirty projects: the barrier that contains the organism
+    is the same component that delivers the product, so containment and release cannot be traded against each
+    other; and the switch is meant to be thrown by a forecast of a condition in a field rather than by an
+    operator or a threshold inside the reactor. The second of those is design intent, not a result.</span>
+    <span class="zh">ReLeaf 並非本表中唯一的系統，也不是第一個把光置入容器內的專案。但在三十個專案中仍有兩點無人並列：
+    圍阻生物體的屏障與輸送產物的元件是同一個，因此圍阻與釋出無法彼此交換；以及開關的觸發來自對田間狀態的預報，
+    而非操作者或反應器內部的閾值。後者屬設計意圖，尚非成果。</span></p>
   </div>
 </section>
 
-<section id="verdict">
-  <div class="wrap">
-    <div class="sechint">08 / <span class="en">Re-ranked</span><span class="zh">重新評級</span></div>
-    <h2><span class="en">ReLeaf moves from tier 3 to tier 2, and the reason is a number</span><span class="zh">ReLeaf 自第 3 級升至第 2 級，理由是一個數字</span></h2>
-    <p class="lede"><span class="en">The earlier ranking put ReLeaf in tier 3 because the permeate flow was recorded as unchosen, which left operating flux and therefore the fouling margin empty. With the invariant explorer and the material price list in hand, that is no longer true. Q_p is set at 2.5 mL/min and every dependent invariant falls out of it. Below is the full operating point, computed from the explorer's own physics engine at its default settings.</span><span class="zh">先前評級將 ReLeaf 列為第 3 級，因為透過流量被記為未選定，導致操作通量與積垢裕度皆為空白。有了不變量探索工具與物料價格表，情況已不同：Q_p 定為 2.5 mL/min，所有相依不變量隨之確定。以下為完整操作點，直接以該工具的物理引擎在預設值下計算得出。</span></p>
+<section id="releaf">
+  <div class="shead">
+    <span class="snum">09</span>
+    <h2><span class="en">ReLeaf, as it stands</span><span class="zh">ReLeaf 的現況</span></h2>
+    <p><span class="en">This section was rebuilt on 3 October 2026 against the team's Level-1 modelling handoff
+    and the hardware record on the wiki. The earlier version of this page took its numbers from an older design
+    explorer that is wrong in four places, and those four are corrected here.</span>
+    <span class="zh">本節於 2026 年 10 月 3 日依據團隊的 Level-1 建模交接文件與 wiki 上的硬體記錄重建。
+    本頁先前版本的數字取自一份較舊的設計探索工具，該工具有四處錯誤，此處已予更正。</span></p>
+  </div>
 
-    <div class="opgrid" id="op-out"></div>
+  <h3 style="font-size:20px;margin:0 0 20px"><span class="en">Results on record</span><span class="zh">現有成果</span></h3>
+  <div id="miles-out"></div>
 
-    <div class="note warn">
-      <b><span class="en">The one caveat that decides tier 2 against tier 1.</span><span class="zh">決定第 2 級與第 1 級之別的唯一但書。</span></b>
-      <span class="en"> Every number above is <em>computed</em>, not measured. Wall shear comes out of Hagen–Poiseuille given a set cross-flow; critical flux comes out of the van Reis–Zydney shear-induced-diffusion law given a literature cell radius. Cornell's 37 klux was read off a light meter. Until a flux–TMP sweep measures J_crit on our own feed and a gassing-out test measures k_La in our own vessel, aspect 3 scores as prediction rather than proof. That single distinction is the whole gap to tier 1, and both experiments are afternoon-length.</span>
-      <span class="zh"> 上述每個數字皆為<em>計算值</em>而非量測值。管壁剪切由設定的交叉流量經 Hagen–Poiseuille 得出；臨界通量由文獻細胞半徑經 van Reis–Zydney 剪切誘導擴散律得出。Cornell 的 37 klux 是用照度計讀出來的。在以通量–TMP 掃描於我們自己的料液上實測 J_crit、並以除氣法於我們自己的槽體實測 k_La 之前，第 3 面向只能算預測而非證明。這一項區別就是通往第 1 級的全部差距，而這兩個實驗各只需一個下午。</span>
+  <h3 style="font-size:20px;margin:52px 0 8px"><span class="en">Operating point</span><span class="zh">操作點</span></h3>
+  <p style="font-size:15.5px;color:var(--muted);margin:0 0 22px;max-width:72ch">
+    <span class="en">Computed from the locked hardware spec at the recirculation pump's 230 mL/min floor. These
+    are predictions from geometry, not measurements, and the colour says which ones have a measured
+    counterpart.</span>
+    <span class="zh">依已定稿的硬體規格，在循環幫浦 230 mL/min 下限處計算所得。這些是由幾何推得的預測值而非實測值，
+    顏色標示哪些已有對應的實測結果。</span></p>
+  <div class="opgrid" id="op-out"></div>
+  <div class="note warn">
+    <h4><span class="en">Four corrections to the previous version of this page</span><span class="zh">對本頁前一版的四項更正</span></h4>
+    <p><span class="en">The membrane is 0.2 µm microfiltration, not a 50 kDa cut-off. The recirculation pump is
+    rated 230–2600 mL/min, so the 94 mL/min figure carried here before is below anything it can deliver. The
+    37 °C growth refit gives µ_max 1.31 h⁻¹ logistic, or 0.92 h⁻¹ log-linear, not 0.48 h⁻¹. And the chemostat
+    washout criterion D_r &lt; µ_max does not apply to a device that retains its cells, so it has been removed
+    rather than restated with better numbers.</span>
+    <span class="zh">該膜為 0.2 µm 微過濾，並非 50 kDa 截留分子量。循環幫浦額定為 230–2600 mL/min，
+    因此本頁先前所載的 94 mL/min 低於其可輸出的任何流量。37 °C 生長重新擬合得 µ_max 為 1.31 h⁻¹（邏輯式）
+    或 0.92 h⁻¹（對數線性），而非 0.48 h⁻¹。又，恆化器沖失判準 D_r &lt; µ_max 不適用於截留細胞的裝置，
+    故予刪除，而非以更正確的數字重述。</span></p>
+  </div>
+
+  <div class="two">
+    <div class="pan">
+      <h3><span class="en">Where we are genuinely ahead</span><span class="zh">我們確實領先之處</span></h3>
+      <ol>
+        <li><b><span class="en">The barrier is the release path.</span><span class="zh">屏障即釋出路徑。</span></b>
+          <span class="en">1 of 30. Containment and product delivery are the same component, so neither can be
+          loosened without the other. Shell-side medium plated in cycle 1 produced no colonies.</span>
+          <span class="zh">三十之一。圍阻與產物輸送為同一元件，任一方無法單獨放寬。第 1 循環殼側培養基塗盤未長出菌落。</span></li>
+        <li><b><span class="en">A cited scale-up transform.</span><span class="zh">附引用的放大轉換。</span></b>
+          <span class="en">1 of 30. Wall shear and path length held, area added at constant flux, and the
+          sacrificed group named rather than left implicit.</span>
+          <span class="zh">三十之一。固定管壁剪切與流道長度、在定通量下擴增面積，並指名被犧牲的群而非含混帶過。</span></li>
+        <li><b><span class="en">A stated fouling margin.</span><span class="zh">已載明的積垢裕度。</span></b>
+          <span class="en">1 of 30. No other project publishes an operating flux against a critical flux at
+          all.</span>
+          <span class="zh">三十之一。無其他專案公布操作通量對照臨界通量的任何數值。</span></li>
+        <li><b><span class="en">Perfusion with cell retention.</span><span class="zh">細胞截留灌流。</span></b>
+          <span class="en">2 of 30, and the other one was never built. KU Leuven's 2021 concept names the same
+          operating mode and an external retention device, and says plainly that it stayed a concept.</span>
+          <span class="zh">三十之二，而另一個從未建成。KU Leuven 2021 的概念提出相同的操作模式與外部截留裝置，
+          並明言其始終停留在概念階段。</span></li>
+        <li><b><span class="en">A reactor that reads itself without being opened.</span><span class="zh">無需開啟即可自我量測的反應器。</span></b>
+          <span class="en">An in-line flow cell on the culture loop, built by the team, with its own DBTL record
+          and assembly guide.</span>
+          <span class="zh">培養迴路上的線上流通槽，由團隊自製，並有自己的 DBTL 記錄與組裝指南。</span></li>
+      </ol>
     </div>
-
-    <div class="verdict">
-      <div class="vcol good">
-        <h3><span class="en">Where we are genuinely ahead</span><span class="zh">我們確實領先之處</span></h3>
-        <div class="vitem">
-          <h4><span class="en">Nobody else in iGEM defends a scale-up transform</span><span class="zh">iGEM 中無人為放大轉換提出辯護</span></h4>
-          <p><span class="en">Across all seventeen projects, exactly one states which dimensionless groups it holds, which it sacrifices, and why. Cornell quotes a lux margin; Stuttgart runs a CFD; Toronto solves a membrane BVP. None names an invariant. Our dossier fixes wall shear and path length, scales area at constant flux under the van Reis linear-scaling convention, and says out loud that whole-system geometric similarity and the θ/τ control ratio are the groups being given up.</span><span class="zh">十七個專案中，只有一個明確說出自己固定哪些無因次群、犧牲哪些、以及理由。Cornell 引用照度餘裕、Stuttgart 做了 CFD、Toronto 解了膜的邊界值問題，但皆未指名任何不變量。我們的論述固定管壁剪切與流道長度，依 van Reis 線性放大慣例在定通量下擴增面積，並明言所犧牲的是整體幾何相似性與 θ/τ 控制比。</span>
-          <span class="ev">TFF_ScaleUp_Statement_and_Plan.md §1–§4 · van Reis 1997 · Field 1995 · van Reis &amp; Zydney 2007</span></p>
-        </div>
-        <div class="vitem">
-          <h4><span class="en">The fouling margin is now a number, and it is a comfortable one</span><span class="zh">積垢裕度現已是數字，且相當寬裕</span></h4>
-          <p><span class="en">J/J_crit lands at 0.26 against a stated target of below 0.7. Wall shear at 5,305 s⁻¹ sits close to the 4,000 s⁻¹ operating point that van Reis and Zydney document for a 174 m² industrial hollow-fibre harvest, which is the sanity anchor our own plan asked for. No other iGEM project in this set publishes either quantity.</span><span class="zh">J/J_crit 為 0.26，對比所設目標小於 0.7。管壁剪切 5,305 s⁻¹ 接近 van Reis 與 Zydney 所記載的 174 m² 工業級中空纖維收穫程序之 4,000 s⁻¹ 操作點——正是我們自己計畫所要求的合理性錨點。本表中無其他 iGEM 專案公布任一數值。</span>
-          <span class="ev">Explorer defaults: Q_xf 250 mL/min · Q_p 2.5 mL/min · X 2×10⁹/mL · V_w 400 mL</span></p>
-        </div>
-        <div class="vitem">
-          <h4><span class="en">Perfusion with cell retention, in a field of batch jars</span><span class="zh">在一片批次玻璃罐中，做細胞截留灌流</span></h4>
-          <p><span class="en">Twelve of the seventeen are stirred tanks, flat panels or airlift columns running batch or turbidostat. Ours is the only hollow-fibre perfusion loop, which means the membrane doubles as the biocontainment barrier and as the product-release path. That coupling is the project's engineering claim and it has no precedent in this dataset.</span><span class="zh">十七個中有十二個是攪拌槽、平板或氣升柱，操作模式為批次或恆濁。我們是唯一的中空纖維灌流迴路，膜同時作為生物圍阻屏障與產物釋出路徑。此耦合是本專案的工程主張，在此資料集中沒有先例。</span>
-          <span class="ev">Biophsep mPES 0.2 µm · 8 fibres · dᵢ 1.0 mm · L 0.596 m · A_m 150 cm² · lumen ≈ 200 mL</span></p>
-        </div>
-        <div class="vitem">
-          <h4><span class="en">Two instruments and the reactor housing are ours</span><span class="zh">兩件儀器與反應器外殼由我們自建</span></h4>
-          <p><span class="en">Clamp-on photometer, light plate apparatus and reactor housing were built in-house; plate reading, sequencing and strain supply came from outside. Drawing that line cleanly is what makes the Measurement and Hardware nominations reinforce each other instead of competing for the same evidence.</span><span class="zh">夾式光度計、光板裝置與反應器外殼皆自製；盤讀、定序與菌株供應則外購。清楚劃出這條界線，正是量測獎與硬體獎兩項提名彼此增強、而非爭奪同一份證據的原因。</span>
-          <span class="ev">six-minds.html · M4 Bioreactor &amp; Hardware</span></p>
-        </div>
-      </div>
-      <div class="vcol bad">
-        <h3><span class="en">What still keeps us off tier 1</span><span class="zh">仍讓我們無法進入第 1 級的原因</span></h3>
-        <div class="vitem">
-          <h4><span class="en">Computed is not measured</span><span class="zh">計算不等於量測</span></h4>
-          <p><span class="en">The strongest thing we own is also the thing a chemical engineer will press hardest. Every invariant above is a model output. A judge who asks "did you measure that, or calculate it?" gets one honest answer today, and it is the weaker one.</span><span class="zh">我們最強的資產，也正是化工背景評審最會追問之處。上述每個不變量都是模型輸出。若評審問「這是量測還是計算？」，今天只有一個誠實答案，而它是較弱的那個。</span>
-          <span class="ev"><span class="en">Fix: flux–TMP sweep for J_crit; gassing-out test for k_La</span><span class="zh">解法：以通量–TMP 掃描實測 J_crit；以除氣法實測 k_La</span></span></p>
-        </div>
-        <div class="vitem">
-          <h4><span class="en">The price list exists; the build files do not</span><span class="zh">價格表已有；製作檔案尚無</span></h4>
-          <p><span class="en">A material price list closes half of aspect 4. The other half is firmware, enclosure files and an assembly guide, and eight teams here have all of it today, including a €90 build from Darmstadt. Reproduction is the cheapest of the remaining gaps to close and the one the rubric weighs most literally.</span><span class="zh">物料價格表補上了第 4 面向的一半。另一半是韌體、外殼檔案與組裝指南，本表中已有八隊今天就備齊，包含達姆施塔特的九十歐元裝置。可重現性是剩餘缺口中最易補上的一項，也是評分表字面上最看重的一項。</span>
-          <span class="ev">six-minds.html · "Build files: BOM, firmware, enclosure"</span></p>
-        </div>
-        <div class="vitem">
-          <h4><span class="en">No multi-day run has been recorded</span><span class="zh">尚無多日運轉紀錄</span></h4>
-          <p><span class="en">Prof. 張嘉修 asked for longer testing and recorded example tests on 18 June. Stuttgart ran Chlorella for 17 days and published the curve; Darmstadt published a 24-hour result on a €90 build. A perfusion device designed for slow-onset stress over hours to days has to show a run measured in days.</span><span class="zh">張嘉修教授於 6 月 18 日要求延長測試並記錄示範測試。Stuttgart 讓小球藻跑了 17 天並公布曲線；達姆施塔特在九十歐元的裝置上公布了 24 小時結果。一台為數小時至數日緩發逆境而設計的灌流裝置，必須展示以「天」計的運轉。</span>
-          <span class="ev">2026-06-18 consultation notes · reactor items 1 and 2 of 3</span></p>
-        </div>
-        <div class="vitem">
-          <h4><span class="en">Two known operating faults, still unfixed</span><span class="zh">兩項已知且未解的操作缺陷</span></h4>
-          <p><span class="en">There is no valve after the hollow fibre to build the pressure that pushes protectant out, and B. subtilis surfactant foaming is described by our own advisor as the real operating problem. Judges reward the team that names its failure modes. They do not reward the team that names them and arrives with the same device.</span><span class="zh">中空纖維後方缺少建立壓力、將保護劑推出的閥門；而 B. subtilis 表面活性劑造成的起泡，被我們自己的顧問稱為真正的操作問題。評審獎勵指名自身失效模式的團隊，但不會獎勵指名之後、卻仍帶著同一台裝置出席的團隊。</span>
-          <span class="ev">張嘉修 · the missing valve · resting cells + cartridge proposed</span></p>
-        </div>
-        <div class="vitem">
-          <h4><span class="en">The power budget does not survive scale-up</span><span class="zh">電力預算撐不過放大</span></h4>
-          <p><span class="en">At one module the 45 W panel closes the day with 17 % to spare at winter irradiance. At ten modules the same panel delivers less than half the demand. Our own scaling plan flagged oxygen as the constraint that fails first; on these defaults power fails alongside it, and neither is fixed by adding membrane area.</span><span class="zh">單模組時，45 W 面板在冬季日照下尚有 17% 餘裕；十模組時，同一面板僅能供應不到一半需求。我們自己的放大計畫已指出氧氣是最先失效的限制；在此預設值下電力與之同時失效，且兩者皆無法靠增加膜面積解決。</span>
-          <span class="ev"><span class="en">×1 modules: 101 vs 86 Wh/day. ×10 modules: 101 vs 216 Wh/day.</span><span class="zh">×1 模組：101 對 86 Wh/日。×10 模組：101 對 216 Wh/日。</span></span></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="note">
-      <b><span class="en">The high-school read is different, and better.</span><span class="zh">若以高中組來看，結論不同，而且更好。</span></b>
-      <span class="en"> The tiers are absolute across all three sections. Measured against the high school section alone, ReLeaf is at the top of a thin field: of 36 high-school teams in the Biomanufacturing village across 2024 and 2025, five published a hardware page at all, and none published a scale-up argument. The risk is not another high-school reactor. It is that Hardware is judged on one rubric across all sections, and a €90 Darmstadt build with a manual and a growth curve scores aspects 3 and 4 while we score aspects 1 and 2.</span>
-      <span class="zh"> 級距是跨三個組別的絕對標準。若僅以高中組衡量，ReLeaf 位居一個稀薄場域之首：2024 與 2025 兩年生物製造村共 36 支高中隊伍中，只有五支設有硬體頁面，且無一支提出放大論述。風險不在於另一台高中反應器，而在於硬體獎以同一份評分表跨組別評判——一台附有手冊與生長曲線的九十歐元達姆施塔特裝置能拿下第 3、4 面向，而我們拿的是第 1、2 面向。</span>
+    <div class="pan">
+      <h3><span class="en">What keeps us off the top rung</span><span class="zh">仍讓我們無法登上最高一級的原因</span></h3>
+      <ol>
+        <li><b><span class="en">The loop is open.</span><span class="zh">迴路是開的。</span></b>
+          <span class="en">No induction curve exists, so nothing shows P_cpcG2 output changing with green light.
+          NUS Singapore-A closed a light loop on a measurement of the culture in 2018.</span>
+          <span class="zh">目前無誘導曲線，因此沒有任何證據顯示 P_cpcG2 的輸出隨綠光改變。
+          NUS Singapore-A 早在 2018 年便以培養液的量測閉合了光控迴路。</span></li>
+        <li><b><span class="en">No measured number against a requirement.</span><span class="zh">缺少對照需求的實測數字。</span></b>
+          <span class="en">Aspect 3 is still unanswered. The flux, shear, pressure and transfer figures above
+          are computed from geometry; none has a bench measurement beside it.</span>
+          <span class="zh">第 3 面向仍未回答。上方的通量、剪切、壓力與質傳數字皆由幾何計算而得，無一有對應的實驗台實測值。</span></li>
+        <li><b><span class="en">The 22 °C lumen result is unexplained.</span><span class="zh">22 °C 管腔結果仍無解釋。</span></b>
+          <span class="en">Culture in the fibre lumen at 22 °C did not grow at all while the serum-bottle control
+          at the same temperature did. Three causes were listed in June and none has been eliminated. Harvard
+          2017 hit the same class of problem and named a toxic sealant; we have not named ours.</span>
+          <span class="zh">22 °C 下纖維管腔內的培養完全未生長，而同溫度的血清瓶對照組則有生長。六月列出三個可能原因，
+          至今無一被排除。Harvard 2017 遇到同類問題並指出是有毒密封膠；我們尚未指出自己的原因。</span></li>
+        <li><b><span class="en">Cost, now that we publish one.</span><span class="zh">成本——既然我們已公布。</span></b>
+          <span class="en">The lab bill of materials comes to NT$30,480, about US$961. That is the highest figure
+          of the eight published here: roughly three times Cornell's ARC and nearly eight times ASU's
+          turbidostat.</span>
+          <span class="zh">實驗室物料表合計新台幣 30,480 元，約 961 美元。這是本表八個已公布價格中最高者：
+          約為 Cornell ARC 的三倍，接近 ASU 恆濁器的八倍。</span></li>
+        <li><b><span class="en">The reproduction package is part-written.</span><span class="zh">可重現資料包僅完成部分。</span></b>
+          <span class="en">Materials list, cost sheet and the photometer's full assembly are published. The
+          reactor's own assembly guide stops mid-way, and firmware and enclosure files are not released.</span>
+          <span class="zh">物料清單、成本表與光度計的完整組裝已公布。反應器本身的組裝指南寫到一半中止，
+          韌體與外殼檔案尚未釋出。</span></li>
+      </ol>
     </div>
   </div>
 </section>
 
 <section id="history">
-  <div class="wrap">
-    <div class="sechint">09 / <span class="en">Lineage</span><span class="zh">脈絡</span></div>
-    <h2><span class="en">Where this design sits in the history of iGEM bioreactors</span><span class="zh">此設計在 iGEM 生物反應器史中的位置</span></h2>
-    <p class="lede"><span class="en">Read across eleven years, the seventeen projects fall into three eras with clean boundaries. Each era changed what counted as a bioreactor contribution, and each change was driven by the rubric rather than by the biology.</span><span class="zh">縱觀十一年，這十七個專案落入三個界線分明的時代。每個時代都改變了「什麼才算生物反應器貢獻」，而每次改變都由評分表而非生物學所驅動。</span></p>
-    <div class="eras" id="eras-out"></div>
-    <h3 style="margin-top:38px;font-size:1.1rem"><span class="en">What ReLeaf does that no iGEM bioreactor in this set has done</span><span class="zh">ReLeaf 做了本表中其他 iGEM 生物反應器未曾做過的事</span></h3>
-    <div class="firsts" id="firsts-out"></div>
+  <div class="shead">
+    <span class="snum">10</span>
+    <h2><span class="en">Lineage</span><span class="zh">脈絡</span></h2>
+    <p><span class="en">Three eras, and the places where one iGEM team picked up another's hardware. That has now
+    happened three times in this dataset, which is the strongest evidence any of these projects has that the work
+    was reproducible.</span>
+    <span class="zh">三個時代，以及 iGEM 隊伍接手他隊硬體的幾個節點。在本資料集中此事已發生三次，
+    而這是這些專案中關於「工作可被重現」的最有力證據。</span></p>
   </div>
+  <div id="eras-out"></div>
+  <h3 style="font-size:20px;margin:44px 0 18px">
+    <span class="en">Counted against the whole set</span><span class="zh">對照全集的計數</span></h3>
+  <div id="firsts-out"></div>
 </section>
 
 <section id="village">
-  <div class="wrap">
-    <div class="sechint">10 / <span class="en">The village</span><span class="zh">村落</span></div>
-    <h2><span class="en">Who is in Biomanufacturing</span><span class="zh">生物製造村有誰</span></h2>
-    <p class="lede"><span class="en">Pulled from the iGEM team API on 21 August 2026, so this is the live roster rather than a guess. The village has grown every year: 34 teams in 2023, 48 in 2024, 47 in 2025, 58 in 2026. It is now the second-largest destination for high school teams.</span><span class="zh">資料於 2026 年 8 月 21 日自 iGEM 官方 API 取得，為即時名冊而非推測。此村逐年成長：2023 年 34 隊、2024 年 48 隊、2025 年 47 隊、2026 年 58 隊，目前已是高中隊伍第二大的落腳處。</span></p>
-    <div class="note" style="max-width:none">
-      <b><span class="en">Two things that matter for award strategy.</span><span class="zh">兩件影響獎項策略的事。</span></b>
-      <span class="en"> High school teams are not judged inside a single village. They compete in Village Groups, and Biomanufacturing sits in Group 4 alongside Foundational Advance, Software &amp; AI, and Space, so Best Project, Presentation and Wiki are contested against those four villages combined. Hardware, by contrast, is a special award with no section split in the rubric, so its comparison set is the whole table in section 06.</span>
-      <span class="zh"> 高中隊伍並非在單一村落內受評，而是以村落群競賽；生物製造與基礎進展、軟體與 AI、太空同屬第 4 群，因此最佳專案、簡報與 Wiki 的競爭對象是這四個村落的總和。硬體則是特別獎，評分表本身不分組別，其比較對象是第 06 節的整張表。</span>
-    </div>
-    <div class="roster" id="roster-out"></div>
+  <div class="shead">
+    <span class="snum">11</span>
+    <h2><span class="en">Village</span><span class="zh">村落</span></h2>
+    <p><span class="en">The 2026 Biomanufacturing roster as it stood when this page was last built, with the teams
+    worth watching marked.</span>
+    <span class="zh">本頁最後建置時的 2026 年生物製造村名單，並標出值得關注的隊伍。</span></p>
   </div>
+  <div class="roster" id="roster-out"></div>
 </section>
+
+</div>
+</main>
 
 <footer>
   <div class="wrap">
-    <h2><span class="en">Sources and image credits</span><span class="zh">資料來源與圖片出處</span></h2>
-    <p style="max-width:72ch">
-      <span class="en">Every figure in the comparison table came from one of these pages. Where a team wiki gave no number, the cell is blank rather than estimated. All team images are reproduced under the Creative Commons Attribution 4.0 International licence that iGEM team wikis carry, and each is credited to its team and year in the gallery caption and linked to its source page below.</span>
-      <span class="zh">比較表中每個數字皆出自以下頁面。若隊伍 wiki 未提供數字，該欄留白而非估計。所有隊伍圖片依 iGEM 隊伍 wiki 所採用之 Creative Commons Attribution 4.0 International 授權重製，並於圖說中標註隊伍與年份，並連結至下列原始頁面。</span>
-    </p>
-    <ol>
-      <li>2026 iGEM Judge Handbook, ch. 4 (Hardware special award; INSA_Lyon1 2022, UFMG_UFV_Brazil 2022, Cornell 2025 examples) and §Village Groups.</li>
-      <li>iGEM team API — <a href="https://api.igem.org/v1/teams?year=2026">api.igem.org/v1/teams</a> and <a href="https://api.igem.org/v1/villages">/v1/villages</a>, retrieved 2026-08-21.</li>
-      <li><a href="https://2015.igem.org/Team:Aachen/Lab/Bioreactor/Hardware">Aachen 2015 — Bioreactor / Hardware</a></li>
-      <li><a href="https://2016.igem.org/Team:Leiden/Bioreactor">Leiden 2016 — Bioreactor</a></li>
-      <li><a href="https://2018.igem.org/Team:Waterloo/Turbidostat">Waterloo 2018 — Turbidostat</a></li>
-      <li><a href="https://2019.igem.org/Team:Stuttgart/Hardware">Stuttgart 2019 — RAPtor</a></li>
-      <li><a href="https://2019.igem.org/Team:Humboldt_Berlin/Hardware">Humboldt Berlin 2019 — openPBR</a></li>
-      <li><a href="https://2020.igem.org/Team:Duesseldorf/Hardware">Düsseldorf 2020 — Hardware</a></li>
-      <li><a href="https://2021.igem.org/Team:MADRID_UCM/Hardware">Madrid UCM 2021 — Hardware</a></li>
-      <li><a href="https://2022.igem.wiki/sheffield/hardware">Sheffield 2022 — rEvolver</a></li>
-      <li><a href="https://2022.igem.wiki/ufmg-ufv-brazil/hardware">UFMG_UFV_Brazil 2022 — Hardware</a> · <a href="https://2022.igem.wiki/ufmg-ufv-brazil/awards">Awards</a></li>
-      <li><a href="https://2023.igem.wiki/toronto/hardware">Toronto 2023 — Hardware</a></li>
-      <li><a href="https://2023.igem.wiki/thessaly/hardware">Thessaly 2023 — Hardware</a></li>
-      <li><a href="https://2024.igem.wiki/vilnius-lithuania/hardware">Vilnius-Lithuania 2024 — Hardware</a></li>
-      <li><a href="https://2025.igem.wiki/cornell/hardware">Cornell 2025 — ARC</a></li>
-      <li><a href="https://2025.igem.wiki/njtech-china/hardware">NJTech-China 2025 — Hardware</a></li>
-      <li><a href="https://2025.igem.wiki/duesseldorf/hardware">Düsseldorf 2025 — Hardware</a></li>
-      <li><a href="https://2025.igem.wiki/tudarmstadt/hardware">TU Darmstadt 2025 — Hardware</a></li>
-      <li>ReLeaf internal: <code>TFF_ScaleUp_Statement_and_Plan.md</code>, <code>Bioreactor_Invariant_Explorer.html</code>, <code>six-minds.html</code>, 2026-06-18 張嘉修 consultation notes, team hardware photographs.</li>
-    </ol>
-    <p style="margin-top:24px;max-width:72ch">
-      <span class="en"><b>Method, stated so it can be checked.</b> The operating point in section 08 was obtained by porting the <code>compute()</code> function from <code>Bioreactor_Invariant_Explorer.html</code> and evaluating it at the file's own default slider values. The hardware-page survey derived each wiki slug from the team name and requested <code>/hardware</code>; a response above 6 KB counted as a real page, so 19 of 95 is a floor rather than an exact figure. The four-aspect scores in sections 02 and 05 are this page's own reading of published evidence against the rule printed under the comparison, not an iGEM score.</span>
-      <span class="zh"><b>方法說明，以供查核。</b> 第 08 節的操作點，係將 <code>Bioreactor_Invariant_Explorer.html</code> 中的 <code>compute()</code> 函式移植後，以該檔本身的預設滑桿值求值而得。硬體頁面調查由隊名推導 wiki slug 並請求 <code>/hardware</code>，回應大於 6 KB 者計為實際頁面，因此 95 隊中的 19 隊為下限而非精確值。第 02 與 05 節的四面向評分，是本頁依比較區下方所列規則對已發表證據的判讀，並非 iGEM 官方評分。</span>
-    </p>
+    <div class="cols">
+      <div>
+        <h4><span class="en">Sources</span><span class="zh">資料來源</span></h4>
+        <p><span class="en">Every figure was read off a team wiki, the iGEM team API, or the 2026 iGEM Judge
+        Handbook. Where a team published no number, the cell is blank rather than estimated. Pages on the legacy
+        <code>igem.org</code> wikis were unreachable on 3 October 2026 and were read through the Internet
+        Archive; their images are served from <code>static.igem.org</code>, which was up.</span>
+        <span class="zh">所有數字皆讀自各隊 wiki、iGEM 隊伍 API，或 2026 年 iGEM 評審手冊。
+        隊伍未公布數字者，欄位留空而不作估計。舊版 <code>igem.org</code> wiki 於 2026 年 10 月 3 日無法連線，
+        改由網際網路檔案館讀取；其圖像則取自當時正常運作的 <code>static.igem.org</code>。</span></p>
+        <p><span class="en">ReLeaf's own figures come from the team's Level-1 modelling handoff of 2 September
+        2026 and the hardware record on the project wiki.</span>
+        <span class="zh">ReLeaf 自身的數字來自團隊 2026 年 9 月 2 日的 Level-1 建模交接文件，以及專案 wiki 上的硬體記錄。</span></p>
+      </div>
+      <div>
+        <h4><span class="en">Image credits</span><span class="zh">圖片出處</span></h4>
+        <p><span class="en">Team images are reproduced under the Creative Commons Attribution 4.0 International
+        licence that iGEM team wikis carry, and each is credited to its team and year in the caption and linked to
+        its source page. The file-by-file list is in <code>CREDITS.md</code> in the repository. Photographs of
+        GEMS-Taiwan hardware are the team's own.</span>
+        <span class="zh">隊伍圖像依 iGEM 隊伍 wiki 所採用的創用 CC 姓名標示 4.0 國際授權條款重製，
+        每張皆於圖說中標註所屬隊伍與年份，並連結至其來源頁面。逐檔清單見程式庫中的 <code>CREDITS.md</code>。
+        GEMS-Taiwan 硬體照片為團隊自有。</span></p>
+      </div>
+      <div>
+        <h4><span class="en">Corrections</span><span class="zh">更正</span></h4>
+        <p><span class="en">If you are on one of these teams and a figure here is wrong, or a photograph should not
+        be used, open an issue on the repository and it will be fixed or removed.</span>
+        <span class="zh">若您屬於本表所列隊伍之一，而此處數字有誤，或某張照片不宜使用，請於程式庫開立 issue，
+        我們將予更正或移除。</span></p>
+        <p><span class="en">Built by GEMS-Taiwan 2026, project ReLeaf, while preparing a Hardware special-award
+        nomination. No build step, no external requests.</span>
+        <span class="zh">由 GEMS-Taiwan 2026（ReLeaf 專案）於準備硬體特別獎提名期間製作。無建置流程，無外部請求。</span></p>
+      </div>
+    </div>
+    <p><span class="en">Last updated 3 October 2026.</span><span class="zh">最後更新：2026 年 10 月 3 日。</span></p>
   </div>
 </footer>
 
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Figure">
+  <button type="button" aria-label="Close" onclick="closeLb()">&times;</button>
+  <img id="lb-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
+  <figcaption id="lb-cap"></figcaption>
+</div>
 <script>
 const T=(en,zh)=>({en,zh});
 let LANG="en";
 const L=o=>(o&&typeof o==="object"&&"en" in o)?o[LANG]:(o??"");
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
 
-const TOC=[["rules",T("Rulebooks","規則")],["map",T("The map","全景圖")],["metrics",T("14 metrics","十四指標")],
+const TOC=[["rules",T("Rulebooks","規則")],["map",T("The map","全景圖")],["metrics",T("Metrics","指標")],
  ["gallery",T("Devices","裝置")],["compare",T("Head to head","兩兩對照")],["table",T("Spec sheet","規格表")],
- ["tiers",T("Five tiers","五級")],["verdict",T("Re-ranked","重新評級")],["history",T("Lineage","脈絡")],["village",T("Village","村落")]];
+ ["tiers",T("Tiers","級距")],["system",T("The system","整體系統")],["releaf",T("ReLeaf","ReLeaf")],
+ ["history",T("Lineage","脈絡")],["village",T("Village","村落")]];
 
 /* ============ 03 metrics ============ */
 const METRICS=[
  {g:T("Group A · device physics","A 組 · 裝置物理"),items:[
-  ["01",T("Vessel format & working volume","容器型式與工作體積"),T("mL or L, and which architecture","mL 或 L，以及採用何種架構"),
-   T("Stirred tank, airlift, flat panel, toroid, hollow fibre or biofilm. The format decides which failure mode you own.","攪拌槽、氣升、平板、環形、中空纖維或生物膜。型式決定你要面對哪一種失效模式。")],
+  ["01",T("Vessel format and working volume","容器型式與工作體積"),T("mL or L, and which architecture","mL 或 L，以及採用何種架構"),
+   T("Stirred tank, airlift, flat panel, toroid, rotating wall, hollow fibre or biofilm. The format decides which failure mode you own.","攪拌槽、氣升、平板、環形、旋轉壁、中空纖維或生物膜。型式決定你要面對哪一種失效模式。")],
   ["02",T("Operating mode","操作模式"),T("batch / fed-batch / chemostat / turbidostat / perfusion","批次／饋料批次／恆化／恆濁／灌流"),
-   T("Perfusion and chemostat force you to state a dilution rate against µ_max. Batch lets you avoid the question.","灌流與恆化迫使你說出稀釋率並對比 µ_max；批次則讓你迴避這個問題。")],
+   T("Perfusion and chemostat force you to state a dilution rate; a cell-retaining device has to say what it retains instead. Batch lets you avoid the question.","灌流與恆化迫使你說出稀釋率；截留細胞的裝置則必須改為說明它截留了什麼。批次則讓你迴避這個問題。")],
   ["03",T("Mass transfer","質傳"),T("k_La (1/h) or light delivery (µE, klux)","k_La（1/h）或光輸送（µE、klux）"),
-   T("Oxygen for heterotrophs, photon flux for phototrophs. This is the number that stops scaling when volume grows.","異營用氧氣、光營用光通量。這是體積放大時最先失效的數字。")],
+   T("Oxygen for heterotrophs, photon flux for phototrophs. This is the number that stops scaling when volume grows, and it is the specification teams are least likely to publish.","異營用氧氣、光營用光通量。這是體積放大時最先失效的數字，也是隊伍最不願公布的一項規格。")],
   ["04",T("Mixing and shear","混合與剪切"),T("rpm, wall shear rate γ̇_w, Reynolds","rpm、管壁剪切率 γ̇_w、雷諾數"),
    T("Sets fouling, polarization and cell damage. In a membrane device shear is the master variable, not a side effect.","決定積垢、極化與細胞損傷。在膜裝置中，剪切是主控變數而非副作用。")],
-  ["05",T("Control loop timing","控制迴路時序"),T("dead time θ vs residence time τ","延遲時間 θ 對比停留時間 τ"),
-   T("A loop is only closed if θ/τ is small. Almost no iGEM team reports this, which is why most control claims are open-loop claims.","唯有 θ/τ 夠小，迴路才算閉合。幾乎沒有 iGEM 隊伍報告此值，因此多數控制主張其實是開迴路主張。")]]},
+  ["05",T("Control loop timing","控制迴路時序"),T("dead time θ against residence time τ","延遲時間 θ 對比停留時間 τ"),
+   T("A loop is only closed if θ/τ is small. Almost no iGEM team reports this, which is why most control claims are open-loop claims wearing closed-loop language.","唯有 θ/τ 夠小，迴路才算閉合。幾乎沒有 iGEM 隊伍報告此值，因此多數控制主張其實是披著閉迴路措辭的開迴路主張。")]]},
  {g:T("Group B · evidence","B 組 · 證據"),items:[
   ["06",T("Online measurement and its calibration","線上量測及其校正"),T("what is read, against what reference, in what units","量測什麼、對比什麼參考、使用什麼單位"),
-   T("A turbidity sensor is not an OD sensor until a calibration curve exists. Vilnius published the curve; most teams publish the sensor.","在校正曲線出現之前，濁度感測器不等於 OD 感測器。Vilnius 公布了曲線，多數隊伍只公布感測器。")],
+   T("A turbidity sensor is not an OD sensor until a calibration curve exists. Vilnius, Madrid, NAWI Graz and NUS published curves against a laboratory reference; most teams publish the sensor.","在校正曲線出現之前，濁度感測器不等於 OD 感測器。Vilnius、Madrid、NAWI Graz 與 NUS 公布了對照實驗室儀器的曲線，多數隊伍只公布感測器。")],
   ["07",T("Demonstrated culture run","已展示的培養運轉"),T("organism, duration, curve, replicates","菌種、時長、曲線、重複數"),
-   T("The single most common gap. A device that has held medium is not a device that has grown something for a week.","最常見的缺口。裝過培養基的裝置，不等於能連續培養一週的裝置。")],
+   T("The single most common gap. A device that has held medium is not a device that has grown something for a week, and three teams here report a run in which nothing grew.","最常見的缺口。裝過培養基的裝置，不等於能連續培養一週的裝置；本表有三隊如實報告了完全沒有生長的運轉。")],
   ["08",T("Closed-loop demonstration","閉迴路展示"),T("did control actually change an outcome","控制是否確實改變了結果"),
-   T("Turbidostats pass this by construction. Everything else has to show a setpoint being defended against a disturbance.","恆濁器天生滿足此項；其餘裝置必須展示設定點在擾動下被維持。")],
+   T("Turbidostats pass this by construction. Everything else has to show a setpoint being defended against a disturbance, and NUS Singapore-A is the one project here that does it with light.","恆濁器天生滿足此項；其餘裝置必須展示設定點在擾動下被維持。本表中以光達成此事的只有 NUS Singapore-A。")],
   ["09",T("Scale-up or transfer argument","放大或轉移論述"),T("which invariants held, which sacrificed, cited","固定哪些不變量、犧牲哪些，並附引用"),
-   T("The rarest item in this table. One project of seventeen states the sacrifice explicitly.","本表中最罕見的一項。十七個專案中僅一個明確說出所犧牲的量。")]]},
+   T("The rarest item in this table. One project of thirty states the sacrifice explicitly.","本表中最罕見的一項。三十個專案中僅一個明確說出所犧牲的量。")]]},
  {g:T("Group C · what the Hardware rubric reads","C 組 · 硬體評分表實際會看的內容"),items:[
   ["10",T("Need statement","需求陳述"),T("aspect 1","第 1 面向"),
-   T("What synbio problem does this solve that an off-the-shelf reactor does not? Cornell's answer is coculture of a heterotroph and a photoautotroph. Ours is contained perfusion with a membrane that is simultaneously the release path.","本裝置解決了現成反應器無法解決的什麼合成生物學問題？Cornell 的答案是異營菌與光自營菌的共培養；我們的答案是圍阻式灌流，且該膜同時是產物釋出路徑。")],
+   T("What synbio problem does this solve that an off-the-shelf reactor does not? Cornell's answer is coculture of a heterotroph and a photoautotroph. ASU's is that building PACE hardware takes two years. Ours is contained perfusion with a membrane that is simultaneously the release path.","本裝置解決了現成反應器無法解決的什麼合成生物學問題？Cornell 的答案是異營菌與光自營菌的共培養；ASU 的答案是 PACE 硬體要花兩年才建得起來；我們的答案是圍阻式灌流，且該膜同時是產物釋出路徑。")],
   ["11",T("User testing that changed something","確實改變設計的使用者測試"),T("aspect 2","第 2 面向"),
-   T("Not a survey. A named person used it or reviewed it and a design decision moved. Cornell names Dr. Hans Carlson; we name Prof. 張嘉修 and three requested changes.","不是問卷。是具名者實際使用或審視後，某項設計決定因此改變。Cornell 指名 Dr. Hans Carlson；我們指名張嘉修教授與三項被要求的變更。")],
+   T("Not a survey. A named person used it or reviewed it and a design decision moved. ASU ran two rounds with undergraduates and lists what changed between them; Calgary let an anthropologist's remark decide the whole field design; we name Prof. 張嘉修 and the pinch valve that exists because of him.","不是問卷。是具名者實際使用或審視後，某項設計決定因此改變。ASU 與大學生進行兩輪測試並列出兩輪之間的修改；Calgary 讓一位人類學家的一句話決定了整個田間設計；我們指名張嘉修教授，以及因他而存在的夾管閥。")],
   ["12",T("Measured performance against a requirement","對照需求的實測效能"),T("aspect 3","第 3 面向"),
-   T("A number and the number it must beat. 37 klux against a 3,000 lux requirement is the model answer. A computed value is a prediction, and judges can tell the difference.","一個數字，以及它必須勝過的數字。「37 klux 對比 3,000 lux 需求」是標準答案。計算值只是預測，評審分得出來。")],
+   T("A number and the number it must beat. 37 klux against a 3,000 lux requirement is the model answer; US$124 against a US$200 budget is the same move in a different unit. A computed value is a prediction, and judges can tell the difference.","一個數字，以及它必須勝過的數字。「37 klux 對比 3,000 lux 需求」是標準答案；「124 美元對比 200 美元預算」是同一招的另一種單位。計算值只是預測，評審分得出來。")],
   ["13",T("Reproduction package","可重現資料包"),T("aspect 4","第 4 面向"),
-   T("Itemized BOM with suppliers, CAD or module dimensions, firmware, assembly manual, licence. Judged on whether another team could rebuild it.","含供應商的逐項物料表、CAD 或模組尺寸、韌體、組裝手冊、授權條款。評判依據是他隊能否重建。")],
+   T("Itemized BOM with suppliers, CAD or module dimensions, firmware, assembly manual, licence. Judged on whether another team could rebuild it, and three times in this dataset another team actually did.","含供應商的逐項物料表、CAD 或模組尺寸、韌體、組裝手冊、授權條款。評判依據是他隊能否重建——而本資料集中確實發生過三次。")],
   ["14",T("Containment and safety","圍阻與安全"),T("LRV, barrier class, sterilization protocol","對數截留值、屏障等級、滅菌流程"),
-   T("For any device meant to leave the bench, the honest statement of what the barrier does not stop matters more than the LRV itself.","對任何預計離開實驗台的裝置而言，誠實說明屏障擋不住什麼，比對數截留值本身更重要。")]]}
+   T("For any device meant to leave the bench, the honest statement of what the barrier does not stop matters more than the retention figure itself.","對任何預計離開實驗台的裝置而言，誠實說明屏障擋不住什麼，比截留數值本身更重要。")]]}
 ];
 
-/* ============ operating point (ported from Bioreactor_Invariant_Explorer compute()) ============ */
+/* ============ 09 ReLeaf results on record ============ */
+const MILES=[
+ {d:"2026-06-01",t:T("Growth refit at 37 °C","37 °C 生長重新擬合"),
+  p:T("Overnight culture at OD₆₀₀ 2.04 diluted 1:25 into 40 mL LB, 37 °C, 200 rpm, normoxia and hypoxia in parallel. Logistic refit gives r 1.306 ± 0.049 h⁻¹ and K 1.537 ± 0.038 OD₆₀₀ at R² 0.994, doubling time 31.9 min; the honest exponential-phase figure is µ 0.921 h⁻¹. Oxygen limitation cost 5.5 % of final OD and was not formally significant (p = 0.083).","隔夜培養 OD₆₀₀ 2.04，以 1:25 稀釋至 40 mL LB，37 °C、200 rpm，常氧與低氧並行。邏輯式重新擬合得 r 為 1.306 ± 0.049 h⁻¹、K 為 1.537 ± 0.038 OD₆₀₀，R² 0.994，倍增時間 31.9 分；較保守的指數期數值為 µ 0.921 h⁻¹。缺氧使最終 OD 降低 5.5%，未達統計顯著（p = 0.083）。"),s:"ok"},
+ {d:"2026-06-06",t:T("The lumen did not grow at 22 °C","22 °C 下管腔未生長"),
+  p:T("Two runs at 30-minute resolution: a serum bottle grew at µ 0.14–0.27 h⁻¹, and culture inside the fibre lumen did not grow at all — mean OD 0.142, SD 0.033, regression slope −0.0024 OD/h at p = 0.759. Same temperature, same medium, so the difference is the reactor. Oxygen starvation, peristaltic shear and adhesion to the fibre wall were all listed and none has been eliminated.","兩次 30 分鐘解析度的運轉：血清瓶以 µ 0.14–0.27 h⁻¹ 生長，而纖維管腔內的培養完全沒有生長——平均 OD 0.142、標準差 0.033、回歸斜率 −0.0024 OD/h，p = 0.759。溫度相同、培養基相同，因此差異來自反應器本身。缺氧、蠕動幫浦剪切與纖維壁附著三項原因皆已列出，至今無一被排除。"),s:"no"},
+ {d:"2026-06-06",t:T("Cycle 1: the first loop, and the containment plate","第 1 循環：首次迴路與圍阻塗盤"),
+  p:T("PES hollow fibre, 500 mL reservoir holding 300 mL LB, 20 mL overnight inoculum, peristaltic pump. The run ended early on a leak at the pump head. Final OD₆₀₀ read 0.304 in-tube against 0.48 in the reservoir, which is what first pointed at sedimentation. 2 mL of shell-side medium plated on LB produced no colonies.","PES 中空纖維、500 mL 儲瓶內裝 300 mL LB、20 mL 隔夜接種液、蠕動幫浦。該次運轉因幫浦頭滲漏而提前終止。最終 OD₆₀₀ 管內為 0.304、儲瓶為 0.48，此差異首次指向沉降問題。2 mL 殼側培養基塗於 LB 培養盤未長出任何菌落。"),s:"mid"},
+ {d:"2026-06-14",t:T("Cycle 2: stirring added, and a full curve","第 2 循環：加入攪拌，取得完整曲線"),
+  p:T("A 200 rpm magnetic stirrer went into the reservoir and the sampling port moved to the reservoir outlet. At 37 °C the reactor reached plateau at OD₆₀₀ 0.8–0.9 in 2 h against the flask's 0.6–0.8 in 4.5 h. The flask's working volume, inoculum and shaking speed were not recorded and three variables moved at once, so this reads as promising rather than controlled.","儲瓶加入 200 rpm 磁攪拌，取樣口移至儲瓶出口。37 °C 下反應器於 2 小時達到平台期 OD₆₀₀ 0.8–0.9，燒瓶則於 4.5 小時達到 0.6–0.8。燒瓶的工作體積、接種量與搖速均未記錄，且三個變數同時變動，因此此結果應讀為「有希望」而非「受控」。"),s:"ok"},
+ {d:"2026-06-18",t:T("First meeting with Prof. 張嘉修","張嘉修教授第一次會談"),
+  p:T("Four things came out of it that changed the hardware: there was no driving force pushing product from lumen to shell, and raising flow would not supply one; the membrane was oversized for the duty; foaming can destroy the fibres; and flow with transmembrane pressure is the fouling indicator to watch. The pinch valve exists because of this meeting.","此次會談帶來四項改變硬體的結論：原設計缺乏將產物自管腔推向殼側的驅動力，且提高流量並不能提供；膜對此任務而言尺寸過大；起泡可能破壞纖維；以及流量搭配跨膜壓力才是應監看的積垢指標。夾管閥即因此次會談而存在。"),s:"ok"},
+ {d:"2026-07-28",t:T("The cassette the reactor ran on","反應器所使用的表現匣"),
+  p:T("Module J, Pveg-EEBD-RBS0-Csn:ACCD-B0015, clone J9: colony PCR 27 July, sequenced 28 July, checked by restriction digest against an expected 7,767 bp linear product. This is the constitutive cassette, which is why every secretion number on record is a constitutive number.","模組 J，Pveg-EEBD-RBS0-Csn:ACCD-B0015，選殖株 J9：7 月 27 日菌落 PCR、7 月 28 日定序，並以限制酶切對照預期 7,767 bp 線性產物確認。這是組成型表現匣，因此現有所有分泌數據皆為組成型條件下的數據。"),s:"ok"},
+ {d:"2026-08",t:T("Reactor, photometer and plants in one incubator","反應器、光度計與植物同置一箱"),
+  p:T("The reactor, the in-line photometer and the plants ran together for a long B. subtilis growth test, logged overnight by the team's own instrument rather than by hand.","反應器、線上光度計與植物一同進行長時間的 B. subtilis 生長測試，並由團隊自製儀器整夜記錄，而非人工取樣。"),s:"ok"},
+ {d:"2026-09-01",t:T("Level 2 is junction-checked, not sequenced","Level 2 僅接點確認，未定序"),
+  p:T("Three independent ACDI clones amplified across all three internal junctions at 375, 632 and 661 bp, nine lanes on one gel on 19 September after the 1 September check set the assembly ratio. A junction check establishes that the modules sit in the right order; the bases between them remain unread, and no induction has been run.","三個獨立 ACDI 選殖株於全部三個內部接點擴增，分別為 375、632 與 661 bp；9 月 19 日單一膠片九道，承接 9 月 1 日確立組裝比例的檢查。接點確認只能證明模組順序正確，模組之間的鹼基仍未讀取，且尚未進行任何誘導實驗。"),s:"mid"},
+ {d:"2026-09-02",t:T("The hardware spec is locked","硬體規格定稿"),
+  p:T("Biophsep (科百特) mPES Minilab HF-E-MI-M020-10-60-P: 0.2 µm microfiltration, 150 cm² membrane area, 8 fibres, 1.0 mm lumen ID, 60 cm effective length, 3.77 mL lumen holdup, inside-out feed. Recirculation is a 雷熔 ZP4000-N79H peristaltic rated 230–2600 mL/min. Transmembrane pressure is read by a BP8G-AGA sensor, 0–1 MPa, on an Arduino Uno R4.","Biophsep（科百特）mPES Minilab HF-E-MI-M020-10-60-P：0.2 µm 微過濾、膜面積 150 cm²、8 根纖維、管腔內徑 1.0 mm、有效長度 60 cm、管腔滯留體積 3.77 mL、內進外出進料。循環幫浦為雷熔 ZP4000-N79H 蠕動幫浦，額定 230–2600 mL/min。跨膜壓力由 BP8G-AGA 感測器量測，0–1 MPa，接於 Arduino Uno R4。"),s:"ok"},
+ {d:"2026-09-04",t:T("Second meeting with Prof. 張嘉修","張嘉修教授第二次會談"),
+  p:T("Three months and a working reactor later: repeat the inconsistent 22 °C run rather than explain it from one trial, find a way to show that protectant is actually being released, and make the organism a swappable capsule so a farmer handles a cartridge instead of a culture.","三個月後、反應器已能運轉：他要求重做不一致的 22 °C 運轉而非以單次試驗解釋、找出能證明保護劑確實釋出的方法，並把菌體做成可更換的匣，讓農民操作的是卡匣而非培養液。"),s:"ok"},
+ {d:"2026-09",t:T("Bioreactor v1: the enzyme crossed the membrane","反應器 v1：酵素確實穿過膜"),
+  p:T("Engineered B. subtilis was run in the integrated system and ACC deaminase was secreted to the shell side. Lumen-side lysate and medium and shell-side medium were sampled from 14 to 44 h and the ~42 kDa band is present. Expression is weak, and that is the result.","工程化 B. subtilis 在整合系統中運轉，ACC 去胺酶確實分泌至殼側。管腔側細胞裂解液與培養基、殼側培養基於 14 至 44 小時間取樣，約 42 kDa 條帶存在。表現量偏弱，而這就是結果。"),s:"mid"},
+ {d:"2026-09-30",t:T("WB800N has been run, and is not yet written up","WB800N 已運轉，但尚未寫入"),
+  p:T("The protease-deficient chassis is the intended one and the work has been done, but the comparison against strain 168 is not on any page yet. Every number above is strain 168, and until that write-up lands this page says so.","缺乏蛋白酶的底盤才是預定使用的菌株，相關工作已完成，但與 168 菌株的比較尚未出現在任何頁面上。上述所有數字均為 168 菌株，在該份比較寫入之前，本頁如實標明此點。"),s:"mid"},
+ {d:"2026-10",t:T("What the bill of materials says","物料表的內容"),
+  p:T("The lab-use cost sheet totals NT$30,480, about US$961, across fourteen itemized lines, with a dissolved-oxygen sensor at NT$6,000 listed as optional. The sheet does not state whether each price is per unit or per line.","實驗室用途成本表合計新台幣 30,480 元、約 961 美元，涵蓋十四個逐項品項，另列溶氧感測器新台幣 6,000 元為選配。該表未說明各價格為單價或整列小計。"),s:"mid"}
+];
+
+/* ============ operating point, recomputed 3 Oct 2026 ============ */
 const OP=[
- {k:"γ̇_w",s:"ok",v:"5,305 s⁻¹",r:T("target 2,000–10,000 · industry anchor 4,000","目標 2,000–10,000 · 業界錨點 4,000"),n:T("Wall shear rate","管壁剪切率")},
- {k:"Re",s:"ok",v:"663",r:T("laminar, < 2,100","層流，< 2,100"),n:T("Reynolds number","雷諾數")},
- {k:"J",s:"ok",v:"10 LMH",r:T("J_crit = 37.8 LMH","J_crit = 37.8 LMH"),n:T("Operating flux","操作通量")},
- {k:"J/J_crit",s:"ok",v:"0.26",r:T("target < 0.70","目標 < 0.70"),n:T("Fouling margin","積垢裕度")},
- {k:"ΔP_TM",s:"ok",v:"≈18 kPa",r:T("7 % of the 250 kPa module rating","為模組 250 kPa 額定的 7%"),n:T("Transmembrane pressure","跨膜壓力")},
- {k:"τ_w",s:"ok",v:"5.3 Pa",r:T("gross damage above ≈2,770 Pa","約 2,770 Pa 以上才有明顯損傷"),n:T("Wall shear stress","管壁剪應力")},
- {k:"k_La req",s:"mid",v:"45.7 h⁻¹",r:T("vs 60 h⁻¹ deliverable · 24 % headroom · unmeasured","對比可提供 60 h⁻¹ · 餘裕 24% · 未實測"),n:T("Required oxygen transfer","所需氧傳")},
- {k:"D_r",s:"mid",v:"0.375 h⁻¹",r:T("vs µ_max 0.48 h⁻¹ · 78 % of washout","對比 µ_max 0.48 h⁻¹ · 為沖失點的 78%"),n:T("Dilution rate","稀釋率")},
- {k:"θ/τ",s:"mid",v:"0.68",r:T("τ = 2.7 h · CcaSR t½,on ≈ 105 min dominates θ","τ = 2.7 h · θ 由 CcaSR t½,on 約 105 分主導"),n:T("Control dead-time ratio","控制延遲比")},
- {k:"CSPR",s:"ok",v:"4.5 pL/cell/day",r:T("current CHO practice 20–150 pL/cell/day","當前 CHO 實務為 20–150 pL/cell/day"),n:T("Cell-specific perfusion rate","細胞比灌流率")},
- {k:"LRV",s:"mid",v:"6.5",r:T("cellular barrier only · 20–200 nm OMVs pass","僅細胞級屏障 · 20–200 nm 外膜囊泡會通過"),n:T("Log retention value","對數截留值")},
- {k:"Power",s:"no",v:"1.17 → 0.47",r:T("supply/demand at ×1 then ×10 modules","單模組與十模組時的供需比"),n:T("Solar budget ratio","太陽能收支比")}
+ {k:"γ̇_w",s:"mid",v:"4,881 s⁻¹",r:T("at the 230 mL/min pump floor · conventional practice 2,000–8,000","於幫浦下限 230 mL/min 處 · 常規實務為 2,000–8,000"),n:T("Wall shear rate","管壁剪切率")},
+ {k:"v_lumen",s:"mid",v:"61 cm/s",r:T("8 fibres, 1.0 mm ID · 0.98 s per pass","8 根纖維、內徑 1.0 mm · 單次通過 0.98 秒"),n:T("Lumen velocity","管腔流速")},
+ {k:"Re",s:"ok",v:"610",r:T("laminar; stays laminar to about 750 mL/min","層流；至約 750 mL/min 仍維持層流"),n:T("Reynolds number","雷諾數")},
+ {k:"A_m",s:"ok",v:"150 cm²",r:T("0.0150 m² · lumen holdup 3.77 mL","0.0150 m² · 管腔滯留體積 3.77 mL"),n:T("Membrane area","膜面積")},
+ {k:"J",s:"mid",v:"10 LMH",r:T("150 mL/h permeate across the fitted area","依實裝面積換算為 150 mL/h 透過液"),n:T("Operating flux","操作通量")},
+ {k:"J/J_crit",s:"mid",v:"0.26",r:T("J_crit 37.8 LMH, computed not measured · target < 0.70","J_crit 37.8 LMH，為計算值非實測 · 目標 < 0.70"),n:T("Fouling margin","積垢裕度")},
+ {k:"ΔP_TM",s:"mid",v:"≈18 kPa",r:T("7 % of the 250 kPa module rating · sensor fitted, no sweep run","為模組 250 kPa 額定的 7% · 感測器已裝，未做掃描"),n:T("Transmembrane pressure","跨膜壓力")},
+ {k:"σ",s:"ok",v:"≈1",r:T("0.2 µm pore against a 37.6 kDa protein · no partition coefficient","0.2 µm 孔徑對 37.6 kDa 蛋白 · 無分配係數"),n:T("Sieving coefficient","篩分係數")},
+ {k:"µ_max,37",s:"ok",v:"1.31 h⁻¹",r:T("logistic r; 0.92 h⁻¹ log-linear · K 1.54 OD₆₀₀ · measured","邏輯式 r；對數線性為 0.92 h⁻¹ · K 1.54 OD₆₀₀ · 實測"),n:T("Growth rate, 37 °C","生長速率，37 °C")},
+ {k:"µ_lumen,22",s:"no",v:"≈0",r:T("not distinguishable from zero · the serum-bottle control grew","與零無法區分 · 血清瓶對照組有生長"),n:T("Growth in the lumen, 22 °C","管腔內生長，22 °C")},
+ {k:"k_La",s:"na",v:T("unmeasured","未實測"),r:T("needs a gassing-out test and an oxygenation port","需進行除氣法測試並增設供氧口"),n:T("Oxygen transfer","氧傳")},
+ {k:"θ/τ",s:"na",v:T("not established","尚未確立"),r:T("no induction curve exists, so the loop is open","目前無誘導曲線，故迴路為開迴路"),n:T("Control dead-time ratio","控制延遲比")},
+ {k:T("Retention","截留"),s:"mid",v:T("cell-level","細胞級"),r:T("1–2 µm rods held, 20–200 nm vesicles and debris pass","截留 1–2 µm 桿狀菌體，20–200 nm 囊泡與碎片會通過"),n:T("Barrier class","屏障等級")},
+ {k:T("Cost","成本"),s:"mid",v:"NT$30,480",r:T("≈US$961, fourteen lines, lab-use version · highest of the eight published here","約 961 美元，十四個品項，實驗室版本 · 為本表八個已公布價格中最高"),n:T("Bill of materials","物料表")}
 ];
-
 /* ============ projects ============ */
 const IM=(f,k,c)=>({f,k,c});
 const P=[
@@ -807,24 +1083,241 @@ const P=[
  user:T("Modular central tube designed so other teams can add tooling without new lid seals","中央貫穿管採模組化設計，讓他隊加裝工具時無須重做蓋子密封"),
  award:T("Built for the iGEM community to reproduce; the untested OD sensor is disclosed, not hidden","為讓 iGEM 社群重現而製作；未測試的 OD 感測器主動揭露而非隱藏")},
 
+{id:"evry2016",us:0,tier:3,name:"Evry",yr:"2016",sec:T("Overgrad · FRA","研究所組 · 法國"),
+ url:"https://2016.igem.org/Team:Evry/Improvements/Bioreactor",sc:{a1:2,a2:0,a3:1,a4:2,phys:3},jx:-.26,jy:.18,
+ blurb:T("Three reactors in series and then an extruder, so the project ends in a spool of plastic rather than a flask of broth. The only entry here that carries its product all the way to a finished solid.","三座串聯反應器之後接上擠出機，使專案的終點是一捲塑膠而非一瓶培養液。本表中唯一把產物一路做到固態成品的專案。"),
+ imgs:[IM("evry2016_a.webp","photo",T("The built process, annotated: 4 L sterile bag, air filter, Y junction, drip chamber","實際搭建的製程與標註：4 L 無菌袋、空氣濾器、Y 型接頭、點滴室")),
+       IM("evry2016_b.webp","diagram",T("Bioprocess diagram: growth reactor, expression reactor, polymer extension","生物製程示意圖：生長反應器、表現反應器、聚合物延長段"))],
+ type:T("Three-stage DIY bioprocess with downstream extrusion: 50 mL growth → 50 mL expression → 1 L fed-batch polymer extension → steel PLA extruder → roller","三段式自製生物製程，含下游擠出：50 mL 生長 → 50 mL 表現 → 1 L 饋料批次聚合物延長 → 不鏽鋼 PLA 擠出機 → 收捲輪"),
+ vol:T("50 mL + 50 mL + 1 L, fed from a 4 L sterile bag","50 mL + 50 mL + 1 L，由 4 L 無菌袋供料"),
+ mode:T("Continuous through reactors 1 and 2, fed-batch in reactor 3, emptied every 4 days","反應器 1、2 為連續操作，反應器 3 為饋料批次，每 4 天排空一次"),
+ sens:T("None electronic. Flow is set by a drip chamber holding constant head, read by eye against flow regulators","無電子感測器。流量由維持定水頭的點滴室設定，以目視搭配流量調節器判讀"),
+ ctrl:T("No controller. Gravity supplies the pressure, so the process runs without a pump","無控制器。以重力提供壓力，故製程無需幫浦即可運轉"),
+ cost:T("—","—"),
+ repro:T("Process diagram, flow tables and the extruder's melt temperature; no BOM or part numbers","製程圖、流量表與擠出機熔融溫度；無物料表或零件編號"),
+ run:T("Flows were characterized against the drip-chamber head; no culture run is published on this page","已對照點滴室水頭特性化流量；本頁未發表任何培養運轉"),
+ perf:T("PLA extruded at ~178 °C, the published injection-moulding temperature for PLLA","PLA 於約 178 °C 擠出，為 PLLA 已公布的射出成型溫度"),
+ scale:T("—","—"),user:T("—","—"),
+ award:T("Not verified here. Notable as the only project integrating culture, lysis, polymerization and extrusion","本文未查證。其特殊之處在於是唯一整合培養、裂解、聚合與擠出的專案")},
+
+{id:"nawigraz2017",us:0,tier:3,name:"NAWI Graz",yr:"2017",sec:T("Overgrad · AUT","研究所組 · 奧地利"),
+ url:"https://2017.igem.org/Team:NAWI_Graz/Bioreactor",sc:{a1:2,a2:0,a3:2,a4:1,phys:3},jx:.22,jy:-.22,
+ blurb:T("A 500 mL lab bottle with five ports drilled into the cap, and an OD chamber 3D-printed around an ordinary cuvette. They ran Aachen 2015's firmware to read it, which makes this the first documented reuse of another iGEM team's bioreactor code.","一只 500 mL 實驗瓶，瓶蓋鑽出五個接口，另以 3D 列印在普通比色管外做出 OD 量測室。他們直接採用 Aachen 2015 的韌體來讀取，使這成為有記錄以來第一次重用他隊生物反應器程式碼。"),
+ imgs:[IM("nawigraz2017_a.webp","photo",T("The reactor bottle on its stirrer, with the light-tight OD chamber beside it","置於攪拌器上的反應瓶，旁為遮光 OD 量測室")),
+       IM("nawigraz2017_b.webp","diagram",T("The cap from above: temperature, pH, dilution in, OD draw, acid, base, outlet","自上方看瓶蓋：溫度、pH、稀釋進料、OD 取樣、酸、鹼、出口"))],
+ type:T("500 mL GL 80 lab bottle with a drilled cap, magnetic stirring, and an inline OD-maintenance dilution loop","500 mL GL 80 實驗瓶，瓶蓋鑽孔、磁攪拌，並具線上 OD 維持稀釋迴路"),
+ vol:T("500 mL bottle","500 mL 瓶體"),
+ mode:T("OD-maintained continuous culture: pump out to the OD chamber, dilute with sterile medium when the reading passes the switch point","OD 維持式連續培養：抽出至 OD 量測室，讀值越過切換點時以無菌培養基稀釋"),
+ sens:T("3D-printed OD chamber around a UV cuvette, 600 nm LED against a TSL235R light-to-frequency sensor, in a printed light-tight case; DFRobot pH probe; temperature probe in distilled water. Calibrated against a laboratory OD instrument","以 3D 列印在 UV 比色管外製成 OD 量測室，600 nm LED 對 TSL235R 光轉頻感測器，外加列印遮光外殼；DFRobot pH 探頭；溫度探頭置於蒸餾水中。已對照實驗室 OD 儀器校正"),
+ ctrl:T("Two Arduino Nanos, one reading OD and one driving an H-bridge with three peristaltic pumps, linked by GPIO","兩片 Arduino Nano，一片讀取 OD、一片透過 H 橋驅動三顆蠕動幫浦，以 GPIO 互連"),
+ cost:T("—","—"),
+ repro:T("Port-by-port build description and the OD chamber's assembly; firmware is Aachen 2015's published sketch, credited by name","逐一接口的製作說明與 OD 量測室組裝；韌體為 Aachen 2015 已發表的程式碼，並具名致謝"),
+ run:T("The dilution loop operated and the OD output was transformed to real OD values; no growth curve is published on this page","稀釋迴路確實運作，OD 輸出已轉換為實際 OD 值；本頁未發表生長曲線"),
+ perf:T("OD readings calibrated to a laboratory reference before use","OD 讀值於使用前已校正至實驗室參考儀器"),
+ scale:T("—","—"),
+ user:T("—","—"),
+ award:T("Not verified here. The reuse of Aachen's sensor and sketch is the reproducibility result that matters","本文未查證。真正重要的成果是重用了 Aachen 的感測器與程式碼")},
+
+{id:"harvard2017",us:0,tier:3,name:"Harvard",yr:"2017",sec:T("Undergrad · USA","大學部 · 美國"),
+ url:"https://2017.igem.org/Team:Harvard/Bioreactor",sc:{a1:3,a2:0,a3:1,a4:1,phys:3},jx:0,jy:0,
+ blurb:T("Built to sit between a shaker flask and a forty-thousand-dollar reactor, and deliberately stripped of sensors to get there. The culture then failed to reach log phase and the team named their own sealant as the likely poison.","目標是填補搖瓶與四萬美元反應器之間的空缺，並為此刻意捨棄感測器。結果培養液未能進入對數期，團隊指出很可能是自己用的密封膠有毒。"),
+ imgs:[IM("harvard2017_a.webp","photo",T("The assembled reactor","組裝完成的反應器")),
+       IM("harvard2017_b.webp","diagram",T("Individual parts and the internal connections of the lid","個別零件與頂蓋的內部連接"))],
+ type:T("3D-printed stirred-batch tank, impeller-mixed","3D 列印攪拌批次槽，以葉輪混合"),
+ vol:T("—","—"),
+ mode:T("Stirred batch: nothing added or removed once the culture starts","攪拌批次：培養開始後不再加入或移出任何物質"),
+ sens:T("None. Sensors were removed on purpose to bring the cost down; aeration and stirring were the two parameters kept","無。為降低成本而刻意移除感測器；僅保留通氣與攪拌兩個參數"),
+ ctrl:T("—","—"),cost:T("—","—"),
+ repro:T("Parts photographs and lid assembly; no BOM, no CAD release","零件照片與頂蓋組裝；無物料表、未釋出 CAD"),
+ run:T("Cells struggled to reach and sustain log phase. The team hypothesized that the waterproofing sealant was toxic and said a non-toxic sealant should be tried next","細胞難以進入並維持對數期。團隊推測防水密封膠具毒性，並指出下一步應改用無毒密封膠"),
+ perf:T("—","—"),
+ scale:T("Stated as the gap between shaker-flask and industrial yields, with shaker-flask oxygen limitation cited from literature","以搖瓶產量與工業產量之間的落差作為論述，並引用文獻說明搖瓶的氧限制"),
+ user:T("—","—"),
+ award:T("Not verified here. The honest negative result is the contribution","本文未查證。如實記錄的負面結果即是其貢獻")},
+
+{id:"ncku2018",us:0,tier:2,name:"NCKU Tainan",yr:"2018",sec:T("Undergrad · TWN","大學部 · 台灣"),
+ url:"https://2018.igem.org/Team:NCKU_Tainan/Hardware",sc:{a1:3,a2:1,a3:2,a4:3,phys:4},jx:-.22,jy:.34,
+ blurb:T("A closed CO₂-fixing reactor with a nutrient tank, a collection tank and app-controlled valves, built to drop into an industrial flue-gas line. The nearest Taiwanese precedent to our own project, and the device Botchan Lab Tokyo later extended.","封閉式二氧化碳固定反應器，配有營養槽、收集槽與可由 App 控制的電磁閥，設計目標是接入工業煙氣管線。這是與我方專案最接近的台灣先例，也是 Botchan Lab Tokyo 後來加以擴充的裝置。"),
+ imgs:[IM("ncku2018_a.webp","photo",T("The built device: bioreactor, nutrient tank and collection tank","建成的裝置：生物反應器、營養槽與收集槽")),
+       IM("ncku2018_b.webp","diagram",T("Perspective schematic of the four-part device","四部分裝置的透視示意圖"))],
+ type:T("Closed acrylic stirred tank with gas diffuser, plus nutrient tank, collection tank and electromagnetic valves","封閉式壓克力攪拌槽，含氣體擴散器，另有營養槽、收集槽與電磁閥"),
+ vol:T("—","—"),
+ mode:T("Fed-batch: nutrients pumped in at a rate set from the strain's measured doubling time","饋料批次：依該菌株實測倍增時間設定營養液泵入速率"),
+ sens:T("pH meter, DS18B20 thermometer, MG811 CO₂ sensor on the lid reading exhaust gas, rotameter for gas flow; serial LCD on the lid and ESP8266 NodeMCU uploading to a database","pH 計、DS18B20 溫度計、裝於頂蓋量測排氣的 MG811 二氧化碳感測器、量測氣體流量的轉子流量計；頂蓋上的序列 LCD，並以 ESP8266 NodeMCU 上傳至資料庫"),
+ ctrl:T("Arduino UNO with an L298N driving a 3D-printed slow-speed stirrer built from a DC motor and two opposed magnets, PWM speed control; valves switched from a phone app","Arduino UNO 搭配 L298N，驅動以直流馬達與兩顆反向磁鐵自製的 3D 列印低速攪拌器，採 PWM 調速；閥門由手機 App 切換"),
+ cost:T("—","—"),
+ repro:T("Instructional video, a manual and an itemized materials list, with the Arduino code on their software page","教學影片、手冊與逐項物料清單，Arduino 程式碼置於其軟體頁面"),
+ run:T("Built and characterized as a functional prototype for carbon utilization in an industrial setting","已建成並表徵為工業場景碳利用的可運作原型"),
+ perf:T("Inlet CO₂ brought below 5 % so the concentration does not inhibit E. coli growth","進氣二氧化碳濃度降至 5% 以下，使濃度不致抑制 E. coli 生長"),
+ scale:T("Designed for integration into an industrial IGCC system","設計目標為整合進工業 IGCC 系統"),
+ user:T("Aimed at the industry sector and specified against an IGCC line; no named external user on the page","以產業部門為目標並依 IGCC 管線制定規格；頁面未具名外部使用者"),
+ award:T("Described by Botchan Lab Tokyo 2020 as a Best Hardware nominee; the award record is not independently verified here","Botchan Lab Tokyo 2020 稱其為最佳硬體獎提名者；本文未獨立查證該獲獎記錄")},
+
+{id:"nus2018",us:0,tier:2,name:"NUS Singapore-A · Light Wait",yr:"2018",sec:T("Undergrad · SGP","大學部 · 新加坡"),
+ url:"https://2018.igem.org/Team:NUS_Singapore-A/Hardware",sc:{a1:3,a2:2,a3:3,a4:2,phys:5},jx:.1,jy:.12,
+ blurb:T("The one project in this set whose light is switched by a measurement of the culture rather than by a clock or a person. Blue light goes off when OD₆₀₀ passes 0.6 and back on when the reporter hits 900, and the sampling loop returns to the vessel so product is not thrown away.","本表中唯一以培養液的量測、而非時鐘或人工來切換光源的專案。OD₆₀₀ 超過 0.6 時藍光關閉，報告基因讀值達 900 時再度開啟；取樣迴路回流至槽體，因此產物不會被丟棄。"),
+ imgs:[IM("nus2018_a.webp","photo",T("The fermentation chamber lit blue inside the shaking incubator","搖床培養箱內亮著藍光的發酵槽")),
+       IM("nus2018_b.webp","diagram",T("Assembly: pump, 2-in-1 sensor and fermentation chamber in one loop","組裝圖：幫浦、二合一感測器與發酵槽構成單一迴路"))],
+ type:T("Benchtop optogenetic bioreactor: fermentation chamber with internal LEDs, peristaltic pump and a combined OD-plus-fluorescence sensor in a recirculating loop","桌上型光遺傳生物反應器：內建 LED 的發酵槽、蠕動幫浦，以及 OD 加螢光二合一感測器，構成循環迴路"),
+ vol:T("500 mL working volume","工作體積 500 mL"),
+ mode:T("Batch with a closed recirculating measurement loop; samples return to the vessel rather than going to waste","批次操作搭配封閉循環量測迴路；樣品回流至槽體而非排為廢液"),
+ sens:T("In-house 2-in-1 sensor reading OD₆₀₀ and RFP fluorescence, both calibrated against a BioTek H1 microplate reader","自製二合一感測器量測 OD₆₀₀ 與 RFP 螢光，兩者皆對照 BioTek H1 微量盤讀取儀校正"),
+ ctrl:T("Arduino per subsystem with a PC in the loop; the computer switches the chamber LEDs on the sensor reading","各子系統各配一片 Arduino，並由電腦納入迴路；電腦依感測讀值切換槽內 LED"),
+ cost:T("—","—"),
+ repro:T("A dedicated page per component — pump, 2-in-1 sensor, fermentation chamber — with setup and programming instructions; no single BOM with prices","每個部件各有專屬頁面——幫浦、二合一感測器、發酵槽——並附設定與程式說明；無含價格的單一物料表"),
+ run:T("E. coli Top10 carrying Brep-RFP-YbaQ in LB with kanamycin, 37 °C at 225 rpm, sampled across growth and production phases with OD and RFP both recorded","E. coli Top10 帶有 Brep-RFP-YbaQ，於含卡那黴素的 LB 中、37 °C、225 rpm，橫跨生長期與生產期取樣，同時記錄 OD 與 RFP"),
+ perf:T("Light switched automatically at OD₆₀₀ 0.6 and at an RFP reading of 900, so a setpoint was defended against the culture's own progress","光源於 OD₆₀₀ 0.6 與 RFP 讀值 900 時自動切換，因此設定點確實在培養自身變化下被維持"),
+ scale:T("PDF-LA!, a three-container suite for 12-well plate, petri dish and flask, built so a circuit can be characterized at each scale before the 500 mL reactor","PDF-LA!：涵蓋 12 孔盤、培養皿與錐形瓶的三件式套組，使線路可在進入 500 mL 反應器前於各尺度先行表徵"),
+ user:T("PDF-LA!'s utility and functionality were validated by user feedback; the reactor's own design answers a named limitation in Argeitis et al., whose feedback loop was closed but whose physical system discarded its samples","PDF-LA! 的實用性與功能性經使用者回饋驗證；反應器本身的設計則回應了 Argeitis 等人明確的限制——其回饋迴路雖閉合，但實體系統會丟棄樣品"),
+ award:T("Not verified here. This is the closed-loop precedent our own project has not yet matched","本文未查證。這是我方專案尚未達到的閉迴路先例")},
+{id:"calgary2020",us:0,tier:3,name:"Calgary",yr:"2020",sec:T("Undergrad · CAN","大學部 · 加拿大"),
+ url:"https://2020.igem.org/Team:Calgary/Bioreactor",sc:{a1:3,a2:3,a3:1,a4:2,phys:4},jx:-.14,jy:.2,
+ blurb:T("Two reactors with one purpose: a lab airlift column built only to find the numbers a field reactor needs, and a field design the end user assembles from whatever they have. An anthropologist's remark that locals know their own resources better is what set the whole shape.","兩座反應器、同一個目的：實驗室氣升柱的唯一用途是找出田間反應器所需的參數，而田間設計則由終端使用者以手邊材料自行組裝。一位人類學家「當地人比我們更懂自己的資源」的評語，決定了整個架構。"),
+ imgs:[IM("calgary2020_a.webp","photo",T("The lab-adaptable airlift reactor as built","建成的實驗室適應型氣升反應器")),
+       IM("calgary2020_b.webp","render",T("CAD of the lab-adaptable reactor","實驗室適應型反應器的 CAD 圖"))],
+ type:T("Airlift column, bubble-driven, in a laboratory version and a field version with a settling and collection tank","氣升柱，以氣泡驅動；分為實驗室版本與具沉降收集槽的田間版本"),
+ vol:T("20 L of medium in the laboratory build; 50 L was the field target, sized to feed about 20 people","實驗室版本裝入 20 L 培養基；田間目標為 50 L，以供應約 20 人計算"),
+ mode:T("Batch, harvested by draining 75 % into a settling tank and siphoning the water off the top","批次操作，排出 75% 至沉降槽後，自上方虹吸移除水分"),
+ sens:T("Gravity analog dissolved-oxygen probe, Gravity analog pH Meter Pro, DS18B20 thermometer, DS3231 clock timestamping every reading to an SD card","Gravity 類比溶氧探頭、Gravity 類比 pH Meter Pro、DS18B20 溫度計、DS3231 時鐘為每筆讀值加上時戳並寫入 SD 卡"),
+ ctrl:T("Arduino Uno in a 3D-printed enclosure, aquarium heater and an aquarium air pump rated to 50 L/min against a 9 L/min literature requirement","Arduino Uno 置於 3D 列印外殼，水族加熱棒與額定 50 L/min 的水族氣泵，對照文獻需求 9 L/min"),
+ cost:T("—","—"),
+ repro:T("Parts list, wiring diagram and the controller source released on GitHub; the field version is published as design suggestions rather than one build","物料清單、接線圖與控制器原始碼已於 GitHub 釋出；田間版本以設計建議形式發表，而非單一製作版本"),
+ run:T("Yarrowia lipolytica in 1 kg of sugar in 20 L of water, drained after 36 h, and the yeast had not grown. Either handling killed it beforehand or sugar water was the wrong medium — both are stated as open","Yarrowia lipolytica 於 20 L 水中加入 1 kg 糖，36 小時後排出，酵母並未生長。原因可能是事前操作致死，或糖水並非適用培養基——兩者皆如實列為未解"),
+ perf:T("Settling measured at under 12 h, which is what allowed the field design to drop filtration entirely","實測沉降時間低於 12 小時，正因如此田間設計得以完全省去過濾"),
+ scale:T("Airlift chosen over stirred on a cited finding of near-equal production with fewer moving parts; growth modelled to a 50 L vessel, with the unconstrained-growth assumption named as the weakness","依文獻「產量接近而活動件更少」的結論選擇氣升而非攪拌；生長外推至 50 L 槽體，並指明無限制生長假設為其弱點"),
+ user:T("Dr. Charles Mather, a nutritional anthropologist, said locals know their resources better than the team does, and the field reactor became an end-user build because of it. Dr. Thomas Rydzak showed the first growth calculations assumed unconstrained growth","營養人類學家 Dr. Charles Mather 指出當地人比團隊更了解自己的資源，田間反應器因此改為由終端使用者自行製作。Dr. Thomas Rydzak 則指出最初的生長計算假設了無限制生長"),
+ award:T("Not verified here. The strongest user-testing record in this set alongside ASU 2024","本文未查證。與 ASU 2024 並列為本表中最紮實的使用者測試記錄")},
+
+{id:"concordia2020",us:0,tier:5,name:"Concordia-Montreal",yr:"2020",sec:T("Overgrad · CAN","研究所組 · 加拿大"),
+ url:"https://2020.igem.org/Team:Concordia-Montreal/Hardware",sc:{a1:3,a2:1,a3:0,a4:0,phys:2},jx:.1,jy:.3,
+ blurb:T("A rotating wall vessel, turned on a single horizontal axis to hold yeast in simulated microgravity while a membrane handles gas, nutrients and waste. The only architecture in this set that is neither stirred, sparged nor pumped.","旋轉壁槽體，繞單一水平軸旋轉，使酵母處於模擬微重力中，並以膜處理氣體、養分與廢物。本表中唯一既不攪拌、不通氣、也不泵送的架構。"),
+ imgs:[],
+ type:T("Rotating wall vessel in the high aspect ratio configuration (RWV-HARV), with membrane gas, nutrient and waste exchange","高長寬比構型的旋轉壁槽體（RWV-HARV），以膜進行氣體、養分與廢物交換"),
+ vol:T("—","—"),
+ mode:T("Continuous low-shear culture under simulated microgravity, for adaptive evolution over extended duration","模擬微重力下的連續低剪切培養，用於長時間的適應性演化"),
+ sens:T("—","—"),ctrl:T("—","—"),cost:T("—","—"),repro:T("—","—"),run:T("—","—"),perf:T("—","—"),
+ scale:T("Low Shear Simulated Microgravity specified at 10⁻³ to 10⁻⁶ g against the International Space Station's 10⁻⁵ to 10⁻⁶ g, with the analog's acceptance in the field cited","低剪切模擬微重力規格訂為 10⁻³ 至 10⁻⁶ g，對照國際太空站的 10⁻⁵ 至 10⁻⁶ g，並引用該類比方法在該領域的接受度"),
+ user:T("HARV chosen because established microgravity yeast researchers use it, Dr. Corey Nislow named among them","選用 HARV 的理由是該領域既有的微重力酵母研究者皆使用此型，並具名 Dr. Corey Nislow"),
+ award:T("Not verified here. No image of the device was published on the hardware page","本文未查證。硬體頁面未發表任何裝置圖像")},
+
+{id:"botchan2020",us:0,tier:3,name:"Botchan Lab Tokyo",yr:"2020",sec:T("Overgrad · JPN","研究所組 · 日本"),
+ url:"https://2020.igem.org/Team:Botchan_Lab_Tokyo/Hardware",sc:{a1:2,a2:0,a3:1,a4:1,phys:2},jx:-.2,jy:-.26,
+ blurb:T("They did not design a reactor. They took NCKU Tainan's 2018 device, identified that it told the user about a problem without fixing it, and built the part that acts: a pH sensor and a servo that doses correcting solution on its own.","他們並未設計反應器，而是接手 NCKU Tainan 2018 的裝置，指出它只會通知使用者有問題卻不會處理，並補上會動作的那一段：pH 感測器與自行加入校正液的伺服馬達。"),
+ imgs:[IM("botchan2020_a.webp","diagram",T("The pH-adjustment add-on in context","pH 調節附加模組於系統中的位置")),
+       IM("botchan2020_b.webp","diagram",T("Fritzing wiring: Arduino, pH sensor, voltage translator and dosing servo","Fritzing 接線圖：Arduino、pH 感測器、電壓轉換器與加藥伺服馬達"))],
+ type:T("Automatic pH-correction module added to another iGEM team's bioreactor","加裝於他隊 iGEM 生物反應器上的自動 pH 校正模組"),
+ vol:T("—","—"),
+ mode:T("Threshold control: sense pH, and when it crosses the limit the servo adds adjustment solution","閾值控制：量測 pH，越過界限時由伺服馬達加入校正液"),
+ sens:T("pH sensor on an Arduino through a 2-bit voltage translator, with a three-terminal regulator and smoothing capacitors","pH 感測器經 2 位元電壓轉換器接至 Arduino，並配三端調節器與濾波電容"),
+ ctrl:T("Arduino with a servo motor on a 9 V 1.3 A supply; wiring published as a Fritzing diagram","Arduino 搭配伺服馬達，使用 9 V 1.3 A 電源；接線以 Fritzing 圖發表"),
+ cost:T("—","—"),
+ repro:T("Full wiring diagram; no BOM, no firmware release","完整接線圖；無物料表、未釋出韌體"),
+ run:T("—","—"),perf:T("—","—"),
+ scale:T("Framed as the step that takes NCKU's monitoring device closer to industrial use, by removing the human from the correction step","定位為使 NCKU 的監測裝置更接近工業應用的一步，方法是把人從校正環節中移除"),
+ user:T("—","—"),
+ award:T("Not verified here. The second documented case of one iGEM team building on another's bioreactor","本文未查證。這是第二起有記錄的 iGEM 隊伍接續他隊生物反應器案例")},
+
+{id:"kuleuven2021",us:0,tier:5,name:"KU Leuven · CellED",yr:"2021",sec:T("Overgrad · BEL","研究所組 · 比利時"),
+ url:"https://2021.igem.org/Team:KU_Leuven/Hardware",sc:{a1:2,a2:0,a3:0,a4:0,phys:2},jx:.34,jy:-.06,
+ blurb:T("A stirred tank that blows air out through the propellers themselves, feeding a microfluidic droplet sorter that acts as an external cell-retention device. It names perfusion with retention, which makes it the only other project here to use the mode — and says plainly that it was kept a concept.","攪拌槽的空氣自葉片本身吹出，並供料給一套微流體液滴分選器，後者作為外部細胞截留裝置。它明確採用「截留式灌流」，使其成為本表中唯一另一個使用此模式的專案——並坦言全案始終停留在概念階段。"),
+ imgs:[IM("kuleuven2021_a.webp","render",T("The CellED device without tubing","未接管路的 CellED 裝置")),
+       IM("kuleuven2021_b.webp","diagram",T("Workflow: bioreactor 1, selector, bioreactor 2","工作流程：反應器 1、分選器、反應器 2"))],
+ type:T("Stirred tank aerated through the stirring propellers, with the sensor array built into the tank wall to reduce surfaces cells can settle on; paired with a second amplification reactor","自攪拌葉片通氣的攪拌槽，感測陣列內嵌於槽壁以減少細胞可附著的表面；另搭配第二座增量反應器"),
+ vol:T("—","—"),
+ mode:T("Batched perfusion with cell retention: the droplet sorter is the external retention device, and retained cells go to a second reactor to be amplified","批次式截留灌流：液滴分選器即為外部截留裝置，被截留的細胞送入第二座反應器增量"),
+ sens:T("Impedance cell counting per droplet and fluorimetry for the trait, feeding a database and an online model","逐液滴以阻抗法計數細胞、以螢光法量測目標性狀，資料送入資料庫與線上模型"),
+ ctrl:T("Machine-learning-guided directed evolution chooses which droplets to sort; the loop is drawn, never wired","以機器學習引導的定向演化決定分選哪些液滴；迴路僅繪於圖上，從未接線"),
+ cost:T("—","—"),
+ repro:T("—","—"),run:T("—","—"),perf:T("—","—"),
+ scale:T("Sorting rate has to exceed the reactor's bleed rate, and the gap between them sets how many cells are discarded — the one quantitative relation the concept states","分選速率必須高於反應器的排出速率，兩者之差決定丟棄多少細胞——這是該概念提出的唯一定量關係"),
+ user:T("Developed jointly with team EPFL across several iterations","與 EPFL 隊伍共同開發，歷經數次迭代"),
+ award:T("Not verified here. Honest about being a concept: the team says they let the concept stay a concept","本文未查證。對自身定位誠實：團隊明言讓概念就停在概念")},
+{id:"rum2022",us:0,tier:5,name:"RUM-UPRM",yr:"2022",sec:T("Undergrad · PRI","大學部 · 波多黎各"),
+ url:"https://2022.igem.wiki/rum-uprm/hardware",sc:{a1:2,a2:0,a3:0,a4:1,phys:2},jx:-.1,jy:.24,
+ blurb:T("A four-stage water train specified down to the impeller: RDX degraded in the first vessel, formaldehyde and nitrite handled in the next two, tested water out of the fourth. The foam-breaking blades get a paragraph of their own, which tells you where the attention went.","四段式水處理列車，規格細到葉輪：第一槽降解 RDX，接下來兩槽處理甲醛與亞硝酸鹽，第四段輸出已檢測水。破泡葉片單獨佔了一段說明，顯示注意力投注在何處。"),
+ imgs:[IM("rum2022_a.webp","diagram",T("The four-stage system, influent to tested water","四段式系統，自進水至已檢測水")),
+       IM("rum2022_b.webp","diagram",T("Vessel and thermal jacket","槽體與保溫夾套"))],
+ type:T("Stirred-batch vessel with a thermal jacket, shaft, pitched-blade turbine impellers and axial-flow foam breakers, first in a four-stage train","具保溫夾套的攪拌批次槽，含軸心、斜葉渦輪葉輪與軸流破泡葉片，為四段式列車的第一段"),
+ vol:T("—","—"),
+ mode:T("Batch degradation of contaminated water, with continuous internal circulation to hold one concentration throughout the vessel","受污染水的批次降解，以槽內連續循環維持全槽濃度一致"),
+ sens:T("Temperature, pH and pressure, each wired to its own control unit","溫度、pH 與壓力，各接至專屬控制單元"),
+ ctrl:T("Temperature control heats or cools the jacket water; pressure control vents above 101.3 kPa and sparges oxygen below it; pH control doses acid or sparges to strip dissolved CO₂, holding pH 7","溫度控制加熱或冷卻夾套水；壓力控制在高於 101.3 kPa 時排氣、低於時通入氧氣；pH 控制加酸或通氣移除溶解二氧化碳，維持 pH 7"),
+ cost:T("—","—"),
+ repro:T("Part-by-part specification of vessel, jacket, shaft, lid and impellers; no BOM, no CAD release","槽體、夾套、軸心、頂蓋與葉輪的逐件規格；無物料表、未釋出 CAD"),
+ run:T("—","—"),perf:T("—","—"),
+ scale:T("Written as a first-phase vessel inside a four-stage plant, with the later stages specified alongside it","以四段式廠區中的第一期槽體撰寫，後續各段亦同時列出規格"),
+ user:T("—","—"),
+ award:T("Not verified here","本文未查證")},
+
+{id:"iiserpune2023",us:0,tier:5,name:"IISER-Pune-India · JetroEco",yr:"2023",sec:T("Undergrad · IND","大學部 · 印度"),
+ url:"https://2023.igem.wiki/iiser-pune-india/hardware",sc:{a1:2,a2:1,a3:0,a4:0,phys:2},jx:.1,jy:-.32,
+ blurb:T("An airlift column for bio-jet fuel, drawn at 100 L with a transparent inner chamber and an aluminium outer shell to bounce blue light back at the enzyme. Presented as an artistic representation, which is the honest word for it.","用於生物航空燃料的氣升柱，以 100 L 繪製，內室透明、外殼為鋁以將藍光反射回酵素。團隊稱之為藝術呈現，這個說法是誠實的。"),
+ imgs:[IM("iiserpune2023_a.webp","render",T("The team's render, labelled airlift type at 100 L scale","團隊渲染圖，標示為氣升型、100 L 規模")),],
+ type:T("Airlift column, pneumatically agitated through a built-in bubble column, stainless steel with a transparent inner chamber and a reflective aluminium outer layer","氣升柱，以內建氣泡柱氣動攪拌，不鏽鋼結構，內室透明、外層為反射鋁材"),
+ vol:T("100 L in the render; the team states it would start at 5 L and optimize upward","渲染圖為 100 L；團隊表示實作將自 5 L 起並逐步最佳化"),
+ mode:T("Continuous, conceptual","連續，僅概念"),
+ sens:T("—","—"),
+ ctrl:T("Blue light around the inner chamber to activate CvFAP; no controller specified","內室周圍以藍光活化 CvFAP；未指定控制器"),
+ cost:T("—","—"),repro:T("—","—"),run:T("—","—"),perf:T("—","—"),
+ scale:T("Airlift chosen over stirred on cost; aeration and agitation named as the binding requirement because the yeast is an obligate aerobe that otherwise mats","以成本為由選擇氣升而非攪拌；因該酵母為絕對好氧菌、否則會結成菌毯，故指明通氣與攪拌為關鍵需求"),
+ user:T("A researcher with decades of Yarrowia lipolytica experience advised on the parameters that matter and on the vessel's dimensions","一位具數十年 Yarrowia lipolytica 經驗的研究者就關鍵參數與槽體尺寸提供建議"),
+ award:T("Not verified here","本文未查證")},
+
+{id:"asu2024",us:0,tier:2,name:"ASU",yr:"2024",sec:T("Undergrad · USA","大學部 · 美國"),
+ url:"https://2024.igem.wiki/asu/hardware",sc:{a1:3,a2:3,a3:2,a4:3,phys:4},jx:.24,jy:-.3,
+ blurb:T("A turbidostat and a phage lagoon for US$124, against a US$200 budget they set themselves and a commercial alternative they name. Nine dated test runs including the failures, two rounds of user testing with undergraduates, and a list of what changed between the rounds. The reproduction package in this set to beat.","恆濁器加噬菌體 lagoon，成本 124 美元，對照自訂的 200 美元預算與一台具名的商用替代品。九次標註日期的測試（含失敗），兩輪與大學生進行的使用者測試，並列出兩輪之間的修改。本表中可重現資料包的標竿。"),
+ imgs:[IM("asu2024_a.webp","photo",T("The complete system, with the control unit open and then cased","完整系統，控制單元先為開放式、後裝入外殼")),
+       IM("asu2024_b.webp","diagram",T("System overview: components and media flow","系統總覽：各部件與培養基流向"))],
+ type:T("Turbidostat plus a phage lagoon for phage-assisted continuous evolution, in 3D-printed silos that hold the culture bottles and the electronics","恆濁器加噬菌體 lagoon，用於噬菌體輔助連續演化；以 3D 列印柱槽固定培養瓶與電子元件"),
+ vol:T("100 mL turbidostat and 100 mL lagoon, fed from a 1 L stock bottle to a 1 L waste bottle; tests ran on 400 mL of medium","恆濁器 100 mL、lagoon 100 mL，由 1 L 儲瓶供料並排至 1 L 廢液瓶；測試使用 400 mL 培養基"),
+ mode:T("Turbidostat: hold OD at a calibrated set point by pumping fresh medium, and move culture to the lagoon at mid-log","恆濁：以泵入新鮮培養基維持校正後的 OD 設定點，並於對數中期將培養液移入 lagoon"),
+ sens:T("Laser through the culture onto a photoresistor, with a calibration experiment run to find the OD at mid-log growth; the pump's on-state is logged as a −399 marker so it is visible in the trace","雷射穿過培養液照射光敏電阻，並以校正實驗找出對數中期的 OD；幫浦開啟狀態以 −399 標記記錄，使其在曲線上可見"),
+ ctrl:T("Arduino on a custom PCB with a rotary encoder and LCD menu, so the pump runs without touching code; all stir motors ganged to one driver and all LEDs on one NeoPixel data line","Arduino 搭配自製 PCB、旋轉編碼器與 LCD 選單，使幫浦無需改程式即可運轉；所有攪拌馬達共用一組驅動，所有 LED 共用一條 NeoPixel 資料線"),
+ cost:T("US$124 for the whole system, against a self-set US$200 ceiling","整套系統 124 美元，對照自訂的 200 美元上限"),
+ repro:T("Bill of materials and a construction-and-usage document as PDFs, an interactive Cadasio assembly model, editable Onshape CAD, annotated code on GitHub, and a simplified lite version for lower cost","物料表與組裝使用說明皆為 PDF，另有互動式 Cadasio 組裝模型、可編輯的 Onshape CAD、GitHub 上附註解的程式碼，以及成本更低的簡化精簡版"),
+ run:T("Nine dated runs from 3 June to 23 September 2024, including a 13.7 h baseline with no pumps, a water-only control, and the ones that failed on a damaged photoresistor and on media running out overnight","2024 年 6 月 3 日至 9 月 23 日共九次標註日期的運轉，含 13.7 小時無幫浦基線、純水對照，以及因光敏電阻損壞與夜間培養基耗盡而失敗的幾次"),
+ perf:T("US$124 against the US$200 requirement, and the set point held through repeated dilution cycles once it had been recalculated","124 美元對照 200 美元需求；設定點在重新計算後，於多次稀釋循環中確實維持"),
+ scale:T("Framed against eVOLVER as the commercial alternative, and against a cited two-year figure for developing a PACE workflow from scratch","以 eVOLVER 作為商用替代品對照，並引用從零開發 PACE 流程需時兩年的數據"),
+ user:T("Two rounds with ASU DIYbio undergraduates running a mock experiment on tap water. Round one produced fixes to the code-upload step, rotary-encoder instructions, terminology and colour coding, and a suggestion to use Viton tubing; round two produced pipette labelling and step consolidation. Dr. Takahashi, Dr. Badran and the Bartelle lab advised on setup time and biofilm","兩輪測試，由 ASU DIYbio 大學生以自來水進行模擬實驗。第一輪產生程式上傳步驟、旋轉編碼器說明、術語與色彩標示的修正，以及改用 Viton 管材的建議；第二輪產生吸管標示與步驟合併。Dr. Takahashi、Dr. Badran 與 Bartelle 實驗室就架設時間與生物膜提供建議"),
+ award:T("Not verified here. On aspects 2 and 4 this is the strongest record in the set","本文未查證。就第 2 與第 4 面向而言，這是本表中最強的記錄")},
+
+{id:"ouc2025",us:0,tier:2,name:"OUC-China",yr:"2025",sec:T("Undergrad · CHN","大學部 · 中國"),
+ url:"https://2025.igem.wiki/ouc-china/hardware",sc:{a1:3,a2:0,a3:2,a4:2,phys:4},jx:-.16,jy:-.2,
+ blurb:T("Not a reactor but the thing a reactor is missing: a methanol probe that sits in the gas space above the broth instead of in it, infers the liquid concentration through Henry's law, and doses on a threshold. Liquid sensors foul and die; this one does not touch the culture.","並非反應器，而是反應器所缺的那一件：甲醇探頭置於培養液上方的氣相而非液相中，透過亨利定律推算液相濃度，並依閾值加料。液相感測器會積垢失效；這一支根本不接觸培養液。"),
+ imgs:[IM("ouc2025_a.webp","photo",T("The assembled probe: gas-phase sensor head, PCB and alarm beacon","組裝完成的探頭：氣相感測頭、電路板與警示燈")),
+       IM("ouc2025_b.webp","diagram",T("System overview","系統總覽"))],
+ type:T("Non-invasive gas-phase methanol monitoring and automatic feeding module for a 10 L fermenter, modular and hot-swappable","用於 10 L 發酵槽的非侵入式氣相甲醇監測與自動加料模組，模組化且支援熱插拔"),
+ vol:T("Built for 10 L fermenters, with multi-channel pump expansion stated to 100 L","為 10 L 發酵槽製作，並載明以多通道幫浦擴充至 100 L"),
+ mode:T("Threshold-driven intermittent feeding during the induction phase of Pichia pastoris, 10 to 20 g every 48 h against a 60 g/L limit","於 Pichia pastoris 誘導期進行閾值驅動的間歇加料，每 48 小時 10 至 20 g，對照 60 g/L 上限"),
+ sens:T("GT-CX catalytic-combustion methanol gas sensor in the headspace through a three-way interface, IP65 sealed, with a WIKA A-10 pressure sensor (0–10 bar) and a thermistor to ±0.5 °C","GT-CX 催化燃燒式甲醇氣體感測器經三通接頭置於頂空，IP65 密封，另配 WIKA A-10 壓力感測器（0–10 bar）與精度 ±0.5 °C 的熱敏電阻"),
+ ctrl:T("STM32G070 with a fuzzy control algorithm, OLED and nixie display, buzzer at 20 % LEL, 4–20 mA and RS485 reserved for PLC integration","STM32G070 搭配模糊控制演算法，OLED 與數碼管顯示，於 20% LEL 時蜂鳴警示，並保留 4–20 mA 與 RS485 以整合 PLC"),
+ cost:T("Under ¥1,600 RMB total","總成本低於人民幣 1,600 元"),
+ repro:T("Circuit diagram, sensor connection schematic, physical drawing and pluggable PCB terminal blocks; designed against GB15322.1-2019 for combustible gas detectors","電路圖、感測器連接示意圖、實體圖與可插拔 PCB 端子台；依 GB15322.1-2019 可燃氣體探測器標準設計"),
+ run:T("Developed against the induction phase of Pichia pastoris cultivation, with fermenter temperature 25–30 °C, pH 5.0–7.0 and stirring 100–500 rpm named as the interference to reject","以 Pichia pastoris 培養的誘導期為開發對象，並指明發酵槽溫度 25–30 °C、pH 5.0–7.0、攪拌 100–500 rpm 為需排除的干擾"),
+ perf:T("Threshold held at 60 g/L to avoid toxic inhibition, alarm at 20 % LEL, temperature feedback to ±0.5 °C","閾值設於 60 g/L 以避免毒性抑制，20% LEL 時警示，溫度回饋精度 ±0.5 °C"),
+ scale:T("Stated as a pre-industrial verification platform with peristaltic expansion to 100 L","定位為工業前驗證平台，並以蠕動幫浦擴充至 100 L"),
+ user:T("Specified against a national standard rather than a named user","依國家標準制定規格，而非依具名使用者"),
+ award:T("Not verified here. A subsystem in the Aachen tradition: the contribution is the instrument","本文未查證。屬 Aachen 傳統的子系統：貢獻在於儀器本身")},
+
 {id:"releaf2026",us:1,tier:2,name:"GEMS-Taiwan · ReLeaf",yr:"2026",sec:T("High school · TWN","高中組 · 台灣"),
- url:"#verdict",sc:{a1:3,a2:2,a3:2,a4:2,phys:6},jx:0,jy:0,
- blurb:T("A hollow-fibre perfusion loop where the 0.2 µm membrane is the containment barrier and the product-release path at the same time, driven by optogenetic light rather than a chemical inducer. The only project here that publishes a scale-up transform.","中空纖維灌流迴路，0.2 µm 膜同時作為圍阻屏障與產物釋出路徑，並以光遺傳而非化學誘導物驅動。本表中唯一發表放大轉換的專案。"),
- imgs:[IM("releaf2026_a.webp","photo",T("Perfusion loop on the bench: fibre module on the stand, medium reservoir, peristaltic pump running","實驗台上的灌流迴路：架上的纖維模組、培養基儲瓶、運轉中的蠕動幫浦")),
-       IM("releaf2026_b.webp","diagram",T("Prototype 1: PES hollow fibre, peristaltic pump, Luer sampling valve, medium reservoir","原型一：PES 中空纖維、蠕動幫浦、Luer 取樣閥、培養基槽"))],
- type:T("Perfusion hollow-fibre TFF loop with optogenetically controlled culture; the membrane is both containment barrier and product-release path","灌流式中空纖維 TFF 迴路，搭配光遺傳控制培養；膜同時是圍阻屏障與產物釋出路徑"),
- vol:T("Lumen ≈ 200 mL, 300 mL LB reservoir, 25 mL overnight inoculum; A_m 150 cm²; 8 fibres, dᵢ 1.0 mm, L 0.596 m, rated < 250 kPa","管腔約 200 mL，300 mL LB 儲槽，25 mL 隔夜接種；膜面積 150 cm²；8 根纖維，內徑 1.0 mm，長 0.596 m，耐壓 < 250 kPa"),
- mode:T("Perfusion with cell retention; D_r = 0.375 h⁻¹ against µ_max 0.48 h⁻¹; CSPR held constant on scale-up","細胞截留灌流；D_r = 0.375 h⁻¹ 對比 µ_max 0.48 h⁻¹；放大時維持 CSPR 定值"),
- sens:T("Temperature, salinity and EC, TMP via BP8G at ±10 kPa, in-house clamp-on photometer for OD, light plate apparatus for dose calibration","溫度、鹽度與導電度，TMP 由 BP8G 量測（±10 kPa），自製夾式光度計量 OD，光板裝置校正光劑量"),
- ctrl:T("Arduino control unit, circulation pump, 535 nm and 670 nm LED array driving CcaS/CcaR; 45 W solar budget at winter PSH ≈ 3 h/day","Arduino 控制單元、循環幫浦、驅動 CcaS/CcaR 的 535 nm 與 670 nm LED 陣列；45 W 太陽能，以冬季 PSH 約 3 h/日 計算"),
- cost:T("Material price list compiled in-house; total not published on this page","已自行彙整物料價格表；本頁未公布總額"),
- repro:T("Price list and the interactive invariant calculator are released; firmware, enclosure files and assembly guide are not","價格表與互動式不變量計算工具已釋出；韌體、外殼檔案與組裝指南尚未"),
- run:T("Bench runs completed; longer durations and recorded example tests requested by the advisor and not yet done","已完成實驗台運轉；顧問要求的較長時程與示範測試紀錄尚未完成"),
- perf:T("Computed at the explorer defaults: γ̇_w 5,305 s⁻¹, Re 663, J 10 LMH, J/J_crit 0.26, ΔP_TM ≈18 kPa, k_La required 45.7 vs 60 h⁻¹ deliverable. All predicted, none measured.","以探索工具預設值計算：γ̇_w 5,305 s⁻¹、Re 663、J 10 LMH、J/J_crit 0.26、ΔP_TM 約 18 kPa、所需 k_La 45.7 對比可提供 60 h⁻¹。全為預測值，皆未實測。"),
- scale:T("Linear scale-up per van Reis 1997 and Field 1995: hold wall shear and path length, add area at constant flux, and state explicitly that whole-system geometric similarity and θ/τ are sacrificed","依 van Reis 1997 與 Field 1995 的線性放大：固定管壁剪切與流道長度、在定通量下擴增面積，並明言犧牲整體幾何相似性與 θ/τ"),
- user:T("Prof. 張嘉修, 18 June 2026: add a valve after the hollow fibre to build pressure; use resting cells and a cartridge against surfactant foaming; extend testing, record example tests, build a UI. None applied yet.","張嘉修教授，2026 年 6 月 18 日：中空纖維後加閥門以建立壓力；以靜止細胞與匣式設計對付表面活性劑起泡；延長測試、記錄示範測試、製作使用者介面。目前皆未落實。"),
- award:T("Hardware is one of three nominations. Containment stated honestly as cellular, not molecular: 0.2 µm retains 1–2 µm cells but passes 20–200 nm OMVs.","硬體為三項提名之一。圍阻誠實表述為細胞級而非分子級：0.2 µm 可截留 1–2 µm 細胞，但 20–200 nm 的外膜囊泡會通過。")}
+ url:"#releaf",sc:{a1:3,a2:2,a3:1,a4:2,phys:6},jx:0,jy:0,
+ blurb:T("A hollow-fibre perfusion loop in which the 0.2 µm membrane is the containment barrier and the product-release path at the same time, meant to be switched by a forecast of stress in a field. The enzyme has crossed the membrane and the shell side has plated clean; the light has never been shown to control anything.","中空纖維灌流迴路，0.2 µm 膜同時作為圍阻屏障與產物釋出路徑，設計上由田間逆境預報觸發開關。酵素確實已穿過膜、殼側塗盤也乾淨；但光從未被證明能控制任何事。"),
+ imgs:[IM("releaf2026_a.webp","photo",T("The perfusion loop on the bench: fibre module, medium reservoir, peristaltic pump","實驗台上的灌流迴路：纖維模組、培養基儲瓶、蠕動幫浦")),
+       IM("releaf2026_b.webp","diagram",T("Prototype 1: PES hollow fibre, peristaltic pump, Luer sampling valve, reservoir","原型一：PES 中空纖維、蠕動幫浦、Luer 取樣閥、儲瓶"))],
+ type:T("Perfusion hollow-fibre loop with cell retention, built so the membrane is both the containment barrier and the product-release path; intended to be driven by an optogenetic signal","具細胞截留的灌流式中空纖維迴路，設計使膜同時為圍阻屏障與產物釋出路徑；預定由光遺傳訊號驅動"),
+ vol:T("300 mL LB working volume in a 500 mL reservoir, 20 mL overnight inoculum; Biophsep mPES Minilab HF-E-MI-M020-10-60-P, 150 cm², 8 fibres, 1.0 mm lumen ID, 60 cm effective length, 3.77 mL lumen holdup, rated under 250 kPa","500 mL 儲瓶內 300 mL LB 工作體積，20 mL 隔夜接種液；Biophsep mPES Minilab HF-E-MI-M020-10-60-P，150 cm²、8 根纖維、管腔內徑 1.0 mm、有效長度 60 cm、管腔滯留體積 3.77 mL，耐壓低於 250 kPa"),
+ mode:T("Perfusion with cell retention: cells are held on the lumen side by size, not by a dilution rate, so the chemostat washout criterion does not apply. Wall shear and path length are the invariants held on scale-up","截留式灌流：細胞依尺寸被留在管腔側，而非依稀釋率，故恆化器沖失判準不適用。放大時固定的不變量為管壁剪切與流道長度"),
+ sens:T("In-line flow-cell photometer on the culture loop reading OD₆₀₀ without drawing a sample, built in-house and calibrated against a laboratory spectrophotometer; BP8G-AGA transmembrane pressure sensor 0–1 MPa; flow meter, pH sensor, droplet sensor and turbidimeter","培養迴路上的線上流通槽光度計，可在不取樣的情況下讀取 OD₆₀₀，為團隊自製並對照實驗室分光光度計校正；BP8G-AGA 跨膜壓力感測器 0–1 MPa；另有流量計、pH 感測器、液滴感測器與濁度計"),
+ ctrl:T("Arduino Uno R4 with an operating interface across three versions, a 雷熔 ZP4000-N79H recirculation pump rated 230–2600 mL/min, a pinch valve for transmembrane pressure, and a 3 m LED strip at 520 nm green with 660 nm red for CcaS/CcaR","Arduino Uno R4 搭配三個版本的操作介面、額定 230–2600 mL/min 的雷熔 ZP4000-N79H 循環幫浦、用於跨膜壓力的夾管閥，以及 3 公尺 520 nm 綠光搭配 660 nm 紅光的 LED 燈條供 CcaS/CcaR 使用"),
+ cost:T("NT$30,480, about US$961, across fourteen itemized lines; dissolved-oxygen sensor at NT$6,000 listed as optional","新台幣 30,480 元、約 961 美元，共十四個逐項品項；溶氧感測器新台幣 6,000 元列為選配"),
+ repro:T("Materials list and cost sheet published, and the photometer's full assembly including wiring, crimping and print settings. The reactor's own assembly guide stops part-way through part synthesis; firmware and enclosure files are not released","已公布物料清單與成本表，以及光度計的完整組裝（含接線、壓接與列印設定）。反應器本身的組裝指南在零件組裝段中途停止；韌體與外殼檔案尚未釋出"),
+ run:T("Three reactor cycles plus an integration run. Cycle 1 ended on a pump-head leak with shell-side medium plating clean; cycle 2 reached plateau at OD₆₀₀ 0.8–0.9 in 2 h at 37 °C against a flask's 4.5 h; v1 ran engineered B. subtilis and sampled 14 to 44 h with the ~42 kDa ACCD band present but weak. A 22 °C run in the fibre lumen did not grow at all","三個反應器循環加一次整合運轉。第 1 循環因幫浦頭滲漏終止，殼側培養基塗盤乾淨；第 2 循環於 37 °C 下 2 小時達到平台期 OD₆₀₀ 0.8–0.9，燒瓶則需 4.5 小時；v1 運轉工程化 B. subtilis 並於 14 至 44 小時取樣，約 42 kDa 的 ACCD 條帶存在但偏弱。22 °C 下纖維管腔內的運轉完全未生長"),
+ perf:T("Measured: µ_max 1.31 h⁻¹ logistic and 0.92 h⁻¹ log-linear at 37 °C, K 1.54 OD₆₀₀, and no growth at all in the lumen at 22 °C. Computed from the locked geometry at the 230 mL/min pump floor: γ̇_w 4,881 s⁻¹, Re 610, lumen velocity 61 cm/s, J 10 LMH, J/J_crit 0.26, ΔP_TM ≈18 kPa. k_La is unmeasured and no flux–pressure sweep has been run","實測：37 °C 下 µ_max 為 1.31 h⁻¹（邏輯式）與 0.92 h⁻¹（對數線性），K 為 1.54 OD₆₀₀，而 22 °C 管腔內完全無生長。依定稿幾何於幫浦下限 230 mL/min 計算：γ̇_w 4,881 s⁻¹、Re 610、管腔流速 61 cm/s、J 10 LMH、J/J_crit 0.26、ΔP_TM 約 18 kPa。k_La 未實測，亦未進行通量–壓力掃描"),
+ scale:T("Linear scale-up after van Reis 1997 and Field 1995: hold wall shear and path length, add area at constant flux, and state explicitly that whole-system geometric similarity and the control dead-time ratio are the groups sacrificed","依 van Reis 1997 與 Field 1995 的線性放大：固定管壁剪切與流道長度、在定通量下擴增面積，並明確指出整體幾何相似性與控制延遲比是被犧牲的群"),
+ user:T("Prof. 張嘉修, 18 June 2026: add a valve after the fibre to build transmembrane pressure, because raising flow only recirculates; the membrane is oversized; foaming can destroy the fibres. The pinch valve, the 200 rpm stirrer and the operating interface all exist because of that meeting. Returning on 4 September 2026 he asked for the 22 °C run to be repeated, for a way to quantify release, and for the organism to become a swappable capsule — the first is still open and the third is not drawn","張嘉修教授，2026 年 6 月 18 日：在纖維之後加裝閥門以建立跨膜壓力，因為提高流量只會造成循環；膜的尺寸過大；起泡可能破壞纖維。夾管閥、200 rpm 攪拌器與操作介面皆因該次會談而存在。他於 2026 年 9 月 4 日再次來訪，要求重做 22 °C 運轉、找出量化釋出的方法，並將菌體做成可更換的匣——第一項仍未解決，第三項尚未繪製"),
+ award:T("Hardware is one of three nominations. Containment is stated as cellular, not molecular: the 0.2 µm pore retains 1–2 µm cells, and passes 20–200 nm vesicles and debris. The control loop is open: no induction curve exists and every number here is constitutive pVeg in strain 168","硬體為三項提名之一。圍阻表述為細胞級而非分子級：0.2 µm 孔徑截留 1–2 µm 細胞，但會通過 20–200 nm 的囊泡與碎片。控制迴路為開迴路：目前無誘導曲線，且此處所有數字皆為 168 菌株中組成型 pVeg 的結果")}
 ];
+P.sort((a,b)=>a.yr===b.yr?0:(a.yr<b.yr?-1:1));
 
 const COLS=[["team",T("Team / project","隊伍／專案")],["type",T("Device type","裝置型式")],
  ["vol",T("Working volume","工作體積")],["mode",T("Mode","操作模式")],["sens",T("Sensors","感測器")],
@@ -840,57 +1333,71 @@ const TIERS=[
   who:["UFMG_UFV_Brazil 2022","Cornell 2025","Humboldt Berlin 2019"]},
  {n:2,cls:"t2",lbl:T("Characterized","已表徵"),
   h:T("A built device with an itemized BOM or a build manual, sensors or invariants quantified against a reference, repeated or multi-day operation, and stated limitations.","已建成的裝置，具逐項物料表或製作手冊、感測器或不變量已對照參考量化、重複或多日運轉，並載明限制。"),
-  d:T("Solid, reproducible work that stops short of proving performance by measurement. Eight of seventeen sit here, which makes this the crowded rung, and ReLeaf joins it once the price list and the invariant calculator are counted.","扎實且可重現，但未以量測證明效能。十七個中有八個在此，是最擁擠的一級；計入價格表與不變量計算工具後，ReLeaf 也進入此級。"),
-  who:["Aachen 2015","Stuttgart 2019","Madrid UCM 2021","Sheffield 2022","Vilnius-Lithuania 2024","NJTech-China 2025","Düsseldorf 2025","GEMS-Taiwan · ReLeaf 2026"]},
+  d:T("Solid, reproducible work that stops short of proving performance by measurement. Twelve of thirty sit here, which makes it the crowded rung. ReLeaf is on it, and so are the two projects that beat ReLeaf on the aspects it is weakest in: NUS Singapore-A on closed-loop control and ASU on user testing and reproduction.","扎實且可重現，但未以量測證明效能。三十個中有十二個在此，是最擁擠的一級。ReLeaf 在此級，而在 ReLeaf 最弱的面向上勝過它的兩個專案也在此級：NUS Singapore-A 的閉迴路控制，以及 ASU 的使用者測試與可重現性。"),
+  who:["Aachen 2015","NCKU Tainan 2018","NUS Singapore-A 2018","Stuttgart 2019","Madrid UCM 2021","Sheffield 2022","Vilnius-Lithuania 2024","ASU 2024","NJTech-China 2025","Düsseldorf 2025","OUC-China 2025","GEMS-Taiwan · ReLeaf 2026"]},
  {n:3,cls:"t3",lbl:T("Built once","建成並運轉過"),
-  h:T("A physical device that ran. Sensors read, one culture grew. Documentation partial, or a declared subsystem never tested.","實體裝置確實運轉過：感測器有讀值、有一次培養成功。文件不完整，或有明載未經測試的子系統。"),
-  d:T("Real, demonstrable, and short of aspect 3 or aspect 4 in full.","真實、可展示，但第 3 或第 4 面向尚未完整。"),
-  who:["TU Darmstadt 2025","Waterloo 2018"]},
+  h:T("A physical device that ran. Documentation partial, or a declared subsystem never tested, or the culture it was built for did not grow.","實體裝置確實運轉過。文件不完整，或有明載未經測試的子系統，或它所針對的培養並未生長。"),
+  d:T("Real and demonstrable, and short of aspect 3 or aspect 4 in full. Three of the seven report a run in which nothing grew, and name a cause rather than omit the run.","真實、可展示，但第 3 或第 4 面向尚未完整。七個中有三個如實報告了毫無生長的運轉，並指出原因而非略過不提。"),
+  who:["Evry 2016","NAWI Graz 2017","Harvard 2017","Waterloo 2018","Calgary 2020","Botchan Lab Tokyo 2020","TU Darmstadt 2025"]},
  {n:4,cls:"t4",lbl:T("Modelled","僅建模"),
   h:T("Quantitative design work of the CFD, process-simulation, sizing and decision-framework kind, with no device you can switch on.","量化的設計工作：CFD、製程模擬、尺寸計算、選型架構；但沒有可啟動的實體。"),
   d:T("Can be excellent engineering. Toronto's separation model is more rigorous than most builds here. It still scores zero on aspect 3.","可以是出色的工程。Toronto 的分離模型比本表多數實體裝置更嚴謹，但第 3 面向仍是零分。"),
   who:["Toronto 2023","Düsseldorf 2020"]},
  {n:5,cls:"t5",lbl:T("Specified","僅規格"),
   h:T("A described vessel, mode and sensor list. No device, no data, no build files.","描述了容器、操作模式與感測器清單。無實體、無數據、無製作檔案。"),
-  d:T("Often written well and reasoned carefully. It is still a plan, and the rubric scores devices.","往往寫得好、論證也細緻。但它仍是計畫，而評分表評的是裝置。"),
-  who:["Leiden 2016","Thessaly 2023"]}
+  d:T("Often written well and reasoned carefully, and two of the six are explicit that they chose to stay concepts. It is still a plan, and the rubric scores devices.","往往寫得好、論證也細緻，其中兩個更明言自己選擇停留在概念階段。但它仍是計畫，而評分表評的是裝置。"),
+  who:["Leiden 2016","Concordia-Montreal 2020","KU Leuven 2021","RUM-UPRM 2022","IISER-Pune-India 2023","Thessaly 2023"]}
 ];
 
 const ERAS=[
  {yr:"2010–2016",sub:T("era one","第一時代"),
   h:T("The reactor as an illustration","反應器作為插圖"),
-  p:[T("For most of iGEM's first decade the bioreactor was the last slide of the project, not a deliverable. Teams drew the vessel their process would eventually need, labelled its compartments, and moved on. Leiden 2016 is the clean archetype: a five-stage Mars perchlorate plant with a drum filter, a stirred reactor, a HEPA stage and a cyanobacterial compartment, rendered in full and built not at all.","在 iGEM 頭十年的多數時間裡，生物反應器是專案的最後一張投影片，而非交付物。隊伍畫出製程最終所需的容器、標註各艙室，然後就此打住。Leiden 2016 是最清楚的原型：五段式火星過氯酸鹽處理廠，含轉鼓過濾器、攪拌反應槽、HEPA 段與藍綠菌艙，圖畫得完整，實體完全沒做。"),
-     T("Nothing was wrong with this. The rubric did not yet ask for a device, so a device was not what teams made.","這並無不妥。當時的評分表尚未要求實體，因此隊伍也就不做實體。")],
-  ex:[["leiden2016_a.webp",T("Leiden 2016 · full system schematic","Leiden 2016 · 完整系統示意圖")]]},
+  p:[T("For most of iGEM's first decade the bioreactor was the last slide of the project, not a deliverable. Teams drew the vessel their process would eventually need, labelled its compartments, and moved on. Leiden 2016 is the clean archetype: a five-stage Mars perchlorate plant with a drum filter, a stirred reactor, a filter stage and a cyanobacterial compartment, rendered in full and built not at all.","在 iGEM 頭十年的多數時間裡，生物反應器是專案的最後一張投影片，而非交付物。隊伍畫出製程最終所需的容器、標註各艙室，然後就此打住。Leiden 2016 是最清楚的原型：五段式火星過氯酸鹽處理廠，含轉鼓過濾器、攪拌反應槽、過濾段與藍綠菌艙，圖畫得完整，實體完全沒做。"),
+     T("Evry 2016 is the exception that shows the era was a choice rather than a limit. In the same year, with no more resources, they built three reactors in series out of sterile bags, drip chambers and flow regulators, and ran the product through a steel extruder. Nothing was wrong with drawing instead. The rubric did not yet ask for a device, so a device was not what teams made.","Evry 2016 是那個例外，證明這是選擇而非限制。同一年、資源並不更多，他們以無菌袋、點滴室與流量調節器搭出三座串聯反應器，並把產物送過不鏽鋼擠出機。只畫圖並無不妥：當時的評分表尚未要求實體，因此隊伍也就不做實體。")],
+  ex:[["leiden2016_a.webp",T("Leiden 2016 · full system schematic","Leiden 2016 · 完整系統示意圖")],
+      ["evry2016_a.webp",T("Evry 2016 · built from bags and drip chambers","Evry 2016 · 以無菌袋與點滴室搭成")]]},
  {yr:"2015–2021",sub:T("era two","第二時代"),
   h:T("The instrument becomes the contribution","儀器本身成為貢獻"),
   p:[T("Aachen 2015 is the hinge. Rather than draw a reactor, they built its subsystems and characterized each one: a peristaltic pump across 0.5 to 1400 mL/h, a stirrer calibrated 100 to 1400 rpm, an inline OD cell reading 605 nm through sterile tubing. Then they published a construction manual for every part.","Aachen 2015 是轉折點。他們不畫反應器，而是製作並表徵其子系統：蠕動幫浦涵蓋 0.5 至 1400 mL/h、攪拌器校正 100 至 1400 rpm、線上 OD 量測槽以 605 nm 穿透無菌管路。接著為每個部件發表製作手冊。"),
-     T("Humboldt Berlin's openPBR in 2019 completed the move: a modular flat-panel photobioreactor whose contribution was the instrument itself, shipped with a build tutorial, a mapped light field across 24 positions, and CSV output. The proof it worked is not the wiki page. It is that Madrid UCM rebuilt it in 2021, found the missing closed-loop heating, added it, and published the upgrade. That remains the only independent reproduction of an iGEM bioreactor in this dataset.","Humboldt Berlin 於 2019 年的 openPBR 完成了這個轉向：模組化平板光生物反應器，貢獻就是儀器本身，並附製作教學、24 個位置的光場分佈與 CSV 輸出。它有效的證明不是那個 wiki 頁面，而是 Madrid UCM 在 2021 年重建了它、找出缺少的閉迴路加熱、補上並發表升級。這仍是本資料集中唯一一次 iGEM 生物反應器被獨立重現。")],
+     T("The proof that this worked is not on any wiki page. It is that other teams picked the work up. NAWI Graz ran Aachen's own sketch on Aachen's own TSL235R sensor in 2017, crediting it by name. Madrid UCM rebuilt Humboldt Berlin's openPBR in 2021, found the missing closed-loop heating, added it and published the upgrade. Botchan Lab Tokyo took NCKU Tainan's 2018 monitoring device in 2020 and built the part that acts on a reading instead of reporting it. Three handovers in eleven years is not many, and it is the strongest evidence of reproducibility this field has.","證明這件事成立的證據不在任何 wiki 頁面上，而在於其他隊伍真的接手了。NAWI Graz 於 2017 年在 Aachen 的 TSL235R 感測器上執行 Aachen 自己的程式，並具名致謝。Madrid UCM 於 2021 年重建 Humboldt Berlin 的 openPBR、找出缺少的閉迴路加熱、補上並發表升級。Botchan Lab Tokyo 於 2020 年接手 NCKU Tainan 2018 的監測裝置，補上「依讀值動作」而非「回報讀值」的那一段。十一年三次交棒不算多，但這是這個領域關於可重現性最有力的證據。"),
+     T("The same era produced the one closed loop in this set. NUS Singapore-A's Light Wait in 2018 put LEDs inside a 500 mL chamber, read OD and fluorescence on a sensor calibrated against a plate reader, and let the computer switch the light on those readings — then returned the sampled culture to the vessel, because discarding it is how you lose product.","同一時代也誕生了本表中唯一的閉迴路。NUS Singapore-A 於 2018 年的 Light Wait 把 LED 置入 500 mL 槽體內，以對照微量盤讀取儀校正過的感測器量測 OD 與螢光，並讓電腦依這些讀值切換光源——隨後把取樣的培養液送回槽體，因為丟棄它就等於損失產物。")],
   ex:[["aachen2015_a.webp",T("Aachen 2015 · inline OD cell","Aachen 2015 · 線上 OD 量測槽")],
-      ["humboldt2019_a.webp",T("Humboldt 2019 · openPBR assembly","Humboldt 2019 · openPBR 組裝圖")],
-      ["madrid2021_a.webp",T("Madrid 2021 · the rebuild, with heating added","Madrid 2021 · 重建版，加入加熱")]]},
+      ["nawigraz2017_a.webp",T("NAWI Graz 2017 · running Aachen's sketch","NAWI Graz 2017 · 執行 Aachen 的程式")],
+      ["madrid2021_a.webp",T("Madrid 2021 · the openPBR rebuild, heating added","Madrid 2021 · openPBR 重建版，加入加熱")],
+      ["nus2018_a.webp",T("NUS Singapore-A 2018 · the loop that closes","NUS Singapore-A 2018 · 真正閉合的迴路")]]},
  {yr:"2022–2025",sub:T("era three","第三時代"),
   h:T("Price and manual decide the award","價格與手冊決定獎項"),
-  p:[T("From 2022 the winning move became a sentence: a benchtop reactor costs ten thousand dollars, here is one for two hundred and seventy, and here is how to build it. Sheffield's rEvolver came in under £200, UFMG's modular reactor at US$270 and took Best Hardware, Vilnius at €256.20 with eighteen priced line items, Cornell's ARC at about US$300, Darmstadt at €90.","自 2022 年起，致勝的說法變成一句話：實驗台反應器要一萬美元，這裡有一台兩百七十美元的，而且這是製作方法。Sheffield 的 rEvolver 低於 200 英鎊、UFMG 的模組化反應器 270 美元並奪下最佳硬體獎、Vilnius 為 256.20 歐元且列出十八筆標價品項、Cornell 的 ARC 約 300 美元、達姆施塔特 90 歐元。"),
-     T("Five of the seventeen projects here publish a cost figure, and all five are from 2022 or later. The 2026 Judge Handbook makes the emphasis explicit by choosing UFMG and Cornell as its two worked examples and quoting a price in both.","本表十七個專案中有五個公布成本數字，且全部出自 2022 年之後。2026 年評審手冊選用 UFMG 與 Cornell 作為兩個範例、並在兩者中都引述價格，等於把這個重點講明了。")],
+  p:[T("From 2022 the winning move became a sentence: a benchtop reactor costs ten thousand dollars, here is one for two hundred and seventy, and here is how to build it. Sheffield's rEvolver came in under £200, UFMG's modular reactor at US$270 and took Best Hardware, Vilnius at €256.20 with eighteen priced line items, Cornell's ARC at about US$300, Darmstadt at €90, ASU's turbidostat at US$124 against a budget the team set itself.","自 2022 年起，致勝的說法變成一句話：實驗台反應器要一萬美元，這裡有一台兩百七十美元的，而且這是製作方法。Sheffield 的 rEvolver 低於 200 英鎊、UFMG 的模組化反應器 270 美元並奪下最佳硬體獎、Vilnius 為 256.20 歐元且列出十八筆標價品項、Cornell 的 ARC 約 300 美元、達姆施塔特 90 歐元、ASU 的恆濁器 124 美元並對照自訂預算。"),
+     T("Eight of the thirty projects here publish a cost figure and seven of the eight are from 2022 or later. ASU went further and turned the package itself into the deliverable: a bill of materials, a construction document, an interactive assembly model, editable CAD, annotated firmware, and two rounds of user testing with a written list of what changed between them. The 2026 Judge Handbook makes the emphasis explicit by choosing UFMG and Cornell as its two worked examples and quoting a price in both.","本表三十個專案中有八個公布成本數字，其中七個出自 2022 年之後。ASU 更進一步把資料包本身變成交付物：物料表、組裝文件、互動式組裝模型、可編輯 CAD、附註解韌體，以及兩輪使用者測試並書面列出兩輪之間的修改。2026 年評審手冊選用 UFMG 與 Cornell 作為兩個範例、並在兩者中都引述價格，等於把這個重點講明了。")],
   ex:[["ufmg2022_a.webp",T("UFMG 2022 · US$270, Best Hardware","UFMG 2022 · 270 美元，最佳硬體獎")],
+      ["asu2024_a.webp",T("ASU 2024 · US$124, the package as deliverable","ASU 2024 · 124 美元，資料包即交付物")],
       ["darmstadt2025_a.webp",T("Darmstadt 2025 · €90","達姆施塔特 2025 · 90 歐元")],
       ["cornell2025_a.webp",T("Cornell 2025 · ~US$300, modular","Cornell 2025 · 約 300 美元，模組化")]]},
  {yr:"2026",sub:T("where we sit","我們的位置"),
-  h:T("The reactor as a process, arriving in the era that rewards the manual","把反應器當成製程，卻降臨在獎勵手冊的時代"),
-  p:[T("ReLeaf is the first project in this lineage to treat the reactor as a process rather than a device. Every earlier team asks whether their vessel works. Ours asks which groups stay invariant when the vessel is replicated, holds wall shear and path length, scales area at constant flux, and names the group being sacrificed. In eleven years of iGEM bioreactors nobody in this set has done that.","ReLeaf 是這條脈絡中第一個把反應器當成製程而非裝置的專案。此前每一隊問的是「我的容器能不能運作」，我們問的是「當容器被複製時，哪些群保持不變」——固定管壁剪切與流道長度、在定通量下擴增面積，並指名被犧牲的群。在 iGEM 生物反應器的十一年裡，本表中無人做過此事。"),
-     T("It also arrives in era three, where the rubric rewards a price list, a manual and a growth curve. We now have the first. The distance to tier one is not conceptual. It is a flux–TMP sweep, a gassing-out test, a firmware release and a run measured in days.","但它也降臨在第三時代——評分表獎勵的是價格表、手冊與生長曲線。我們現在有了第一項。通往第一級的距離不在概念上，而在於一次通量–TMP 掃描、一次除氣法測試、一次韌體釋出，以及一段以「天」計的運轉。")],
+  h:T("A membrane doing two jobs, in the era that rewards the manual","一張膜兼任兩種職責，降臨在獎勵手冊的時代"),
+  p:[T("ReLeaf's contribution is not the vessel and it is not the light. It is that the component which keeps the organism in is the component which lets the product out, so containment and release cannot be traded against each other, and that the operating point is stated as a set of invariants rather than as a list of settings. Across thirty projects nobody else builds the barrier and the product path out of the same part, and nobody else names the group sacrificed on scale-up.","ReLeaf 的貢獻不在容器，也不在光。而在於：把生物體留住的元件，就是讓產物離開的元件，因此圍阻與釋出無法彼此交換；以及操作點是以一組不變量、而非一串設定值來表述。三十個專案中，沒有其他人以同一個零件兼作屏障與產物路徑，也沒有其他人指名放大時所犧牲的群。"),
+     T("It also arrives in era three, where the rubric rewards a price list, a manual and a growth curve. We have the price list, a growth curve at 37 °C and half an assembly guide. The distance to the top rung is not conceptual: an induction curve, a flux–pressure sweep, a gassing-out test, a firmware release, and a run measured in days rather than hours. Two of the teams on our own rung have already done the parts of that we have not.","但它也降臨在第三時代——評分表獎勵的是價格表、手冊與生長曲線。我們有價格表、一條 37 °C 的生長曲線，以及半份組裝指南。通往最高一級的距離不在概念上：一條誘導曲線、一次通量–壓力掃描、一次除氣法測試、一次韌體釋出，以及一段以「天」而非「小時」計的運轉。與我們同級的兩支隊伍，早已完成了我們尚未完成的那幾項。")],
   ex:[["releaf2026_b.webp",T("ReLeaf 2026 · Prototype 1 flow path","ReLeaf 2026 · 原型一流路")],
       ["releaf2026_a.webp",T("ReLeaf 2026 · the loop on the bench","ReLeaf 2026 · 實驗台上的迴路")]]}
 ];
 
 const FIRSTS=[
- [T("A published scale-up transform","已發表的放大轉換"),T("1 of 17. Named invariants, a cited convention, and an explicit statement of which group is sacrificed.","十七之一。指名不變量、引用慣例，並明確說出所犧牲的群。")],
- [T("Perfusion with cell retention","細胞截留灌流"),T("1 of 17. Twelve of the built devices are batch or turbidostat stirred tanks, flat panels or airlift columns.","十七之一。已建成裝置中有十二個是批次或恆濁的攪拌槽、平板或氣升柱。")],
- [T("A membrane that is barrier and product path at once","同時作為屏障與產物路徑的膜"),T("1 of 17. Toronto models a hollow fibre, but as a gas separator upstream of the reactor rather than as part of it.","十七之一。Toronto 有中空纖維模型，但那是反應器上游的氣體分離器，並非反應器的一部分。")],
- [T("A stated fouling margin","已載明的積垢裕度"),T("1 of 17. J/J_crit = 0.26 against a target below 0.70. No other project publishes either quantity.","十七之一。J/J_crit = 0.26，目標為低於 0.70。無其他專案公布任一數值。")],
- [T("Optogenetic light as a process input inside the vessel","槽內以光遺傳作為製程輸入"),T("2 of 17. Waterloo 2018 is the only precedent, and that device was built by a lab associate rather than the student team.","十七之二。Waterloo 2018 是唯一先例，且該裝置由實驗室助理而非學生團隊製作。")],
- [T("And the counter-entry: a published cost figure","反面項目：已公布的成本數字"),T("5 of 17 publish one, all since 2022. We have the price list; it is not on a public page yet.","十七之五有公布，且全在 2022 年之後。我們有價格表，但尚未放上公開頁面。")]
+ [T("A membrane that is barrier and product path at once","同時作為屏障與產物路徑的膜"),
+  T("1 of 30. Toronto models a hollow fibre, but as a gas separator upstream of the reactor rather than as part of it. Concordia's rotating wall vessel exchanges across a membrane, but it is not holding a GMO in.","三十之一。Toronto 有中空纖維模型，但那是反應器上游的氣體分離器，並非反應器的一部分。Concordia 的旋轉壁槽體雖透過膜交換，但該膜並非用於圍阻基改生物。")],
+ [T("A published scale-up transform","已發表的放大轉換"),
+  T("1 of 30. Named invariants, a cited convention, and an explicit statement of which group is sacrificed. Several projects state a target volume; stating a target is not stating a transform.","三十之一。指名不變量、引用慣例，並明確說出所犧牲的群。有數個專案提出目標體積；提出目標不等於提出轉換。")],
+ [T("A stated fouling margin","已載明的積垢裕度"),
+  T("1 of 30. J/J_crit = 0.26 against a target below 0.70. No other project publishes an operating flux or a critical flux at all, and ours is computed rather than swept.","三十之一。J/J_crit = 0.26，目標為低於 0.70。無其他專案公布操作通量或臨界通量，而我們的數值為計算所得、非掃描實測。")],
+ [T("Perfusion with cell retention","細胞截留灌流"),
+  T("2 of 30. KU Leuven's 2021 CellED names the same operating mode and an external retention device, and says plainly that it stayed a concept. Twelve of the built devices are batch or turbidostat stirred tanks, flat panels or airlift columns.","三十之二。KU Leuven 2021 的 CellED 提出相同的操作模式與外部截留裝置，並明言其始終停留在概念階段。已建成裝置中有十二個是批次或恆濁的攪拌槽、平板或氣升柱。")],
+ [T("Optogenetic light as a process input inside the vessel","槽內以光遺傳作為製程輸入"),
+  T("4 of 30, and we are not the first. Waterloo 2018 put red and green LEDs in the vials, NUS Singapore-A 2018 switched blue light on a reading of the culture, ASU 2024 drives NeoPixel LEDs inside its silos to set selection pressure, and IISER-Pune drew blue light around a concept vessel. The claim that survives is narrower: we are the only one whose switch is meant to be thrown by a forecast of a field condition, and that is design intent, not a result.","三十之四，且我們不是第一個。Waterloo 2018 在培養瓶內置入紅綠 LED，NUS Singapore-A 2018 依培養液讀值切換藍光，ASU 2024 在柱槽內以 NeoPixel LED 設定選擇壓力，IISER-Pune 則在概念槽體外圍繪製藍光。站得住的主張更窄：只有我們的開關預定由田間狀態的預報觸發，而這屬設計意圖，尚非成果。")],
+ [T("A control loop that closes on a measurement","依量測閉合的控制迴路"),
+  T("Not us. Turbidostats pass by construction — Waterloo, NAWI Graz and ASU all hold a density set point — and NUS Singapore-A is the one project that closes an optogenetic loop on the culture's own readings. ReLeaf has no induction curve, so every control claim we make is still open-loop.","不是我們。恆濁器天生滿足此項——Waterloo、NAWI Graz 與 ASU 都維持密度設定點——而 NUS Singapore-A 是唯一以培養液自身讀值閉合光遺傳迴路的專案。ReLeaf 目前無誘導曲線，因此我們所有的控制主張仍屬開迴路。")],
+ [T("A published cost figure","已公布的成本數字"),
+  T("8 of 30, seven of them since 2022, and we are now one of the eight. At about US$961 ours is the highest on the list: roughly three times Cornell's ARC and nearly eight times ASU's turbidostat. A hollow-fibre cartridge and a spectrophotometer account for most of the gap.","三十之八，其中七個出自 2022 年之後，而我們現在也是其中之一。約 961 美元的我方是表中最高：約為 Cornell ARC 的三倍、接近 ASU 恆濁器的八倍。中空纖維模組與分光光度計佔了差距的大部分。")],
+ [T("An honest negative run","如實記錄的負面運轉"),
+  T("3 of 30, and being in this group is a credit rather than a cost. Harvard 2017 named its own sealant as the likely poison, Calgary 2020 reported yeast that did not grow after 36 h, and our own 22 °C lumen did not grow at all while its control did. Harvard named a cause; we have three candidates and no elimination.","三十之三，而身在此列是加分而非減分。Harvard 2017 指出自己用的密封膠很可能有毒，Calgary 2020 報告酵母 36 小時後並未生長，而我們自己的 22 °C 管腔在對照組有生長的情況下完全沒有生長。Harvard 指出了原因；我們有三個候選原因，且尚無一被排除。")]
 ];
 
 const VILLAGE={
@@ -903,11 +1410,20 @@ const VILLAGE={
      "NNU-China","NNU-Nanjing-China","NUS-Singapore","OPTIC-8","OUC-Haide","Oros Biotech","Phyto-X",
      "RUBochum","SCU-BSE-China","SDU-Denmark","SHIFTER","TU Delft","Tongji China","UCNZ","UCSC",
      "UESTC-China","ULethbridge","UniCRETE","YNU-China","ZJU-China"],
- hits:["GEMS-Taiwan","Mingdao","Oros Biotech","Bioreactor Sentinels","Duesseldorf","NJTech-China","Jiangnan-China"]
+ hits:["GEMS-Taiwan","Mingdao","Oros Biotech","Bioreactor Sentinels","Duesseldorf","NJTech-China","Jiangnan-China","NUS-Singapore","OUC-Haide","Arizona"]
 };
-const TIERCOL={1:"#66c902",2:"#4a90c4",3:"#d8a13a",4:"#9a9384",5:"#b3aeae"};
+const TIERCOL={1:"#1d7a3e",2:"#0071e3",3:"#9a5b00",4:"#6e6e73",5:"#aeaeb2"};
 
 /* ============ renderers ============ */
+function renderCounts(){
+  const hasCost=p=>{const v=(p.cost&&p.cost.en)||"";return v!=="—"&&!/no figure|not published/i.test(v)};
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+  set("c-total",P.length);
+  set("c-built",P.filter(p=>p.tier<=3).length);
+  set("c-paper",P.filter(p=>p.tier>=4).length);
+  set("c-cost",P.filter(hasCost).length);
+  set("c-a3",P.filter(p=>p.sc.a3===3).length);
+}
 function renderTOC(){
   document.getElementById("toc").innerHTML=TOC.map(([id,l])=>`<a href="#${id}">${L(l)}</a>`).join("");
 }
@@ -917,9 +1433,15 @@ function renderMetrics(){
       `<div class="mrow"><div class="n">${n}</div><div class="t">${L(t)}<span class="u">${L(u)}</span></div><div class="d">${L(d)}</div></div>`
     ).join("")+`</div>`).join("");
 }
+function renderMiles(){
+  document.getElementById("miles-out").innerHTML=MILES.map(m=>
+    `<div class="mrow"><div class="n">${m.d}</div><div class="t">${L(m.t)}</div>`+
+    `<div class="d">${L(m.p)}</div></div>`).join("");
+}
 function renderOP(){
   document.getElementById("op-out").innerHTML=OP.map(o=>
-    `<div class="op ${o.s}"><div class="k">${o.k} · ${L(o.n)}</div><div class="v">${o.v}</div><div class="r">${L(o.r)}</div></div>`).join("");
+    `<div class="op ${o.s}"><div class="k">${L(o.k)} · ${L(o.n)}</div>`+
+    `<div class="v">${esc(L(o.v))}</div><div class="r">${L(o.r)}</div></div>`).join("");
 }
 
 /* --- 02 map --- */
@@ -933,26 +1455,26 @@ function renderMap(){
     [1.4,.45,T("neither yet","兩者皆尚未")],
     [4.5,.45,T("well documented, shallow analysis","文件完善，分析淺")]];
   let s="";
-  s+=`<rect x="${sx(3)}" y="${MG.t}" width="${sx(6)-sx(3)}" height="${sy(3)-MG.t}" fill="#f3f9ea"/>`;
-  s+=`<line x1="${sx(3)}" y1="${MG.t}" x2="${sx(3)}" y2="${sy(0)}" stroke="#d8dcd2" stroke-dasharray="4 4"/>`;
-  s+=`<line x1="${sx(0)}" y1="${sy(3)}" x2="${sx(6)}" y2="${sy(3)}" stroke="#d8dcd2" stroke-dasharray="4 4"/>`;
+  s+=`<rect x="${sx(3)}" y="${MG.t}" width="${sx(6)-sx(3)}" height="${sy(3)-MG.t}" fill="#f5faf7"/>`;
+  s+=`<line x1="${sx(3)}" y1="${MG.t}" x2="${sx(3)}" y2="${sy(0)}" stroke="var(--soft)" stroke-dasharray="4 4"/>`;
+  s+=`<line x1="${sx(0)}" y1="${sy(3)}" x2="${sx(6)}" y2="${sy(3)}" stroke="var(--soft)" stroke-dasharray="4 4"/>`;
   for(let i=0;i<=6;i++){
-    s+=`<line x1="${sx(i)}" y1="${sy(0)}" x2="${sx(i)}" y2="${sy(0)+5}" stroke="#b9beb2"/>`;
+    s+=`<line x1="${sx(i)}" y1="${sy(0)}" x2="${sx(i)}" y2="${sy(0)+5}" stroke="var(--line)"/>`;
     s+=`<text x="${sx(i)}" y="${sy(0)+18}" text-anchor="middle">${i}</text>`;
-    s+=`<line x1="${sx(0)-5}" y1="${sy(i)}" x2="${sx(0)}" y2="${sy(i)}" stroke="#b9beb2"/>`;
+    s+=`<line x1="${sx(0)-5}" y1="${sy(i)}" x2="${sx(0)}" y2="${sy(i)}" stroke="var(--line)"/>`;
     s+=`<text x="${sx(0)-12}" y="${sy(i)+3}" text-anchor="end">${i}</text>`;
   }
-  s+=`<line x1="${sx(0)}" y1="${sy(0)}" x2="${sx(6)}" y2="${sy(0)}" stroke="#8f958a"/>`;
-  s+=`<line x1="${sx(0)}" y1="${sy(0)}" x2="${sx(0)}" y2="${MG.t}" stroke="#8f958a"/>`;
+  s+=`<line x1="${sx(0)}" y1="${sy(0)}" x2="${sx(6)}" y2="${sy(0)}" stroke="var(--neutral)"/>`;
+  s+=`<line x1="${sx(0)}" y1="${sy(0)}" x2="${sx(0)}" y2="${MG.t}" stroke="var(--neutral)"/>`;
   q.forEach(([x,y,t])=>{s+=`<text class="qlbl" x="${sx(x)}" y="${sy(y)}" text-anchor="middle">${L(t)}</text>`;});
   s+=`<text class="axlbl" x="${(sx(0)+sx(6))/2}" y="${MG.H-16}" text-anchor="middle">${L(T("Published evidence  →  Hardware aspects 3 + 4","已發表證據  →  硬體第 3 + 4 面向"))}</text>`;
   s+=`<text class="axlbl" transform="translate(22,${(MG.t+sy(0))/2}) rotate(-90)" text-anchor="middle">${L(T("Engineering depth  →  sketch to cited scale-up","工程深度  →  草圖至附引用的放大"))}</text>`;
   P.forEach((p,i)=>{
     const x=sx(p.sc.a3+p.sc.a4+(p.jx||0)), y=sy(p.sc.phys+(p.jy||0));
-    const r=p.us?13:8.5, col=p.us?"#4eaf02":TIERCOL[p.tier];
+    const r=p.us?12:7.5, col=p.us?"#1d7a3e":TIERCOL[p.tier];
     const ev=p.sc.a3+p.sc.a4, flip=ev>4.6;
-    s+=`<circle class="dot" data-i="${i}" cx="${x}" cy="${y}" r="${r}" fill="${col}" fill-opacity="${p.us?1:.82}" stroke="#fff" stroke-width="${p.us?3:1.5}"/>`;
-    s+=`<text x="${flip?x-r-5:x+r+5}" y="${y+3.5}" text-anchor="${flip?'end':'start'}" ${p.us?'font-weight="700" fill="#22261f"':''}>${esc(p.name.split(" · ")[0])} ${p.yr}</text>`;
+    s+=`<circle class="dot" data-i="${i}" cx="${x}" cy="${y}" r="${r}" fill="${col}" fill-opacity="${p.us?1:.8}" stroke="#fff" stroke-width="${p.us?3:1.5}"><title>${esc(p.name)} ${p.yr}</title></circle>`;
+    s+=`<text x="${flip?x-r-5:x+r+5}" y="${y+3.5}" text-anchor="${flip?'end':'start'}" ${p.us?'font-weight="700" fill="#1d1d1f"':''}>${esc(p.name.split(" · ")[0])} ${p.yr}</text>`;
   });
   const m=document.getElementById("mapsvg");
   m.innerHTML=s;
@@ -976,37 +1498,39 @@ function renderGallery(){
     const shots=[0,1].map(k=>{
       const im=p.imgs[k];
       if(!im) return `<figure class="none">${L(T("no image of this kind published","未發表此類圖像"))}</figure>`;
-      const f=im.f.endsWith(".svg")?`<img src="img/${im.f}" alt="${esc(L(im.c))}" style="object-fit:contain;padding:8px;background:#fff">`
-                                   :`<img src="img/${im.f}" alt="${esc(L(im.c))}" loading="lazy">`;
-      return `<figure>${f}<figcaption>${L(KIND[im.k])} · ${esc(L(im.c))}</figcaption></figure>`;
+      const cap=esc(L(im.c)), cr=esc(p.name)+" "+p.yr;
+      const style=im.f.endsWith(".svg")?' style="object-fit:contain;padding:8px;background:#fff"':'';
+      return `<figure><img src="img/${im.f}" alt="${cap}" loading="lazy" decoding="async"${style}
+        data-cap="${cap} — ${cr}"><figcaption>${L(KIND[im.k])} · ${cap}</figcaption></figure>`;
     }).join("");
     return `<article class="gcard${p.us?' us':''}"><div class="shots">${shots}</div>
       <div class="body"><h3>${esc(p.name)}</h3>
       <div class="meta">${p.yr} · ${L(p.sec)}</div>
       <p class="g">${L(p.blurb)}</p>
       <div class="foot"><span class="chip t${p.tier}">TIER ${p.tier}</span>
-      <a href="${p.url}"${p.url.startsWith("#")?"":' target="_blank" rel="noopener"'}>${p.url.startsWith("#")?L(T("see section 08 →","見第 08 節 →")):L(T("team wiki →","隊伍 wiki →"))}</a></div></div></article>`;
+      <a href="${p.url}"${p.url.startsWith("#")?"":' target="_blank" rel="noopener"'}>${p.url.startsWith("#")?L(T("see section 09 →","見第 09 節 →")):L(T("team wiki →","隊伍 wiki →"))}</a></div></div></article>`;
   }).join("");
 }
 
 /* --- 05 head to head --- */
-const ASPECTS=[["a1",T("1 · Need addressed","1 · 需求解決"),"#4eaf02"],["a2",T("2 · User testing","2 · 使用者測試"),"#2f6f9e"],
-  ["a3",T("3 · Utility proved","3 · 實用性證明"),"#d8a13a"],["a4",T("4 · Reproduction","4 · 可重現性"),"#8a5450"]];
+const ASPECTS=[["a1",T("1 · Need addressed","1 · 需求解決"),"#1d7a3e"],["a2",T("2 · User testing","2 · 使用者測試"),"#0071e3"],
+  ["a3",T("3 · Utility proved","3 · 實用性證明"),"#9a5b00"],["a4",T("4 · Reproduction","4 · 可重現性"),"#6e4b8a"]];
 function fillSelects(){
   const opts=P.map((p,i)=>`<option value="${i}">${esc(p.name)} ${p.yr}</option>`).join("");
   const a=document.getElementById("selA"),b=document.getElementById("selB");
-  const av=a.value||P.findIndex(p=>p.us), bv=b.value||P.findIndex(p=>p.id==="cornell2025");
+  const av=a.value||P.findIndex(p=>p.us), bv=b.value||P.findIndex(p=>p.id==="nus2018");
   a.innerHTML=opts; b.innerHTML=opts; a.value=av; b.value=bv;
 }
 function h2hCol(p){
-  const im=p.imgs[0]?`<img src="img/${p.imgs[0].f}" alt="">`:`<div style="height:190px;background:repeating-linear-gradient(45deg,#f2f3ef,#f2f3ef 8px,#e9ebe4 8px,#e9ebe4 16px)"></div>`;
+  const im=p.imgs[0]?`<img src="img/${p.imgs[0].f}" alt="" data-cap="${esc(L(p.imgs[0].c))} — ${esc(p.name)} ${p.yr}">`
+    :`<div style="height:190px;background:repeating-linear-gradient(45deg,#fafafc,#fafafc 7px,#f2f2f5 7px,#f2f2f5 14px)"></div>`;
   const bars=ASPECTS.map(([k,lb,c])=>`<div class="bar"><div class="lb"><span>${L(lb)}</span><b>${p.sc[k]}/3</b></div>
     <div class="tr"><div class="fl" style="width:${p.sc[k]/3*100}%;background:${c}"></div></div></div>`).join("")
    +`<div class="bar"><div class="lb"><span>${L(T("Engineering depth","工程深度"))}</span><b>${p.sc.phys}/6</b></div>
-     <div class="tr"><div class="fl" style="width:${p.sc.phys/6*100}%;background:#152b2b"></div></div></div>`;
+     <div class="tr"><div class="fl" style="width:${p.sc.phys/6*100}%;background:#1d1d1f"></div></div></div>`;
   const rows=[["cost",T("Cost","成本")],["run",T("Demonstrated run","已展示運轉")],["perf",T("Measured performance","實測效能")],
     ["repro",T("Reproduction package","可重現資料包")],["scale",T("Scale-up argument","放大論述")]];
-  const dl=rows.map(([k,lb])=>`<dt>${L(lb)}</dt><dd>${L(p[k])==="—"?'<em style="color:var(--neutral)">'+L(T("not published","未公開"))+'</em>':esc(L(p[k]))}</dd>`).join("");
+  const dl=rows.map(([k,lb])=>`<dt>${L(lb)}</dt><dd>${L(p[k])==="—"?'<em style="color:var(--t5);font-style:normal">'+L(T("not published","未公開"))+'</em>':esc(L(p[k]))}</dd>`).join("");
   return `<div class="h2hcol">${im}<div class="hd"><h4>${esc(p.name)} <span class="chip t${p.tier}">TIER ${p.tier}</span></h4>
     <div class="m">${p.yr} · ${L(p.sec)} · ${L(T("total","總分"))} ${p.sc.a1+p.sc.a2+p.sc.a3+p.sc.a4}/12</div></div>
     <div class="bars">${bars}</div><div class="h2hspec"><dl>${dl}</dl></div></div>`;
@@ -1017,7 +1541,7 @@ function renderH2H(){
 }
 
 /* --- 06 table --- */
-const FILT=[["all",T("All 17","全部 17")],["built",T("Built devices","已建成裝置")],["paper",T("Design only","僅設計")],
+const FILT=[["all",T("All 30","全部 30")],["built",T("Built devices","已建成裝置")],["paper",T("Design only","僅設計")],
   ["top",T("Tier 1–2","第 1–2 級")],["cost",T("Published a price","已公布價格")]];
 let curFilt="all";
 const pass=p=>curFilt==="all"||(curFilt==="built"&&p.tier<=3)||(curFilt==="paper"&&p.tier>=4)||
@@ -1039,7 +1563,7 @@ function renderTable(){
   }).join("");
 }
 
-/* --- 07 / 09 / 10 --- */
+/* --- 07 / 10 / 11 --- */
 function renderLadder(){
   document.getElementById("ladder-out").innerHTML=TIERS.map(t=>
     `<div class="tier"><div class="lbl"><span class="chip ${t.cls}">TIER ${t.n}</span><small>${L(t.lbl)}</small></div>
@@ -1050,7 +1574,7 @@ function renderEras(){
   document.getElementById("eras-out").innerHTML=ERAS.map(e=>
     `<div class="era"><div class="yr">${e.yr}<small>${L(e.sub)}</small></div>
      <div><h3>${L(e.h)}</h3>${e.p.map(x=>`<p>${L(x)}</p>`).join("")}
-     <div class="ex">${e.ex.map(([f,c])=>`<figure><img src="img/${f}" alt="" loading="lazy"><figcaption>${L(c)}</figcaption></figure>`).join("")}</div>
+     <div class="ex">${e.ex.map(([f,c])=>`<figure><img src="img/${f}" alt="${esc(L(c))}" loading="lazy" decoding="async" data-cap="${esc(L(c))}"><figcaption>${L(c)}</figcaption></figure>`).join("")}</div>
      </div></div>`).join("");
   document.getElementById("firsts-out").innerHTML=FIRSTS.map(([a,b])=>
     `<div class="fr"><div>${L(a)}</div><div>${L(b)}</div></div>`).join("");
@@ -1064,9 +1588,30 @@ function renderRoster(){
     <div class="rcol"><h4>${L(T("Growth","成長"))}</h4><div class="cnt">+71%</div>
       <ul><li>2023 — 34</li><li>2024 — 48</li><li>2025 — 47</li><li class="hit">2026 — 58</li></ul>
       <p style="font-size:.8rem;color:var(--muted);margin:12px 0 0">${L(T(
-        "Marked teams are ones to watch: our own entry, the other two Taiwanese teams, a team literally named Bioreactor Sentinels, and three groups with a bioreactor track record.",
-        "標記者為值得關注的隊伍：我方、另外兩支台灣隊伍、一支名為 Bioreactor Sentinels 的隊伍，以及三支具反應器紀錄的隊伍。"))}</p></div>`;
+        "Marked teams are ones to watch: our own entry, the other two Taiwanese teams, a team literally named Bioreactor Sentinels, and the groups whose institutions appear elsewhere in this audit.",
+        "標記者為值得關注的隊伍：我方、另外兩支台灣隊伍、一支名為 Bioreactor Sentinels 的隊伍，以及校名曾出現在本審查其他處的隊伍。"))}</p></div>`;
 }
+
+/* --- lightbox --- */
+const BLANK_PX="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+function openLb(src,cap){
+  const lb=document.getElementById("lb");
+  document.getElementById("lb-img").src=src;
+  document.getElementById("lb-img").alt=cap||"";
+  document.getElementById("lb-cap").textContent=cap||"";
+  lb.setAttribute("open","");
+}
+function closeLb(){
+  const lb=document.getElementById("lb");
+  lb.removeAttribute("open");
+  document.getElementById("lb-img").src=BLANK_PX;
+}
+document.addEventListener("click",e=>{
+  const img=e.target.closest(".shots figure > img, .ex img, .h2hcol > img");
+  if(img){openLb(img.getAttribute("src"),img.getAttribute("data-cap")||img.alt);return;}
+  if(e.target.id==="lb")closeLb();
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLb();});
 
 function setLang(l){
   LANG=l;
@@ -1074,10 +1619,14 @@ function setLang(l){
   document.documentElement.lang=(l==="zh")?"zh-Hant":"en";
   document.getElementById("btn-en").setAttribute("aria-pressed",l==="en");
   document.getElementById("btn-zh").setAttribute("aria-pressed",l==="zh");
-  renderTOC();renderMetrics();renderOP();renderMap();renderGallery();
+  document.title=(l==="zh"?"iGEM 生物反應器全景，2015–2026":"iGEM Bioreactor Landscape, 2015–2026")+" · GEMS-Taiwan";
+  try{localStorage.setItem("ibl.lang",l)}catch(_){}
+  renderCounts();renderTOC();renderMetrics();renderMiles();renderOP();renderMap();renderGallery();
   fillSelects();renderH2H();renderFilters();renderTable();renderLadder();renderEras();renderRoster();
 }
-setLang("en");
+let start="en";
+try{const s=localStorage.getItem("ibl.lang");if(s==="zh"||s==="en")start=s}catch(_){}
+setLang(start);
 </script>
 </body>
 </html>
