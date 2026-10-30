@@ -1780,8 +1780,50 @@ function renderCounts(){
   set("c-cost",P.filter(hasCost).length);
   set("c-a3",P.filter(p=>p.sc.a3===3).length);
 }
+let SPY=null,SPYRO=null;
 function renderTOC(){
   document.getElementById("toc").innerHTML=TOC.map(([id,l])=>`<a href="#${id}">${L(l)}</a>`).join("");
+  scrollspy();
+}
+/* mark the section the reader is actually in — measured, not observed, because
+   the sections are thousands of pixels tall and a jump-scroll skips past an observer */
+function scrollspy(){
+  if(SPY){window.removeEventListener("scroll",SPY);window.removeEventListener("resize",SPY)}
+  const nav=document.getElementById("toc");
+  const links=[...nav.querySelectorAll("a[href^='#']")]
+    .map(a=>({a,el:document.getElementById(a.getAttribute("href").slice(1))}))
+    .filter(x=>x.el);
+  if(!links.length) return;
+  let last=null, t=0, tid=null;
+  const topOf=el=>el.getBoundingClientRect().top+window.scrollY;
+  const mark=()=>{
+    const line=window.scrollY+Math.min(260,window.innerHeight*0.3);
+    let cur=null;
+    for(const x of links) if(topOf(x.el)<=line) cur=x;
+    if(!cur||cur===last) return;
+    if(last) last.a.removeAttribute("aria-current");
+    cur.a.setAttribute("aria-current","true");
+    last=cur;
+    const{a}=cur;
+    if(a.offsetLeft<nav.scrollLeft||a.offsetLeft+a.offsetWidth>nav.scrollLeft+nav.clientWidth)
+      nav.scrollTo({left:Math.max(0,a.offsetLeft-24),behavior:"smooth"});
+  };
+  /* Time-throttled rather than rAF-throttled, because rAF does not run in a
+     background tab and would freeze the mark where the reader last left it.
+     The trailing call matters: a scroll gesture's final event often lands
+     inside the throttle window, and without it the mark rests one section behind. */
+  SPY=()=>{
+    const n=Date.now();
+    if(n-t>=80){t=n;mark()}
+    else {clearTimeout(tid);tid=setTimeout(()=>{t=Date.now();mark()},90)}
+  };
+  window.addEventListener("scroll",SPY,{passive:true});
+  window.addEventListener("resize",SPY);
+  /* lazy images change the document height without firing a scroll event,
+     which would otherwise leave the mark pointing at the wrong section */
+  if(SPYRO) SPYRO.disconnect();
+  if("ResizeObserver" in window){SPYRO=new ResizeObserver(SPY);SPYRO.observe(document.body)}
+  mark();
 }
 function renderMetrics(){
   document.getElementById("metrics-out").innerHTML=METRICS.map(g=>
