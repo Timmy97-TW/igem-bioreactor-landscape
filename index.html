@@ -321,6 +321,7 @@
     project sits on the highest rung whose conditions it meets in full.</span>
     <span class="zh">五個級距，各以其相對下一級所增加的條件來定義。此梯為累進制：專案落在其完全滿足條件的最高一級。</span></p>
   </div>
+  <div id="tierbar-out"></div>
   <div id="ladder-out"></div>
 </section>
 <section id="system" class="ruled">
@@ -430,12 +431,13 @@
   <div class="shead">
     <span class="snum">09</span>
     <h2><span class="en">ReLEAF, as it stands</span><span class="zh">ReLEAF 的現況</span></h2>
-    <p><span class="en">Rebuilt on 30 October 2026 by reading the team's own frozen wiki line by line, because the
-    modelling handoff the previous rebuild used <b>no longer exists on disk</b>. Everything below now comes from a
-    page a judge can open. Where the wiki contradicts itself, both figures are printed.</span>
-    <span class="zh">本節於 2026 年 10 月 30 日逐行重讀團隊已凍結的 wiki 後重建，
-    因為前一次重建所依據的建模交接文件<b>已不存在於磁碟上</b>。以下所有內容皆取自評審可直接開啟的頁面。
-    wiki 自相矛盾之處，兩個數字並列。</span></p>
+    <p><span class="en">Seven runs between June and October, one operating point, one bill of materials, and the
+    five things that keep us off the top rung. <b>Every figure here comes from a page a judge can open</b> — the
+    team's own wiki, frozen on 21 October. Where that wiki contradicts itself, and it does, both numbers are
+    printed.</span>
+    <span class="zh">六月至十月間的七次運轉、一組操作點、一份物料表，以及讓我們無法登上最高一級的五件事。
+    <b>此處每一個數字都出自評審可直接開啟的頁面</b>——團隊自己的 wiki，凍結於 10 月 21 日。
+    該 wiki 自相矛盾之處（確實有），兩個數字並列。</span></p>
   </div>
 
   <div class="split" style="margin-bottom:56px">
@@ -1918,6 +1920,23 @@ function renderTable(){
 }
 
 /* --- 07 / 10 / 11 --- */
+function renderTierbar(){
+  const el=document.getElementById("tierbar-out"); if(!el) return;
+  const N=P.length;
+  const rows=TIERS.map(t=>{
+    const inTier=P.filter(p=>p.tier===t.n);
+    return {n:t.n,lbl:t.lbl,c:TIERCOL[t.n],k:inTier.length,us:inTier.some(p=>p.us)};
+  });
+  el.innerHTML=`<div class="tierbar">
+    <div class="tb">${rows.map(r=>r.k?`<i style="flex:${r.k};background:${r.c}"${r.us?' class="us"':''}
+      title="Tier ${r.n}: ${r.k}"></i>`:"").join("")}</div>
+    <div class="tbkey">${rows.map(r=>`<span><i style="background:${r.c}"></i><b>${r.k}</b>&nbsp;${
+      L(T("tier","第"))} ${r.n}${L(T("","\u7d1a"))}${r.us?` <em>${esc(L(T("\u00b7 us","\u00b7 \u6211\u65b9")))}</em>`:""}</span>`).join("")}</div>
+    <p>${esc(L(T(
+      `Where the ${N} projects actually sit. ${P.filter(p=>p.tier<=3).length} of them built something that ran; ${P.filter(p=>p.tier>=4).length} never got that far. Only ${P.filter(p=>p.tier===1).length} reach the top rung. We are on the second, alongside ${P.filter(p=>p.tier===2).length-1} others.`,
+      `${N} 個專案的實際分布。其中 ${P.filter(p=>p.tier<=3).length} 個建成並運轉過，${P.filter(p=>p.tier>=4).length} 個從未走到那一步，僅 ${P.filter(p=>p.tier===1).length} 個達到最高級。我方位於第二級，另有 ${P.filter(p=>p.tier===2).length-1} 個專案同列。`)))}</p>
+  </div>`;
+}
 function renderLadder(){
   document.getElementById("ladder-out").innerHTML=TIERS.map(t=>
     `<div class="tier"><div class="lbl"><span class="chip ${t.cls}">TIER ${t.n}</span><small>${L(t.lbl)}</small></div>
@@ -1993,7 +2012,7 @@ function setLang(l){
   document.title=(l==="zh"?"iGEM 生物反應器全景，2015–2026":"iGEM Bioreactor Landscape, 2015–2026")+" · GEMS-Taiwan";
   try{localStorage.setItem("ibl.lang",l)}catch(_){}
   renderCounts();renderTOC();renderGlance();renderClaims();renderMetrics();renderMiles();renderOP();renderMap();renderGallery();
-  fillSelects();renderH2H();renderFilters();renderTable();renderLadder();renderEras();renderRoster();renderV26();renderRuns();
+  fillSelects();renderH2H();renderFilters();renderTable();renderTierbar();renderLadder();renderEras();renderRoster();renderV26();renderRuns();
 }
 let start="en";
 try{const s=localStorage.getItem("ibl.lang");if(s==="zh"||s==="en")start=s}catch(_){}
