@@ -622,11 +622,16 @@
   <div class="shead">
     <span class="snum">10</span>
     <h2><span class="en">Lineage</span><span class="zh">脈絡</span></h2>
-    <p><span class="en">Three eras, and the places where one iGEM team picked up another's hardware. That has now
-    happened three times in this dataset, which is the strongest evidence any of these projects has that the work
-    was reproducible.</span>
-    <span class="zh">三個時代，以及 iGEM 隊伍接手他隊硬體的幾個節點。在本資料集中此事已發生三次，
-    而這是這些專案中關於「工作可被重現」的最有力證據。</span></p>
+    <p><span class="en">Three eras, and the places where one iGEM team picked up another's hardware — the
+    strongest evidence any of these projects has that the work was reproducible. <b>One of the three is weaker
+    than it looks:</b> the Aachen 2015 to NAWI Graz 2017 case rests partly on a shared TSL235R light-to-frequency
+    sensor, and NUS Singapore-A reached for the same commodity part in 2018 with no connection to either. The
+    Humboldt Berlin 2019 to Madrid UCM 2021 rebuild could not be re-checked on 31 October, because the legacy
+    wikis and the Internet Archive were both unreachable.</span>
+    <span class="zh">三個時代，以及 iGEM 隊伍接手他隊硬體的幾個節點——這是這些專案中關於「工作可被重現」的最有力證據。
+    <b>其中一例沒有看起來那麼紮實：</b>Aachen 2015 至 NAWI Graz 2017 一案，部分依據是共用 TSL235R 光轉頻感測器，
+    而 NUS Singapore-A 於 2018 年亦採用同一顆通用零件，與兩者皆無關聯。Humboldt Berlin 2019 至 Madrid UCM 2021
+    的重建於 10 月 31 日無法重新查核，因為舊版 wiki 與網際網路檔案館當時皆無法連線。</span></p>
   </div>
   <div id="eras-out"></div>
   <div class="note" style="margin-top:44px;max-width:860px">
@@ -795,13 +800,13 @@ const CLAIMS=[
   count:{h:1,c:30,k:"g"},
   t:T("A membrane that is barrier and product path at once","同時作為屏障與產物路徑的膜"),
   p:T("The 0.2 µm hollow fibre holds the culture in the lumen and carries the secreted enzyme out through the shell. One component, two jobs, both measured on the same running reactor.","0.2 µm 中空纖維將培養液留在管腔，並讓分泌的酵素自殼側帶出。同一零件、兩項功能，且皆於同一台運轉中的反應器上量得。"),
-  but:T("Toronto 2023 models a hollow fibre, but as a gas separator upstream of the reactor rather than as part of it. Concordia 2020's rotating-wall vessel exchanges across a membrane that is not holding a GMO in.","Toronto 2023 有中空纖維模型，但那是反應器上游的氣體分離器，而非反應器的一部分。Concordia 2020 的旋轉壁槽體雖透過膜交換，該膜並非用於圍阻基改生物。")},
+  but:T("Checked on 31 October: Toronto 2023\u2019s hollow fibre is a methane gas separator upstream of the reactor, modelled in MATLAB and never built — and neither was their fermenter, so nothing in that project is physical. Concordia 2020\u2019s rotating-wall vessel exchanges across a membrane that is not holding a GMO in.","10 月 31 日查核：Toronto 2023 的中空纖維是反應器上游的甲烷氣體分離器，以 MATLAB 模擬且從未建造——其發酵槽同樣未建，該專案沒有任何實體。Concordia 2020 的旋轉壁槽體雖透過膜交換，該膜並非用於圍阻基改生物。")},
 
  {n:T("2 of 30","三十之二"),tone:"yes",
   count:{h:2,c:30,k:"g"},
   t:T("Perfusion with cell retention","細胞截留灌流"),
   p:T("The culture is retained while medium is exchanged, so the reactor is not diluting its own biomass out. Twelve of the built devices in this set are batch or turbidostat stirred tanks, flat panels or airlift columns.","培養物被截留，同時進行培養基交換，因此反應器不會把自己的生物量稀釋掉。本表已建成裝置中有十二個是批次或恆濁的攪拌槽、平板或氣升柱。"),
-  but:T("KU Leuven's 2021 CellED names the same mode and an external retention device, and says plainly that it stayed a concept. Ours is the only one of the two that was built and run.","KU Leuven 2021 的 CellED 提出相同模式與外部截留裝置，並明言其始終停留在概念階段。兩者之中，只有我們的真正建成並運轉。")},
+  but:T("KU Leuven\u2019s 2021 CellED names the same mode, and its own figures are captioned \u201cpurely for concept purposes\u201d — nothing was built. Its retention device is a microfluidic droplet sorter, not a membrane, so the narrower claim survives the check: in this set we are the only team that retains cells with a membrane at all.","KU Leuven 2021 的 CellED 提出相同模式，其圖說自注為「純為概念說明」——未曾建造。其截留裝置是微流體液滴分選器而非膜，因此更窄的主張通過查核：本表中只有我們以膜截留細胞。")},
 
  {n:T("1 of 30","三十之一"),tone:"yes",
   count:{h:1,c:30,k:"g"},
@@ -1145,7 +1150,7 @@ const P=[
  mode:T("Four variants: ARC-L liquid CSTR, ARC-B biofilm, ARC-P photobioreactor, ARC-T regolith flowthrough","四種型式：ARC-L 液態連續攪拌槽、ARC-B 生物膜、ARC-P 光生物反應器、ARC-T 風化層流通"),
  sens:T("Light, aeration, pH and temperature managed across the coculture","跨共培養管理光、通氣、pH 與溫度"),
  ctrl:T("Wireless Bluetooth control with the ArcDash monitoring dashboard","無線藍牙控制，搭配 ArcDash 監控儀表板"),
- cost:T("Approximately US$300 in total components","元件總成本約 300 美元"),
+ cost:T("US$300 as the team state it; the itemised bill of materials on the same page totals US$285.15 for the base reactor and electronics, with the swappable modules priced separately at US$10.66, US$14.45 and US$24.09","團隊自述為 300 美元；同一頁的逐項物料表，基礎反應器與電子件合計 285.15 美元，可替換模組另計 10.66、14.45 與 24.09 美元"),
  repro:T("General operating manual covering assembly, autoclave configuration and operation; all module files and dimensions open-sourced","通用操作手冊涵蓋組裝、高壓滅菌設定與操作；所有模組檔案與尺寸開源"),
  run:T("Coculture of E. coli and Synechococcus for the PRoSPER perchlorate project","為 PRoSPER 過氯酸鹽專案共培養大腸桿菌與聚球藻"),
  perf:T("COB LED module delivers up to 37 klux at working distance against a 3,000 lux requirement; air pump aerates 1 L at 30–40 % PWM","COB LED 模組於工作距離提供最高 37 klux，需求為 3,000 lux；氣泵於 30–40% PWM 即可滿足 1 L 通氣"),
@@ -1280,7 +1285,7 @@ const P=[
  type:T("Benchtop optogenetic bioreactor: fermentation chamber with internal LEDs, peristaltic pump and a combined OD-plus-fluorescence sensor in a recirculating loop","桌上型光遺傳生物反應器：內建 LED 的發酵槽、蠕動幫浦，以及 OD 加螢光二合一感測器，構成循環迴路"),
  vol:T("500 mL working volume","工作體積 500 mL"),
  mode:T("Batch with a closed recirculating measurement loop; samples return to the vessel rather than going to waste","批次操作搭配封閉循環量測迴路；樣品回流至槽體而非排為廢液"),
- sens:T("In-house 2-in-1 sensor reading OD₆₀₀ and RFP fluorescence, both calibrated against a BioTek H1 microplate reader","自製二合一感測器量測 OD₆₀₀ 與 RFP 螢光，兩者皆對照 BioTek H1 微量盤讀取儀校正"),
+ sens:T("One in-house 2-in-1 sensor doing both jobs with a single TSL235R light-to-frequency converter — a 600 nm LED for OD, a 535 nm LED for fluorescence excitation, and a filter peaking at 600 nm, which is where RFP emits. The RFP threshold of 900 is defined against a BioTek H1 plate reader; the calibration curves themselves were plotted against a NanoDrop, twelve samples each","單一自製二合一感測器以一顆 TSL235R 光轉頻元件同時完成兩項量測——600 nm LED 測 OD、535 nm LED 激發螢光，搭配峰值 600 nm 的濾片，而 RFP 的發射波長正是 600 nm。RFP 門檻值 900 係對照 BioTek H1 盤式讀儀定義；校正曲線本身則對照 NanoDrop 繪製，各十二個樣品"),
  ctrl:T("Arduino per subsystem with a PC in the loop; the computer switches the chamber LEDs on the sensor reading","各子系統各配一片 Arduino，並由電腦納入迴路；電腦依感測讀值切換槽內 LED"),
  cost:T("—","—"),
  repro:T("A dedicated page per component — pump, 2-in-1 sensor, fermentation chamber — with setup and programming instructions; no single BOM with prices","每個部件各有專屬頁面——幫浦、二合一感測器、發酵槽——並附設定與程式說明；無含價格的單一物料表"),
@@ -1393,12 +1398,12 @@ const P=[
  sens:T("Laser through the culture onto a photoresistor, with a calibration experiment run to find the OD at mid-log growth; the pump's on-state is logged as a −399 marker so it is visible in the trace","雷射穿過培養液照射光敏電阻，並以校正實驗找出對數中期的 OD；幫浦開啟狀態以 −399 標記記錄，使其在曲線上可見"),
  ctrl:T("Arduino on a custom PCB with a rotary encoder and LCD menu, so the pump runs without touching code; all stir motors ganged to one driver and all LEDs on one NeoPixel data line","Arduino 搭配自製 PCB、旋轉編碼器與 LCD 選單，使幫浦無需改程式即可運轉；所有攪拌馬達共用一組驅動，所有 LED 共用一條 NeoPixel 資料線"),
  cost:T("US$124 for the whole system, against a self-set US$200 ceiling","整套系統 124 美元，對照自訂的 200 美元上限"),
- repro:T("Bill of materials and a construction-and-usage document as PDFs, an interactive Cadasio assembly model, editable Onshape CAD, annotated code on GitHub, and a simplified lite version for lower cost","物料表與組裝使用說明皆為 PDF，另有互動式 Cadasio 組裝模型、可編輯的 Onshape CAD、GitHub 上附註解的程式碼，以及成本更低的簡化精簡版"),
+ repro:T("Checked link by link on 31 October 2026: the bill of materials PDF, the interactive Cadasio assembly model, the TinkerCad circuit, the PCB schematic, the Gerbers, the part data sheets and the annotated GitHub firmware are all public. Two things the earlier version of this page credited are not: the Onshape CAD redirects to a sign-in page, and there is no construction PDF — the only PDF is the bill of materials","於 2026 年 10 月 31 日逐一連結查核：物料表 PDF、Cadasio 互動組裝模型、TinkerCad 電路、PCB 電路圖、Gerber 檔、零件規格書與附註解的 GitHub 韌體均為公開。本頁前一版所記的兩項則否：Onshape CAD 會導向登入頁，且並無組裝 PDF——唯一的 PDF 是物料表"),
  run:T("Nine dated runs from 3 June to 23 September 2024, including a 13.7 h baseline with no pumps, a water-only control, and the ones that failed on a damaged photoresistor and on media running out overnight","2024 年 6 月 3 日至 9 月 23 日共九次標註日期的運轉，含 13.7 小時無幫浦基線、純水對照，以及因光敏電阻損壞與夜間培養基耗盡而失敗的幾次"),
  perf:T("US$124 against the US$200 requirement, and the set point held through repeated dilution cycles once it had been recalculated","124 美元對照 200 美元需求；設定點在重新計算後，於多次稀釋循環中確實維持"),
  scale:T("Framed against eVOLVER as the commercial alternative, and against a cited two-year figure for developing a PACE workflow from scratch","以 eVOLVER 作為商用替代品對照，並引用從零開發 PACE 流程需時兩年的數據"),
  user:T("Two rounds with ASU DIYbio undergraduates running a mock experiment on tap water. Round one produced fixes to the code-upload step, rotary-encoder instructions, terminology and colour coding, and a suggestion to use Viton tubing; round two produced pipette labelling and step consolidation. Dr. Takahashi, Dr. Badran and the Bartelle lab advised on setup time and biofilm","兩輪測試，由 ASU DIYbio 大學生以自來水進行模擬實驗。第一輪產生程式上傳步驟、旋轉編碼器說明、術語與色彩標示的修正，以及改用 Viton 管材的建議；第二輪產生吸管標示與步驟合併。Dr. Takahashi、Dr. Badran 與 Bartelle 實驗室就架設時間與生物膜提供建議"),
- award:T("Not verified here. On aspects 2 and 4 this is the strongest record in the set","本文未查證。就第 2 與第 4 面向而言，這是本表中最強的記錄")},
+ award:T("Neither a Best Hardware winner nor a nominee, per the iGEM awards API — which is itself worth noting, because on aspects 2 and 4 this is the strongest record in the set","依 iGEM 獎項 API，本隊既非最佳硬體獎得主亦非入圍者——這點本身值得一記，因為在第 2 與第 4 面向上，這是本表中最紮實的記錄")},
 
 {id:"ouc2025",us:0,tier:2,name:"OUC-China",yr:"2025",sec:T("Undergrad · CHN","大學部 · 中國"),
  url:"https://2025.igem.wiki/ouc-china/hardware",sc:{a1:3,a2:0,a3:2,a4:2,phys:4},jx:-.16,jy:-.2,
