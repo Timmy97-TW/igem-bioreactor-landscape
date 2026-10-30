@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A 1 L reactor in a 200,000 L industry · GEMS-Taiwan</title>
+<meta name="description" content="Where the ReLEAF perfusion bioreactor stands against the commercial bioreactor industry and its current trends: perfusion adoption, cell-retention technology, membrane area, cost per litre, closed control loops, run duration and what a 0.2 µm barrier is accepted for." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23fff'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%231d1d1f' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3.4' fill='%230071e3'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="assets/app.css" />
+<style>
+/* page-local: the scale comparison and the price ladder */
+.scalewrap{display:grid;gap:clamp(24px,4vw,44px);grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  align-items:end;margin-top:40px}
+.scale{text-align:center}
+.scale .box{background:#fff;border-radius:4px;margin:0 auto 18px;position:relative;
+  box-shadow:0 1px 3px rgba(0,0,0,.08),inset 0 0 0 1px rgba(0,0,0,.07)}
+.scale .box.us{background:var(--green);box-shadow:0 1px 3px rgba(29,122,62,.3)}
+.scale b{display:block;font-size:22px;font-weight:600;letter-spacing:-.025em}
+.scale span{display:block;font-size:13px;color:var(--neutral);margin-top:7px;line-height:1.45}
+.ladder{margin-top:32px}
+.lrow{display:grid;grid-template-columns:minmax(150px,.34fr) minmax(0,1fr) 108px;gap:18px;
+  align-items:center;padding:13px 0;border-bottom:1px solid var(--soft)}
+.lrow:last-child{border-bottom:0}
+.lrow .nm{font-size:14.5px;line-height:1.35}
+.lrow .nm small{display:block;color:var(--neutral);font-size:12.5px;margin-top:3px}
+.lrow .tr{height:9px;border-radius:5px;background:var(--soft);overflow:hidden}
+.lrow .fl{height:100%;border-radius:5px;background:var(--neutral)}
+.lrow.us .fl{background:var(--green)}
+.lrow.us .nm{font-weight:600;color:var(--us)}
+.lrow .pv{font:500 14px/1 var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:640px){.lrow{grid-template-columns:1fr 70px;gap:10px}.lrow .tr{grid-column:1/-1;order:3}}
+</style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="in">
+    <a class="brand" href="index.html">iGEM Bioreactor Landscape <span>· GEMS-Taiwan</span></a>
+    <nav id="toc" aria-label="Contents">
+      <a href="index.html">&larr; <span class="en">The iGEM audit</span><span class="zh">iGEM 審視</span></a>
+      <a href="#direction"><span class="en">Direction</span><span class="zh">趨勢</span></a>
+      <a href="#retention"><span class="en">Retention</span><span class="zh">截留</span></a>
+      <a href="#scale"><span class="en">Scale</span><span class="zh">尺度</span></a>
+      <a href="#price"><span class="en">Price</span><span class="zh">價格</span></a>
+      <a href="#sidebyside"><span class="en">Side by side</span><span class="zh">逐項對照</span></a>
+      <a href="#barrier"><span class="en">The barrier</span><span class="zh">屏障</span></a>
+      <a href="#farm"><span class="en">On the farm</span><span class="zh">農場端</span></a>
+      <a href="#verdict"><span class="en">Verdict</span><span class="zh">結論</span></a>
+    </nav>
+    <div class="seg" role="group" aria-label="Language">
+      <button id="btn-en" aria-pressed="true">English</button>
+      <button id="btn-zh" aria-pressed="false">中文</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<section class="hero">
+  <div class="eyebrow">GEMS-TAIWAN · RELEAF · INDUSTRY STANDING</div>
+  <h1>
+    <span class="en">A one-litre reactor, measured against a two-hundred-thousand-litre industry.</span>
+    <span class="zh">一台一公升的反應器，對照一個二十萬公升的產業。</span>
+  </h1>
+  <p class="lede">
+    <span class="en">On architecture, ReLEAF is an instance of exactly where commercial bioprocessing is heading.
+    On everything that architecture is judged by at scale, it is a student device.
+    <b>Both sentences are true, and this page keeps them apart.</b></span>
+    <span class="zh">就架構而言，ReLEAF 正是商業生物製程前進方向的一個實例；
+    但就這套架構在量產規模上被評判的每一項指標而言，它是一台學生裝置。
+    <b>兩句話都成立，本頁把它們分開陳述。</b></span>
+  </p>
+
+  <figure class="hero-shot">
+    <img src="img/releaf_loop.webp" width="1000" height="718"
+         alt="The ReLEAF flow loop: culture circulates through the lumen side of a hollow-fibre membrane and back to a stirred vessel; the product is drawn off the shell side." />
+    <figcaption>
+      <span class="en">Single-use perfusion with full cell retention on a hollow fibre — the architecture
+      ICH&nbsp;Q13 Annex&nbsp;III describes, built at one litre.</span>
+      <span class="zh">以中空纖維達成完全細胞截留的拋棄式灌流——即 ICH&nbsp;Q13 附錄 III 所描述的架構，於一公升尺度實作。</span>
+    </figcaption>
+  </figure>
+
+  <div class="hcount">
+    <div><b>42.3%</b><span class="en">of facilities evaluating perfusion in 2026</span><span class="zh">2026 年評估灌流製程的廠區比例</span></div>
+    <div><b>0.95%</b><span class="en">of a Terumo cartridge's membrane area</span><span class="zh">相當於 Terumo 模組膜面積的比例</span></div>
+    <div><b>1</b><span class="en">control loop closed, against six on a benchtop</span><span class="zh">閉合的控制迴路數，桌上型機種為六個</span></div>
+    <div><b>116 h</b><span class="en">longest closed-loop run, against 696 h</span><span class="zh">最長閉迴路運轉時數，對照 696 小時</span></div>
+    <div><b>US$1,023</b><span class="en">per litre of working volume</span><span class="zh">每公升工作體積成本</span></div>
+  </div>
+
+  <p class="stamp">
+    <span class="en">Built 30 October 2026, extending the team's industry audit of 3 September 2026. Every figure
+    carries its source and the date it was gathered. Where no public figure exists, this page says so.</span>
+    <span class="zh">本頁建於 2026 年 10 月 30 日，延伸自團隊 2026 年 9 月 3 日的產業審視。
+    每項數字皆附來源與取得日期；若無公開數字，本頁即如實說明。</span>
+  </p>
+</section>
+
+<!-- ============================================================ 01 -->
+<section id="direction" class="tinted ruled">
+  <div class="shead">
+    <span class="snum">01</span>
+    <h2><span class="en">The industry is walking toward this architecture</span><span class="zh">產業正朝這套架構前進</span></h2>
+    <p><span class="en">Perfusion with cell retention stopped being exotic somewhere in the last decade. The
+    share of facilities that will not even consider it has fallen from about a third to roughly one in nine.
+    That is the one axis on which a student device and a commercial plant are doing the same thing.</span>
+    <span class="zh">細胞截留灌流在過去十年間已不再是冷門選項。連考慮都不考慮的廠區比例，已由約三分之一降至約九分之一。
+    這是學生裝置與量產廠唯一在做同一件事的面向。</span></p>
+  </div>
+  <div class="stats">
+    <div class="stat rv"><b>42.3<small>%</small></b><span class="en">of facilities evaluating perfusion, 2026</span><span class="zh">2026 年評估灌流的廠區比例</span></div>
+    <div class="stat rv"><b>11.4<small>%</small></b><span class="en">not considering it at all, down from 34% in 2016</span><span class="zh">完全不考慮者，由 2016 年的 34% 降至此</span></div>
+    <div class="stat rv"><b>65.8<small>%</small></b><span class="en">single-use perfusion equipment, from 33.1% a decade ago</span><span class="zh">拋棄式灌流設備比例，十年前為 33.1%</span></div>
+    <div class="stat rv"><b>2.29</b><span class="en">g/L/day perfusion, against 0.39–0.49 fed-batch</span><span class="zh">灌流 g/L/日，饋料批次為 0.39–0.49</span></div>
+  </div>
+  <div class="note good">
+    <h4><span class="en">And the regulator has already written it down</span><span class="zh">而主管機關已將其明文化</span></h4>
+    <p><span class="en">ICH&nbsp;Q13 Annex&nbsp;III describes continuous upstream processing with cell retention —
+    the architecture of this reactor — and seventeen continuous-manufacturing approvals were on record by May 2026.
+    The thing ReLEAF built is not a curiosity. What ReLEAF has not got is any of the evidence that
+    those approvals rest on.</span>
+    <span class="zh">ICH&nbsp;Q13 附錄 III 已載明具細胞截留的連續上游製程——即本反應器的架構——
+    截至 2026 年 5 月，已有十七項連續製造核准案在案。ReLEAF 所建構的並非奇想；
+    ReLEAF 欠缺的，是那些核准案所仰賴的全部證據。</span></p>
+  </div>
+</section>
+
+<!-- ============================================================ 02 -->
+<section id="retention" class="ruled">
+  <div class="shead">
+    <span class="snum">02</span>
+    <h2><span class="en">Five ways to keep the cells, and the one we chose</span><span class="zh">留住細胞的五種方法，以及我們選的那一種</span></h2>
+    <p><span class="en">Every perfusion reactor needs a device that lets medium leave while biomass stays. The
+    industry has five, and they are not interchangeable. The one we built has a known, published weakness —
+    and the single most interesting number on this page is that our own device does not show it.</span>
+    <span class="zh">每一台灌流反應器都需要一個「讓培養基離開、讓生物量留下」的裝置。產業共有五種，彼此不可互換。
+    我們所建的這一種有一項已知且見諸文獻的弱點——而本頁最值得一看的數字，正是我方裝置並未出現該弱點。</span></p>
+  </div>
+
+  <div class="tscroll">
+    <table>
+      <thead><tr>
+        <th><span class="en">Retention technology</span><span class="zh">截留技術</span></th>
+        <th><span class="en">How far it has been pushed</span><span class="zh">已達到的程度</span></th>
+        <th><span class="en">Named suppliers</span><span class="zh">具名供應商</span></th>
+        <th><span class="en">The catch</span><span class="zh">代價</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>ATF</b> <span class="en">alternating tangential flow</span><span class="zh">交替切向流</span></td>
+          <td class="num">1.3 × 10<sup>8</sup> <span class="en">cells/mL</span><span class="zh">細胞/mL</span></td>
+          <td>Repligen XCell ATF, TFDF</td>
+          <td><span class="en">Best in class on retention — and it lost no antibody in the comparison study</span><span class="zh">截留表現最佳，且於比較研究中未損失抗體</span></td></tr>
+        <tr class="us"><td><b><span class="en">Hollow-fibre TFF</span><span class="zh">中空纖維切向流</span></b> <span class="en">— ours</span><span class="zh">——我方採用</span></td>
+          <td class="num">1.0 × 10<sup>8</sup> <span class="en">cells/mL in industry</span><span class="zh">細胞/mL（產業值）</span></td>
+          <td>Repligen KrosFlo, Cytiva, FiberCell, Terumo, CerCell, Cobetter</td>
+          <td><span class="en"><b>Up to 50% of the product retained</b> in the same CHO study. Our ELISA reads 10.7 µg/mL in the lumen against 10.5 on the shell side</span><span class="zh">同一 CHO 研究中<b>最高有 50% 產物被截留</b>。我方 ELISA 測得管腔 10.7 µg/mL、殼側 10.5</span></td></tr>
+        <tr><td><b><span class="en">Acoustic settler</span><span class="zh">聲波沉降器</span></b></td>
+          <td class="num">—</td><td><span class="na"><span class="en">none surfaced</span><span class="zh">未查得</span></span></td>
+          <td><span class="en">Beat ATF on volumetric virus productivity for influenza</span><span class="zh">於流感病毒體積產率上優於 ATF</span></td></tr>
+        <tr><td><b><span class="en">Inclined settler</span><span class="zh">斜板沉降器</span></b></td>
+          <td class="num">3 × 10<sup>7</sup> <span class="en">cells/mL</span><span class="zh">細胞/mL</span></td>
+          <td><span class="na"><span class="en">none surfaced</span><span class="zh">未查得</span></span></td>
+          <td><span class="en">Gravity only, so it adds no shear and no membrane</span><span class="zh">純重力，不增加剪切、亦無膜材</span></td></tr>
+        <tr><td><b><span class="en">Centrifugal</span><span class="zh">離心式</span></b></td>
+          <td class="num">3 × 10<sup>7</sup> <span class="en">cells/mL</span><span class="zh">細胞/mL</span></td>
+          <td><span class="na"><span class="en">none surfaced</span><span class="zh">未查得</span></span></td>
+          <td><span class="en">Mechanically complex; no single-use path</span><span class="zh">機械複雜，無拋棄式方案</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="split" style="margin-top:50px">
+    <figure class="fig">
+      <img src="img/releaf_elisa.webp" width="1200" height="520"
+           alt="ELISA standard curve for ACC deaminase, with the measured samples marked above the top standard." />
+      <figcaption><span class="en"><b>Read this before believing the number above.</b> Every sample sits above
+      the top standard of the assay, so all the concentrations quoted are extrapolated, and the host-strain
+      control produced signal too.</span>
+      <span class="zh"><b>請先看這張圖，再相信上面的數字。</b>每個樣品都落在分析法最高標準品之上，
+      因此所引用的濃度全為外插值，且宿主菌株對照組同樣產生訊號。</span></figcaption>
+    </figure>
+    <div>
+      <h3><span class="en">What a 2% difference does and does not mean</span><span class="zh">2% 的差異代表什麼、不代表什麼</span></h3>
+      <p><span class="en">The published weakness of hollow-fibre TFF is that the membrane can hold back the
+      product as well as the cells — up to half of a monoclonal antibody in the study that measured it. A
+      37 kDa enzyme through a 0.2 µm pore is a far easier problem than a 150 kDa antibody, so finding almost no
+      difference between the two sides is what the physics predicts.</span>
+      <span class="zh">中空纖維切向流已見諸文獻的弱點，是膜不僅截留細胞，也可能截留產物——
+      在量測到此現象的研究中，單株抗體最高有一半被截留。37 kDa 的酵素通過 0.2 µm 孔徑，
+      遠比 150 kDa 抗體容易，因此兩側幾乎無差異，正是物理所預期的結果。</span></p>
+      <p><span class="en">So this is not a result that beats industry. It is a result that <b>confirms the
+      module was chosen for the right duty</b>, which is a smaller and more defensible claim, and the one we make.
+      It rests on a single run with no replicate, and both numbers are extrapolated.</span>
+      <span class="zh">因此這並非勝過產業的成果，而是<b>證實模組選型符合其任務</b>的成果——
+      一個更小、也更站得住的主張，亦即我們所採取的立場。該結論僅來自單次運轉、無重複，且兩個數值皆為外插值。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 03 -->
+<section id="scale" class="tinted ruled">
+  <div class="shead">
+    <span class="snum">03</span>
+    <h2><span class="en">The same architecture, two orders of magnitude apart</span><span class="zh">同一套架構，相差兩個數量級</span></h2>
+    <p><span class="en">A Terumo Quantum Flex and the ReLEAF reactor are the same idea: bacteria or cells held
+    inside hollow fibres while medium and product move across the wall. Here is the distance between them,
+    on the only dimension that sets how much a hollow-fibre device can make.</span>
+    <span class="zh">Terumo Quantum Flex 與 ReLEAF 反應器是同一個想法：細胞被留在中空纖維內部，
+    培養基與產物則穿過纖維壁。以下是兩者之間的差距，所依據的是決定中空纖維裝置產能上限的唯一尺度。</span></p>
+  </div>
+
+  <div class="scalewrap">
+    <div class="scale rv">
+      <div class="box" style="width:100%;max-width:300px;aspect-ratio:1/1"></div>
+      <b>2.1 m²</b>
+      <span class="en">Terumo Quantum Flex<br>~11,500 fibres, ~200 µm bore<br>3.1 × 10<sup>7</sup> cells/mL</span>
+      <span class="zh">Terumo Quantum Flex<br>約 11,500 根纖維、內徑約 200 µm<br>3.1 × 10<sup>7</sup> 細胞/mL</span>
+    </div>
+    <div class="scale rv">
+      <div class="box" style="width:100%;max-width:226px;aspect-ratio:1/1"></div>
+      <b>1.2 m²</b>
+      <span class="en">FiberCell, largest cartridge<br>US$526–937 per cartridge<br>5 × 10<sup>10</sup> cells</span>
+      <span class="zh">FiberCell 最大型模組<br>每組 526–937 美元<br>5 × 10<sup>10</sup> 細胞</span>
+    </div>
+    <div class="scale rv">
+      <div class="box us" style="width:100%;max-width:30px;aspect-ratio:1/1"></div>
+      <b>0.02 m²</b>
+      <span class="en"><b>ReLEAF</b><br>11 fibres, 1.0 mm bore<br>cells/mL never counted</span>
+      <span class="zh"><b>ReLEAF</b><br>11 根纖維、內徑 1.0 mm<br>從未計數細胞/mL</span>
+    </div>
+  </div>
+
+  <div class="note warn" style="max-width:900px">
+    <h4><span class="en">Our fibres are five times wider and there are a thousand times fewer of them</span><span class="zh">我們的纖維粗五倍，數量少一千倍</span></h4>
+    <p><span class="en">That is not a flaw; it is what makes the device buildable by a school team and cleanable
+    by hand. But it fixes the ceiling. The module was chosen for its fibre geometry rather than its duty, and the
+    team says so: the membrane is oversized against its own computed fouling threshold by more than an order of
+    magnitude. Cell density was never measured in cells per millilitre at all, so the row above has no ReLEAF
+    entry — OD₆₀₀ 2.71 is a different unit and cannot be converted honestly.</span>
+    <span class="zh">這並非缺陷，而是裝置得以由高中團隊自建、並以手工清潔的原因；但它也鎖死了上限。
+    模組是依纖維幾何而非依任務選定的，團隊亦如此載明：以其自行計算的積垢閾值衡量，該膜的尺寸超出一個數量級以上。
+    細胞密度從未以每毫升細胞數量測，故上表無 ReLEAF 欄位——OD₆₀₀ 2.71 是另一種單位，無法誠實換算。</span></p>
+  </div>
+</section>
+
+<!-- ============================================================ 04 -->
+<section id="price" class="ruled">
+  <div class="shead">
+    <span class="snum">04</span>
+    <h2><span class="en">What a litre of working volume costs</span><span class="zh">一公升工作體積要花多少錢</span></h2>
+    <p><span class="en">This is the one comparison where a published student bill of materials has something to
+    say, because <b>no commercial vendor publishes a price at all</b>. Every new-system figure in this industry is
+    quote-only; the numbers below are dated resale asks, open-hardware list prices, and facility-scale cost
+    bands. ReLEAF is cheaper per litre than any benchtop system here — and hopelessly expensive against scale.</span>
+    <span class="zh">這是唯一一項「公開的學生物料表」能說上話的比較，因為<b>商業供應商根本不公布價格</b>。
+    本產業所有新機數字都只能詢價；下列數字為標註日期的二手報價、開源硬體標價，以及廠區規模的成本區間。
+    ReLEAF 每公升成本低於此處任何一台桌上型系統——但對照量產規模則貴得無望。</span></p>
+  </div>
+
+  <div class="ladder" id="ladder"></div>
+
+  <div class="two" style="margin-top:44px">
+    <div class="pan">
+      <h3><span class="en">Where the price list actually is</span><span class="zh">價格清單實際上在哪裡</span></h3>
+      <p style="font-size:15px;color:var(--muted);line-height:1.58;margin:0 0 16px">
+        <span class="en">Dated resale asks and open-hardware list prices, checked 30 October 2026. A blank is a
+        real blank: Getinge Applikon, Solaris and eVOLVER publish no price, Bioreactor.app is gone, and
+        Flaskworks was absorbed into Northwest Biotherapeutics in 2020 and cannot be bought.</span>
+        <span class="zh">標註日期的二手報價與開源硬體標價，查核於 2026 年 10 月 30 日。空白即真的空白：
+        Getinge Applikon、Solaris 與 eVOLVER 均未公布價格，Bioreactor.app 已關站，
+        Flaskworks 則於 2020 年併入 Northwest Biotherapeutics，無法購得。</span></p>
+      <div class="kv">
+        <div><span class="k">Eppendorf DASbox, 4-fold</span><span class="v">US$6,995 <em>· 60–250 mL each</em></span></div>
+        <div><span class="k">Eppendorf DASGIP MP8-PHPO</span><span class="v">US$8,750</span></div>
+        <div><span class="k">INFORS Minifors 2</span><span class="v">US$15,000 <em>· 0.4–1.2 L</em></span></div>
+        <div><span class="k">Applikon miniBio 500</span><span class="v">US$18,000</span></div>
+        <div><span class="k">Sartorius Ambr 250, 8-vessel</span><span class="v">US$69,995</span></div>
+        <div><span class="k">Sartorius Ambr 250 HT, 12-way</span><span class="v">US$150,000–175,000</span></div>
+        <div><span class="k">Chi.Bio</span><span class="v">US$990 <em>· ~US$790 each at five</em></span></div>
+        <div><span class="k">Pioreactor, 20 mL</span><span class="v">US$329–379</span></div>
+        <div><span class="k">OpenEvo turbidostat</span><span class="v">~US$300 <em>· 2026 preprint</em></span></div>
+        <div><span class="k">FiberCell cartridge</span><span class="v">US$526–937 <em>· 80 cm² to 1.2 m²</em></span></div>
+        <div><span class="k"><b>ReLEAF HFM-01</b></span><span class="v"><b>US$1,022.67</b> <em>· 1 L, photometer included</em></span></div>
+      </div>
+    </div>
+    <div class="pan">
+      <h3><span class="en">Three cost figures, three scopes</span><span class="zh">三個成本數字，三種涵蓋範圍</span></h3>
+      <p style="font-size:15px;color:var(--muted);line-height:1.58"><span class="en">The team's own pages carry
+      three numbers that are not the same number, and anyone quoting one should say which.</span>
+      <span class="zh">團隊自己的頁面載有三個並不相同的數字，引用者應說明所引為何者。</span></p>
+      <div class="kv">
+        <div><span class="k">US$1,022.67</span><span class="v"><span class="en">the bioreactor page's own list, photometer included — <b>this page uses this one</b></span><span class="zh">生物反應器頁自列清單，已含光度計——<b>本頁採用此數</b></span></span></div>
+        <div><span class="k">NT$16,450</span><span class="v"><span class="en">the Contribution page, parts only</span><span class="zh">貢獻頁，僅零件</span></span></div>
+        <div><span class="k">NT$30,450</span><span class="v"><span class="en">the Contribution page, with the reference spectrophotometer</span><span class="zh">貢獻頁，含對照分光光度計</span></span></div>
+      </div>
+      <p style="font-size:14.5px;color:var(--muted);line-height:1.58;margin-top:18px">
+        <span class="en">None of the three includes the controller, its mainboard, the dosing pump or the stir
+        bar. The team says so on the page. Add them and the true figure rises.</span>
+        <span class="zh">三者皆未納入控制器、其主板、投藥幫浦與攪拌子，團隊已於頁面載明。計入後實際數字會更高。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 05 -->
+<section id="sidebyside" class="tinted ruled">
+  <div class="shead">
+    <span class="snum">05</span>
+    <h2><span class="en">Side by side, with nothing left out</span><span class="zh">逐項對照，不作保留</span></h2>
+    <p><span class="en">Fourteen axes. ReLEAF is in the same conversation on three of them, wins outright on two,
+    and loses — in some cases by two orders of magnitude — on the rest.</span>
+    <span class="zh">十四個面向。ReLEAF 在其中三項與產業處於同一層級，兩項完勝，
+    其餘則落後，部分差距達兩個數量級。</span></p>
+  </div>
+  <div class="tscroll">
+    <table id="cmp"><thead><tr>
+      <th><span class="en">Axis</span><span class="zh">面向</span></th>
+      <th><span class="en">ReLEAF</span><span class="zh">ReLEAF</span></th>
+      <th><span class="en">Industry</span><span class="zh">產業</span></th>
+      <th><span class="en">Verdict</span><span class="zh">判定</span></th>
+    </tr></thead><tbody id="cmp-out"></tbody></table>
+  </div>
+</section>
+
+<!-- ============================================================ 06 -->
+<section id="barrier" class="ruled">
+  <div class="shead">
+    <span class="snum">06</span>
+    <h2><span class="en">What a 0.2 µm barrier is, and what it is not</span><span class="zh">0.2 µm 屏障是什麼，又不是什麼</span></h2>
+    <p><span class="en">The containment claim is the heart of this project, so it deserves the standard that
+    governs it rather than our own enthusiasm.</span>
+    <span class="zh">圍阻主張是本專案的核心，因此它應當面對規範它的標準，而非我們自己的熱忱。</span></p>
+  </div>
+  <div class="split">
+    <div>
+      <div class="kv">
+        <div><span class="k">ASTM F838-20</span><span class="v"><span class="en">The qualifying test for a sterilising-grade 0.2 µm filter: <i>Brevundimonas diminuta</i> ATCC 19146 at 10<sup>7</sup> organisms per cm² of membrane.</span><span class="zh">0.2 µm 滅菌級濾膜的認定試驗：<i>Brevundimonas diminuta</i> ATCC 19146，每平方公分膜 10<sup>7</sup> 個菌體。</span></span></div>
+        <div><span class="k"><span class="en">What the standard itself says</span><span class="zh">標準本身的說明</span></span><span class="v"><span class="en">That other species <b>may be more penetrating</b>, that it gives <b>no assurance of complete retention</b>, and that it is <b>not</b> product- or process-specific validation.</span><span class="zh">其他菌種<b>可能更具穿透性</b>，該試驗<b>不保證完全截留</b>，且<b>不構成</b>針對特定產品或製程的驗證。</span></span></div>
+        <div><span class="k"><span class="en">So it covers</span><span class="zh">因此涵蓋</span></span><span class="v"><span class="en">Vegetative bacteria of roughly that size. <i>B. subtilis</i> at 0.8 × 3 µm is comfortably inside.</span><span class="zh">約略該尺寸的營養型細菌。<i>枯草桿菌</i>為 0.8 × 3 µm，明顯在範圍內。</span></span></div>
+        <div><span class="k"><span class="en">And does not cover</span><span class="zh">不涵蓋</span></span><span class="v"><span class="en">Viruses, phage, free DNA, and the 20–200 nm outer-membrane vesicles the team's own Results page names as passing.</span><span class="zh">病毒、噬菌體、游離 DNA，以及團隊自己的成果頁載明會通過的 20–200 nm 外膜囊泡。</span></span></div>
+        <div><span class="k">2009/41/EC</span><span class="v"><span class="en">Under the EU contained-use directive the <b>user's own risk assessment</b> sets the class, Class 1 is negligible risk, and <b>doubt resolves to the stricter measures</b>.</span><span class="zh">依歐盟封閉性使用指令，<b>使用者自身的風險評估</b>決定等級，第 1 級為可忽略風險，且<b>有疑義時從嚴</b>。</span></span></div>
+        <div><span class="k"><span class="en">What does not exist</span><span class="zh">目前不存在者</span></span><span class="v"><em><span class="en">Any standard covering an on-farm GMO fermentation unit as a product category — in the EU, in the US or in Taiwan.</span><span class="zh">任何將農場端基改發酵裝置視為一類產品的標準——歐盟、美國與臺灣皆無。</span></em></span></div>
+      </div>
+    </div>
+    <figure class="fig">
+      <img src="img/releaf_containment.webp" width="867" height="430"
+           alt="Two LB agar plates after 24 hours at 37 °C: the lumen-side plate carries colonies, the shell-side plate is clean." />
+      <figcaption><span class="en"><b>Lumen left, shell right, 24 h at 37 °C.</b> This is what the team has:
+      two platings from two different runs, both clean on the shell side. It is real evidence and it is not a
+      retention validation — no log reduction was measured, and the team says so.</span>
+      <span class="zh"><b>左為管腔側、右為殼側，37 °C 培養 24 小時。</b>這就是團隊手上的證據：
+      取自兩次不同運轉的兩次平盤，殼側皆乾淨。這是真實證據，但並非截留驗證——
+      未量測對數削減值，團隊亦如此載明。</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================================================ 07 -->
+<section id="farm" class="tinted ruled">
+  <div class="shead">
+    <span class="snum">07</span>
+    <h2><span class="en">On-farm production already exists. Not with an engineered organism.</span><span class="zh">農場端生產早已存在，但不是用工程化菌株</span></h2>
+    <p><span class="en">The market ReLEAF aims at has a working commercial precedent, in Brazil, at a scale that
+    dwarfs anything in synthetic biology. It is also the clearest statement of what the regulatory ceiling
+    currently is.</span>
+    <span class="zh">ReLEAF 所瞄準的市場，在巴西已有實際運作的商業先例，其規模遠超合成生物學領域的任何案例。
+    它同時也最清楚地呈現了目前的法規天花板所在。</span></p>
+  </div>
+  <div class="syscmp">
+    <article class="rv"><span class="tag">SOLUBIO · BR</span>
+      <h4><span class="en">300+ on-farm biofactories</span><span class="zh">300 座以上農場端生物工廠</span></h4>
+      <p><span class="en">Covering 2.5–2.7 million hectares on take-or-pay contracts of five years minimum,
+      R$168.7 m net revenue. Neither tank volume nor unit price is published anywhere — the single most useful
+      number missing from this page.</span>
+      <span class="zh">覆蓋 250–270 萬公頃，採至少五年期的照付不議合約，淨營收 1.687 億巴西幣。
+      槽體容積與單機價格均未公布——這是本頁最需要卻付之闕如的數字。</span></p></article>
+    <article class="rv"><span class="tag">LEI 15.070/2024</span>
+      <h4><span class="en">Own use only, and no sale</span><span class="zh">僅限自用，不得販售</span></h4>
+      <p><span class="en">Brazil's law permits on-farm production for the farm's own use, prohibits selling what
+      you make, requires strains from an accredited collection and five years of records. The business model
+      ReLEAF describes would have to fit inside that shape.</span>
+      <span class="zh">巴西法規允許農場為自用而生產，禁止販售自製產品，要求菌株須來自認證菌種庫並保存五年記錄。
+      ReLEAF 所描述的商業模式必須納入此一框架之內。</span></p></article>
+    <article class="rv"><span class="tag">EMBRAPA</span>
+      <h4><span class="en">18 of 18 contaminated</span><span class="zh">18 件中 18 件遭污染</span></h4>
+      <p><span class="en">Embrapa's survey of on-farm product found every sample contaminated and no
+      <i>Bradyrhizobium</i> in six that claimed it. Quality control, not strain performance, is what the
+      literature names as the obstacle.</span>
+      <span class="zh">Embrapa 對農場端產品的調查發現所有樣品均遭污染，且六件宣稱含<i>慢生根瘤菌</i>者實際皆無。
+      文獻所指出的障礙是品質管制，而非菌株效能。</span></p></article>
+    <article class="rv"><span class="tag">BIOSPHERE · US</span>
+      <h4><span class="en">US$9 m, container scale</span><span class="zh">900 萬美元，貨櫃規模</span></h4>
+      <p><span class="en">A DEVCOM award in May 2026 for a container-scale point-of-use reactor. Specifications
+      are not published, and this is on a secondary source only.</span>
+      <span class="zh">2026 年 5 月獲美國陸軍 DEVCOM 補助，發展貨櫃規模的使用點反應器。
+      規格未公布，且本條僅有二手來源。</span></p></article>
+  </div>
+  <div class="note warn" style="max-width:900px">
+    <h4><span class="en">The gap ReLEAF is actually standing in</span><span class="zh">ReLEAF 實際站立的空缺</span></h4>
+    <p><span class="en">There is no commercial precedent anywhere for on-farm production of an engineered microbe
+    or a recombinant peptide. That is simultaneously the project's strongest reason to exist and the reason no
+    regulatory path for it can be cited — because none has been written.</span>
+    <span class="zh">在農場端以工程化微生物或重組胜肽進行生產，全球並無商業先例。
+    這既是本專案最強的存在理由，也是無法引用任何法規途徑的原因——因為那條路根本還沒被寫出來。</span></p>
+  </div>
+</section>
+
+<!-- ============================================================ 08 -->
+<section id="verdict" class="ruled">
+  <div class="shead">
+    <span class="snum">08</span>
+    <h2><span class="en">Which trend this is an instance of</span><span class="zh">這是哪一項趨勢的實例</span></h2>
+  </div>
+  <div class="claims">
+    <article class="claim is-yes rv">
+      <div class="cnt"><span class="en">IT IS AN INSTANCE OF</span><span class="zh">屬於此一趨勢</span></div>
+      <h3><span class="en">Single-use perfusion with full cell retention</span><span class="zh">具完全細胞截留的拋棄式灌流</span></h3>
+      <p><span class="en">The architecture, the retention device and the single-use flow path are all the
+      direction the industry is moving in, and the claim needs neither a titre nor a yield to stand up.</span>
+      <span class="zh">其架構、截留裝置與拋棄式流路，都正是產業前進的方向；
+      此一主張既不需要效價、也不需要產率便能成立。</span></p>
+      <div class="but"><b><span class="en">But</span><span class="zh">但是</span>:</b>
+        <span class="en">at 0.02 m² of membrane it is the smallest working example of that architecture anyone has published.</span>
+        <span class="zh">以 0.02 m² 的膜面積而言，它是已公開的該架構實作中最小的一個。</span></div>
+    </article>
+    <article class="claim is-yes rv">
+      <div class="cnt"><span class="en">IT IS AN INSTANCE OF</span><span class="zh">屬於此一趨勢</span></div>
+      <h3><span class="en">Point-of-need manufacturing</span><span class="zh">需求點製造</span></h3>
+      <p><span class="en">Making the product where it is used rather than shipping it, which is what the
+      biostimulant industry's own restraint list — shelf life, cold chain, distribution, price — keeps pointing
+      at. Note that the list never names strain efficacy.</span>
+      <span class="zh">在使用地點製造而非運送產品，正是生物刺激素產業自身的限制清單——保存期限、冷鏈、配送、價格——
+      一再指向的方向。值得注意的是，該清單從未提及菌株效能。</span></p>
+      <div class="but"><b><span class="en">But</span><span class="zh">但是</span>:</b>
+        <span class="en">SoluBio proved the model at 300 sites with ordinary organisms. The engineered half is still unprecedented and unregulated.</span>
+        <span class="zh">SoluBio 已在 300 個場址以一般菌株證明此模式可行；工程化的那一半仍無先例、亦無法規。</span></div>
+    </article>
+    <article class="claim is-no rv">
+      <div class="cnt"><span class="en">IT IS NOT AN INSTANCE OF</span><span class="zh">不屬於此一趨勢</span></div>
+      <h3><span class="en">Process intensification</span><span class="zh">製程強化</span></h3>
+      <p><span class="en">Intensification is measured in grams per litre per day. ReLEAF has never published a
+      volumetric productivity, has never counted cells per millilitre, and has never measured oxygen transfer.
+      The word does not apply.</span>
+      <span class="zh">製程強化以每公升每日公克數衡量。ReLEAF 從未公布體積產率、從未計數每毫升細胞數、
+      也從未量測氧傳。這個詞並不適用。</span></p>
+      <div class="but"><b><span class="en">But</span><span class="zh">但是</span>:</b>
+        <span class="en">a gassing-out test would fix the oxygen blank in an afternoon, and it is the cheapest number left on the table.</span>
+        <span class="zh">一次除氣法測試可在一個下午補上氧傳的空白，那是目前最容易取得的數字。</span></div>
+    </article>
+    <article class="claim is-no rv">
+      <div class="cnt"><span class="en">A WARNING FROM THE INDUSTRY</span><span class="zh">來自產業的警訊</span></div>
+      <h3><span class="en">Throughput was never the constraint</span><span class="zh">產能從來不是瓶頸</span></h3>
+      <p><span class="en">Cellares raised US$327 m on automated throughput and lost a US$380 m agreement in
+      August 2026 on process equivalence — not on capacity. Building the vessel is the part that can be
+      done; showing the process does the same thing every time is the part that cannot be skipped.</span>
+      <span class="zh">Cellares 以自動化產能募得 3.27 億美元，卻於 2026 年 8 月因製程一致性——而非產能——
+      失去一筆 3.8 億美元的合約。造出槽體是做得到的部分；證明製程每次結果一致，則是無法略過的部分。</span></p>
+      <div class="but"><b><span class="en">Read as</span><span class="zh">解讀為</span>:</b>
+        <span class="en">the replication run ReLEAF never did is worth more than another prototype.</span>
+        <span class="zh">ReLEAF 始終未做的重複運轉，其價值高於再造一台原型。</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="tinted">
+  <div class="shead center narrow">
+    <h2><span class="en">The honest sentence</span><span class="zh">誠實的一句話</span></h2>
+    <p style="font-size:clamp(19px,2.1vw,24px);line-height:1.45;color:var(--ink)">
+      <span class="en">On working volume, documentation and price transparency, ReLEAF is in the same
+      conversation as a commercial benchtop system. On closed control loops, oxygen, run duration, cell density
+      and productivity, it is a student device and nowhere near.</span>
+      <span class="zh">在工作體積、文件完整度與價格透明度上，ReLEAF 與商用桌上型系統處於同一層級；
+      在閉合控制迴路、氧傳、運轉時數、細胞密度與產率上，它是一台學生裝置，差距甚遠。</span></p>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4><span class="en">Sources</span><span class="zh">資料來源</span></h4>
+        <p><span class="en">Perfusion adoption and single-use shares from published industry surveys;
+        productivity figures from the perfusion vs fed-batch literature; retention-technology performance from
+        the CHO and influenza comparison studies; vendor prices are dated resale asks and open-hardware list
+        prices checked 30 October 2026; ASTM F838-20 and Directive 2009/41/EC read directly; SoluBio and Embrapa
+        figures from company filings and Embrapa's own survey; Lei 15.070/2024 read directly.</span>
+        <span class="zh">灌流採用率與拋棄式占比取自已發表的產業調查；產率數字取自灌流與饋料批次的比較文獻；
+        截留技術效能取自 CHO 與流感病毒的比較研究；供應商價格為標註日期的二手報價與開源硬體標價，
+        查核於 2026 年 10 月 30 日；ASTM F838-20 與 2009/41/EC 指令為直接閱讀；
+        SoluBio 與 Embrapa 數字取自公司申報與 Embrapa 自身調查；15.070/2024 號法律為直接閱讀。</span></p>
+      </div>
+      <div>
+        <h4><span class="en">What is missing</span><span class="zh">欠缺的部分</span></h4>
+        <p><span class="en">SoluBio's tank volume and unit price. New-system list prices from every commercial
+        vendor, which are quote-only across the industry. Suppliers for acoustic, inclined-settler and
+        centrifugal retention. Any standard covering an on-farm GMO fermentation unit. ReLEAF's own volumetric
+        productivity, cell density, measured k<sub>L</sub>a, output per day, power draw and weight — the team's
+        wiki says the last three are not yet known.</span>
+        <span class="zh">SoluBio 的槽體容積與單機價格。各商業供應商的新機標價，全產業僅能詢價。
+        聲波、斜板沉降與離心式截留的供應商。任何涵蓋農場端基改發酵裝置的標準。
+        ReLEAF 自身的體積產率、細胞密度、實測 k<sub>L</sub>a、每日產出、耗電與重量——
+        團隊 wiki 載明最後三項尚未知。</span></p>
+      </div>
+      <div>
+        <h4><span class="en">Corrections</span><span class="zh">更正</span></h4>
+        <p><span class="en">If a figure here is wrong or out of date, open an issue on the repository and it
+        will be fixed or removed. Company figures move; each is dated for that reason.</span>
+        <span class="zh">若此處數字有誤或已過時，請於版本庫開立 issue，我們會更正或移除。
+        公司數字會變動，因此每一項皆標註日期。</span></p>
+        <p style="margin-top:14px"><a href="index.html"><span class="en">&larr; Back to the iGEM audit</span><span class="zh">&larr; 返回 iGEM 審視</span></a></p>
+      </div>
+    </div>
+    <div class="fine">
+      <span class="en">GEMS-Taiwan 2026 · project ReLEAF. This page is an audit written while preparing a Hardware
+      special-award nomination; it is not a vendor comparison and nothing here is a recommendation to buy.</span>
+      <span class="zh">GEMS-Taiwan 2026 · ReLEAF 專案。本頁為準備硬體特別獎提名期間所撰寫的審視報告，
+      並非供應商比較，其中任何內容均不構成採購建議。</span>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Figure">
+  <button onclick="lbClose()" aria-label="Close">&times;</button>
+  <img id="lb-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
+  <figcaption id="lb-cap"></figcaption>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+const T=(en,zh)=>({en,zh});
+const L=o=>(o&&typeof o==="object"&&"en" in o)?o[window.LANG||"en"]:(o??"");
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+/* cost per litre of working volume, log-ish scale for legibility */
+const LADDER=[
+ {n:T("Stainless steel, 200,000 L","不鏽鋼，200,000 L"),s:T("facility scale","廠區規模"),v:8.5},
+ {n:T("Single-use, 2,000 L","拋棄式，2,000 L"),s:T("facility scale","廠區規模"),v:125},
+ {n:T("ReLEAF HFM-01","ReLEAF HFM-01"),s:T("1 L, photometer included","1 L，含光度計"),v:1023,us:1},
+ {n:T("Eppendorf DASbox","Eppendorf DASbox"),s:T("4 × 60–250 mL","4 × 60–250 mL"),v:6995},
+ {n:T("Pioreactor","Pioreactor"),s:T("20 mL","20 mL"),v:16450},
+ {n:T("Sartorius Ambr 250 HT","Sartorius Ambr 250 HT"),s:T("12-way","12 通道"),v:50000}
+];
+function renderLadder(){
+  const el=document.getElementById("ladder"); if(!el) return;
+  const mx=Math.log10(50000), mn=Math.log10(8.5);
+  const f=v=>Math.max(2,((Math.log10(v)-mn)/(mx-mn))*100);
+  const money=v=>v>=1000?"$"+Math.round(v).toLocaleString("en-US"):"$"+v.toFixed(2);
+  el.innerHTML=LADDER.map(r=>`<div class="lrow${r.us?" us":""}">
+    <div class="nm">${esc(L(r.n))}<small>${esc(L(r.s))}</small></div>
+    <div class="tr"><div class="fl" style="width:${f(r.v).toFixed(1)}%"></div></div>
+    <div class="pv">${money(r.v)}</div></div>`).join("")+
+    `<p style="margin:16px 0 0;font-size:13px;color:var(--neutral);letter-spacing:0">${esc(L(T(
+      "US dollars per litre of working volume. Bars are on a logarithmic scale, because a linear one would make every benchtop system a single pixel. Facility bands are published cost-of-goods figures, not purchase prices.",
+      "每公升工作體積之美元成本。長條為對數尺度，因線性尺度會讓所有桌上型系統縮成一個像素。廠區級數字為已公布的製造成本，而非購置價格。")))}</p>`;
+}
+
+const CMP=[
+ [T("Working volume","工作體積"),T("1 L","1 L"),T("DASbox 60–250 mL · Minifors 0.4–1.2 L · production 2,000–200,000 L","DASbox 60–250 mL · Minifors 0.4–1.2 L · 量產 2,000–200,000 L"),T("same conversation","同一層級"),"ok"],
+ [T("Membrane area","膜面積"),T("0.02 m², 11 fibres, 1.0 mm bore","0.02 m²、11 根纖維、內徑 1.0 mm"),T("Terumo 2.1 m², ~11,500 fibres · FiberCell to 1.2 m²","Terumo 2.1 m²、約 11,500 根纖維 · FiberCell 最大 1.2 m²"),T("0.95% — two orders down","0.95%——相差兩個數量級"),"no"],
+ [T("Cost published at all","是否公布成本"),T("a full itemised bill of materials","完整逐項物料表"),T("quote-only across every vendor; only dated resale asks exist","所有供應商均僅提供詢價；僅存在標註日期的二手報價"),T("wins outright","完勝"),"ok"],
+ [T("Cost per litre","每公升成本"),T("~US$1,023","約 1,023 美元"),T("DASbox ~$6,995 · Ambr 250 HT ~$50,000 · 2,000 L single-use $125 · 200,000 L stainless $8.50","DASbox 約 6,995 · Ambr 250 HT 約 50,000 · 2,000 L 拋棄式 125 · 200,000 L 不鏽鋼 8.50"),T("~7× better than benchtop, ~120× worse than scale","較桌上型優約 7 倍，較量產規模差約 120 倍"),"mid"],
+ [T("Control loops closed","閉合的控制迴路"),T("one — pH by KOH, and it lasted one night","一個——以 KOH 控 pH，且僅維持一晚"),T("DASbox and BioFlo close temperature, pH, DO, agitation, gassing and feed at 60–250 mL","DASbox 與 BioFlo 於 60–250 mL 即閉合溫度、pH、溶氧、攪拌、通氣與饋料"),T("loses badly, and the missing loop is oxygen","明顯落後，且缺的是氧氣迴路"),"no"],
+ [T("Sensor fit","感測器配置"),T("in-line OD600, three pressure, one flow, one pH","線上 OD600、三具壓力、一具流量、一具 pH"),T("the above plus DO, level and off-gas; capacitance for viable cell density; Raman validated at 2,000 L","上述再加溶氧、液位與排氣；以電容法量活細胞密度；拉曼已於 2,000 L 驗證"),T("in-line OD600 at this price is real; the PAT gap is total","此價位的線上 OD600 確有價值；製程分析技術則完全缺席"),"mid"],
+ [T("Cell density","細胞密度"),T("OD600 2.71 — cells/mL never counted","OD600 2.71——從未計數細胞/mL"),T("Terumo 3.1 × 10⁷/mL · ATF 1.3 × 10⁸/mL","Terumo 3.1 × 10⁷/mL · ATF 1.3 × 10⁸/mL"),T("not comparable — a different unit","無法比較——單位不同"),"na"],
+ [T("Titre","效價"),T(">2 µg/mL in the permeate through 72 h","透過液於 72 小時內維持 >2 µg/mL"),T("CHO fed-batch 5.2 g/L · FiberCell 5–20 mg/day","CHO 饋料批次 5.2 g/L · FiberCell 每日 5–20 mg"),T("µg/mL against g/L — state it, do not compare it","µg/mL 對 g/L——只陳述，不比較"),"na"],
+ [T("Volumetric productivity","體積產率"),T("not published","未公布"),T("0.39–0.49 fed-batch · 2.29 perfusion, g/L/day","饋料批次 0.39–0.49 · 灌流 2.29，g/L/日"),T("blank on the industry's main axis","在產業最主要的面向上空白"),"no"],
+ [T("Longest run","最長運轉"),T("116 h closed-loop · 434 h instrument-only","閉迴路 116 小時 · 純儀器 434 小時"),T("Terumo 696 h · perfusion campaigns to 1,200 h","Terumo 696 小時 · 灌流製程可達 1,200 小時"),T("17% and 10% of those","分別為其 17% 與 10%"),"no"],
+ [T("Containment evidence","圍阻證據"),T("two platings, no shell-side colonies","兩次平盤，殼側無菌落"),T("ASTM F838-20 at 10⁷/cm², which the standard itself says is not process validation","ASTM F838-20，10⁷/cm²，該標準自述並非製程驗證"),T("real evidence, not a retention validation","真實證據，但非截留驗證"),"mid"],
+ [T("Hydraulic characterisation","水力特性量測"),T("ΔP = aQ + bQ² at R² 0.995, plumbing subtracted; fouling 2.0 → 3.8 kPa over 42 h","ΔP = aQ + bQ²，R² 0.995，已扣除管路；42 小時內積垢 2.0 → 3.8 kPa"),T("routine in filtration development, rarely published","過濾製程開發的例行工作，但少有公開"),T("the strongest measured thing on the device","裝置上最紮實的實測項目"),"ok"],
+ [T("Oxygen transfer","氧傳"),T("not measured — a model output only","未量測——僅為模型輸出"),T("membrane-aerated 10–30 h⁻¹ · stirred 2,000 L ~40 h⁻¹","膜式曝氣 10–30 h⁻¹ · 2,000 L 攪拌槽約 40 h⁻¹"),T("one gassing-out test would close this","一次除氣法測試即可補上"),"no"],
+ [T("Regulatory position","法規定位"),T("none held; contained use pursued, not granted","未取得；正推動封閉性使用，尚未核准"),T("ICH Q13 Annex III describes this exact architecture; 17 continuous approvals by May 2026","ICH Q13 附錄 III 正描述此一架構；截至 2026 年 5 月已有 17 項連續製造核准"),T("loses completely","完全落後"),"no"]
+];
+function renderCmp(){
+  const out=document.getElementById("cmp-out"); if(!out) return;
+  const C={ok:"var(--green)",mid:"var(--amber)",no:"var(--red)",na:"var(--neutral)"};
+  out.innerHTML=CMP.map(([a,r,i,v,s])=>`<tr>
+    <td style="font-weight:600;color:var(--ink);min-width:150px">${esc(L(a))}</td>
+    <td style="min-width:200px">${esc(L(r))}</td>
+    <td style="color:var(--muted);min-width:260px">${esc(L(i))}</td>
+    <td style="color:${C[s]};font-weight:500;min-width:170px">${esc(L(v))}</td></tr>`).join("");
+}
+
+window.renderAll=function(){
+  document.title=(window.LANG==="zh"
+    ? "一公升反應器，置於二十萬公升的產業之中"
+    : "A 1 L reactor in a 200,000 L industry")+" · GEMS-Taiwan";
+  renderLadder(); renderCmp();
+  if(typeof reveal==="function") reveal();
+};
+window.renderAll();
+</script>
+</body>
+</html>

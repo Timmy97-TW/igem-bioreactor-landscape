@@ -60,5 +60,47 @@ that iGEM team wikis carry. Images credited to a pre-2022 `igem.org` team page w
 | `img/asu2024_b.webp` | diagram | System overview: components and media flow | ASU 2024 | [2024.igem.wiki/asu/hardware](https://2024.igem.wiki/asu/hardware) |
 | `img/ouc2025_a.webp` | photo | The assembled probe: gas-phase sensor head, PCB and alarm beacon | OUC-China 2025 | [2025.igem.wiki/ouc-china/hardware](https://2025.igem.wiki/ouc-china/hardware) |
 | `img/ouc2025_b.webp` | diagram | System overview | OUC-China 2025 | [2025.igem.wiki/ouc-china/hardware](https://2025.igem.wiki/ouc-china/hardware) |
-| `img/releaf2026_a.webp` | photo | Perfusion loop on the bench: fibre module on the stand, medium reservoir, peristaltic pump running | GEMS-Taiwan · ReLeaf 2026 | team's own |
-| `img/releaf2026_b.webp` | diagram | Prototype 1: PES hollow fibre, peristaltic pump, Luer sampling valve, medium reservoir | GEMS-Taiwan · ReLeaf 2026 | team's own |
+| `img/releaf2026_a.webp` | photo | Perfusion loop on the bench: fibre module on the stand, medium reservoir, peristaltic pump running | GEMS-Taiwan · ReLEAF 2026 | team's own |
+| `img/releaf2026_b.webp` | diagram | Prototype 1: PES hollow fibre, peristaltic pump, Luer sampling valve, medium reservoir | GEMS-Taiwan · ReLEAF 2026 | team's own |
+
+## Added 30 October 2026 — the 2026 Biomanufacturing village
+
+Every image below was taken from the team's own 2026 wiki on 30 October 2026, under the CC BY 4.0 licence
+those wikis carry, and is used to illustrate that team's entry in section 11.
+
+| File | Kind | Caption | Credit | Source |
+|---|---|---|---|---|
+| `img/v26_ashesi_a.avif` | photo | BREC-L, the bioleaching module | AshesiGhana 2026 | [2026.igem.wiki/ashesighana/hardware](https://2026.igem.wiki/ashesighana/hardware) |
+| `img/v26_ashesi_b.avif` | photo | BREC-E, the extraction module with its immobilisation comb | AshesiGhana 2026 | [2026.igem.wiki/ashesighana/hardware](https://2026.igem.wiki/ashesighana/hardware) |
+| `img/v26_asij_a.avif` | photo | Inside the 2 L vessel during a run: sparger and temperature probe in YPD | ASIJ-Tokyo 2026 | [2026.igem.wiki/asij-tokyo/hardware](https://2026.igem.wiki/asij-tokyo/hardware) |
+| `img/v26_asij_b.avif` | photo | The bench setup: vessel, controller and the two incubator control flasks | ASIJ-Tokyo 2026 | [2026.igem.wiki/asij-tokyo/hardware](https://2026.igem.wiki/asij-tokyo/hardware) |
+| `img/v26_mingdao_a.avif` | photo | The integrated fermentor, open on the bench | Mingdao 2026 | [2026.igem.wiki/mingdao/hardware](https://2026.igem.wiki/mingdao/hardware) |
+| `img/v26_mingdao_b.avif` | photo | The distillation and condensation station | Mingdao 2026 | [2026.igem.wiki/mingdao/hardware](https://2026.igem.wiki/mingdao/hardware) |
+| `img/v26_uleth_a.avif` | photo | The printed peristaltic pump prototype | ULethbridge 2026 | [2026.igem.wiki/ulethbridge/hardware](https://2026.igem.wiki/ulethbridge/hardware) |
+| `img/v26_uleth_b.avif` | photo | The media-exchange unit assembly | ULethbridge 2026 | [2026.igem.wiki/ulethbridge/hardware](https://2026.igem.wiki/ulethbridge/hardware) |
+| `img/v26_uestc_a.avif` | photo | The Bio-IoT platform in laboratory operation | UESTC-China 2026 | [2026.igem.wiki/uestc-china/hardware](https://2026.igem.wiki/uestc-china/hardware) |
+| `img/v26_uestc_b.avif` | photo | The 3D-printed reactor lid | UESTC-China 2026 | [2026.igem.wiki/uestc-china/hardware](https://2026.igem.wiki/uestc-china/hardware) |
+| `img/v26_sdu_a.avif` | photo | The two-chamber prototype, Falcon tubes joined by a salt bridge | SDU-Denmark 2026 | [2026.igem.wiki/sdu-denmark/hardware](https://2026.igem.wiki/sdu-denmark/hardware) |
+| `img/v26_sdu_b.avif` | diagram | Single-chamber air-cathode cell design | SDU-Denmark 2026 | [2026.igem.wiki/sdu-denmark/hardware](https://2026.igem.wiki/sdu-denmark/hardware) |
+
+Two teams in section 11 are shown without an image because neither published one of a device: HAMK, whose two
+growth chambers are described but never photographed or drawn, and UniCRETE, whose only figure is an inline SVG
+schematic marked "not to scale" with no separate image file to cite.
+
+## Added 30 October 2026 — GEMS-Taiwan's own figures
+
+All of these are the team's own work, taken from the project wiki frozen on 21 October 2026 at
+`2026.igem.wiki/gems-taiwan`, and reproduced here under the same CC BY 4.0 licence.
+
+| File | Kind | Caption |
+|---|---|---|
+| `img/releaf_case.webp` | render | The commercial build, cut along its flow path. Not built |
+| `img/releaf_rig.webp` | photo | The lab rig in its incubator, logging OD600, flow and pressure |
+| `img/releaf_loop.webp` | diagram | The final flow architecture: culture loop, protectant path, four transducers |
+| `img/releaf_containment.webp` | photo | Lumen-side and shell-side LB agar plates, 24 h at 37 °C |
+| `img/releaf_growthph.webp` | data | Run 6 traces: OD600, pH and flow over 42 hours |
+| `img/releaf_od600.webp` | data | Run 4, 116 hours of in-line OD600 with its ten-hour gap |
+| `img/releaf_elisa.webp` | data | ELISA standard curve, with every sample above the top standard |
+| `img/releaf_blot.webp` | data | Anti-His blot of shell-side medium, band at about 42 kDa |
+| `img/releaf_tmp.webp` | data | Transmembrane pressure across one sampling event |
+| `img/releaf_progress.webp` | render | The four prototypes in sequence |
