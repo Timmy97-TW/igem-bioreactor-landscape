@@ -3,10 +3,12 @@
   "use strict";
 
   /* ---------------------------------------------------------- language */
+  /* English is the default. The browser's locale does not decide this —
+     only an explicit choice the reader made does. Same storage key as the
+     audit page, so a choice made on either one carries to the other. */
   var saved = null;
-  try { saved = localStorage.getItem("lang"); } catch (e) {}
-  var LANG = saved === "zh" || saved === "en" ? saved
-    : (navigator.language || "").toLowerCase().indexOf("zh") === 0 ? "zh" : "en";
+  try { saved = localStorage.getItem("ibl.lang"); } catch (e) {}
+  var LANG = saved === "zh" ? "zh" : "en";
   window.LANG = LANG;
 
   function applyLang(l) {
@@ -16,7 +18,7 @@
     var en = document.getElementById("btn-en"), zh = document.getElementById("btn-zh");
     if (en) en.setAttribute("aria-pressed", String(l === "en"));
     if (zh) zh.setAttribute("aria-pressed", String(l === "zh"));
-    try { localStorage.setItem("lang", l); } catch (e) {}
+    try { localStorage.setItem("ibl.lang", l); } catch (e) {}
     if (typeof window.renderAll === "function") window.renderAll();
   }
   window.applyLang = applyLang;
